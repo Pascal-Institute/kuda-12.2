@@ -1,5 +1,7 @@
+import kuda.RuntimeAPI
+
 fun main(args: Array<String>) {
-    val kudaRuntimeAPI = KudaRuntimeAPI()
+    val kudaRuntimeAPI = RuntimeAPI()
     val cudaVersion = kudaRuntimeAPI.getRuntimeVersion()
     val divice = kudaRuntimeAPI.getDivice()
     println("CUDA Version: $cudaVersion")
