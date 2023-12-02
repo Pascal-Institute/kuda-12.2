@@ -1,6 +1,6 @@
 package kuda
 
-enum class DeviceAttribute(val attribute : Int) {
+enum class DeviceAttribute(val number : Int) {
     MAX_THREADS_PER_BLOCK(1),
     MAX_BLOCK_DIM_X(2),
     MAX_BLOCK_DIM_Y(3),
