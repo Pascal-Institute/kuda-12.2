@@ -1,5 +1,6 @@
 package kuda
 
+import kuda.type.Error
 import kuda.type.FunctionCache
 import kuda.type.Limit
 
@@ -25,6 +26,10 @@ class RuntimeAPI {
     external fun getDeviceCount() : Int
     external fun setDevice(device : Int) : Int
     external fun setDeviceFlags(flags : Int) : Int
+    private external fun getErrorName(error : Int) : String
+    fun getErrorName(error: Error) : String{
+        return getErrorName(error.num)
+    }
 
     companion object {
         private var isLibraryLoaded = false

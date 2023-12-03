@@ -1,4 +1,5 @@
 import kuda.*
+import kuda.type.Error
 import kuda.type.FunctionCache
 import kuda.type.Limit
 
@@ -9,7 +10,7 @@ fun main(args: Array<String>) {
     val cudaVersion = runtimeAPI.getRuntimeVersion()
     val driverVersion = driverAPI.getDriverVersion()
 
-    val device = runtimeAPI.getDivice()
+    val device = runtimeAPI.getDevice()
     val driverDevice = driverAPI.getDevice(0)
     val deviceCount = driverAPI.getDeviceCount()
 
@@ -31,5 +32,7 @@ fun main(args: Array<String>) {
     println(runtimeAPI.getStreamPriorityRange())
 
     println(runtimeAPI.setCacheConfig(FunctionCache.PREFER_NONE))
+
+    println(runtimeAPI.getErrorName(Error.ERROR_UNKNOWN))
 
 }
