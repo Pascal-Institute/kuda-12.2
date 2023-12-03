@@ -1,4 +1,4 @@
-package kuda
+package kuda.type
 
 enum class FunctionCache(val num : Int) {
     PREFER_NONE(0),

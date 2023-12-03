@@ -1,4 +1,4 @@
-package kuda
+package kuda.type
 
 enum class DeviceAttribute(val num : Int) {
     MAX_THREADS_PER_BLOCK(1),

@@ -1,5 +1,8 @@
 package kuda
 
+import kuda.type.FunctionCache
+import kuda.type.Limit
+
 class RuntimeAPI {
 
     fun getLimit(limit : Limit) : Int {

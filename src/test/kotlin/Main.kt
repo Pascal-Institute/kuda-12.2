@@ -1,4 +1,6 @@
 import kuda.*
+import kuda.type.FunctionCache
+import kuda.type.Limit
 
 fun main(args: Array<String>) {
     val runtimeAPI = RuntimeAPI()

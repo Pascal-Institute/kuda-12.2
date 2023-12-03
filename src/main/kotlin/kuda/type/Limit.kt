@@ -1,4 +1,4 @@
-package kuda
+package kuda.type
 
 enum class Limit(val byte: Byte) {
     STACK_SIZE((0).toByte()),
