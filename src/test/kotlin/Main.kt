@@ -1,3 +1,4 @@
+import kuda.DeviceAttribute
 import kuda.DriverAPI
 import kuda.RuntimeAPI
 
