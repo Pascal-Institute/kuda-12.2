@@ -28,4 +28,6 @@ fun main(args: Array<String>) {
     println(runtimeAPI.getLimit(Limit.DEV_RUNTIME_PENDING_LAUNCH_COUNT))
     println(runtimeAPI.getLimit(Limit.PERSISTING_L2_CACHE_SIZE))
 
+    println(runtimeAPI.getPCIBusId(device))
+
 }

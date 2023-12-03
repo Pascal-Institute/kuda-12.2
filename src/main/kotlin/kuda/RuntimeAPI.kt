@@ -6,6 +6,7 @@ class RuntimeAPI {
         return getLimit(limit.byte)
     }
     private external fun getLimit(byte: Byte) : Int
+    external fun getPCIBusId(device : Int) : String
     external fun syncDevice() : Int
     external fun getRuntimeVersion(): Int
     external fun getDivice() : Int
