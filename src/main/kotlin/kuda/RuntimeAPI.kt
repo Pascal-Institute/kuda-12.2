@@ -7,6 +7,11 @@ class RuntimeAPI {
     }
     private external fun getLimit(byte: Byte) : Int
     external fun getPCIBusId(device : Int) : String
+    external fun getStreamPriorityRange() : Int
+    private external fun setCacheConfig(cacheConfig : Int) : Int
+    fun setCacheConfig(functionCache: FunctionCache) : Int{
+        return setCacheConfig(functionCache.num)
+    }
     external fun syncDevice() : Int
     external fun getRuntimeVersion(): Int
     external fun getDivice() : Int

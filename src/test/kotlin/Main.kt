@@ -1,7 +1,4 @@
-import kuda.DeviceAttribute
-import kuda.DriverAPI
-import kuda.Limit
-import kuda.RuntimeAPI
+import kuda.*
 
 fun main(args: Array<String>) {
     val runtimeAPI = RuntimeAPI()
@@ -29,5 +26,8 @@ fun main(args: Array<String>) {
     println(runtimeAPI.getLimit(Limit.PERSISTING_L2_CACHE_SIZE))
 
     println(runtimeAPI.getPCIBusId(device))
+    println(runtimeAPI.getStreamPriorityRange())
+
+    println(runtimeAPI.setCacheConfig(FunctionCache.PREFER_NONE))
 
 }
