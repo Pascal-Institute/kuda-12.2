@@ -1,6 +1,11 @@
 package kuda
 
 class RuntimeAPI {
+
+    fun getLimit(limit : Limit) : Int {
+        return getLimit(limit.byte)
+    }
+    private external fun getLimit(byte: Byte) : Int
     external fun syncDevice() : Int
     external fun getRuntimeVersion(): Int
     external fun getDivice() : Int
