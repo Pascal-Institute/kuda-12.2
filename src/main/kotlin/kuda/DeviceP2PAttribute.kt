@@ -1,6 +1,6 @@
 package kuda
 
-enum class DeviceP2PAttribute(val attribute : Int) {
+enum class DeviceP2PAttribute(val num : Int) {
     PERFORMANCE_RANK(1),
     ACCESS_SUPPORTED(2),
     NATIVE_ATOMIC_SUPPORTED(3),
