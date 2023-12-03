@@ -15,9 +15,13 @@ class RuntimeAPI {
     fun setCacheConfig(functionCache: FunctionCache) : Int{
         return setCacheConfig(functionCache.num)
     }
+    private external fun setLimit(limit : Byte, size : Int) : Int
+    fun setLimit(limit: Limit, size: Int) : Int{
+        return setLimit(limit.byte, size)
+    }
     external fun syncDevice() : Int
     external fun getRuntimeVersion(): Int
-    external fun getDivice() : Int
+    external fun getDevice() : Int
     external fun getDeviceCount() : Int
     external fun setDevice(device : Int) : Int
     external fun setDeviceFlags(flags : Int) : Int
