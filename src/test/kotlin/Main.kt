@@ -34,5 +34,6 @@ fun main(args: Array<String>) {
     println(runtimeAPI.setCacheConfig(FunctionCache.PREFER_NONE))
 
     println(runtimeAPI.getErrorName(Error.ERROR_UNKNOWN))
+    println(runtimeAPI.getErrorString(Error.INITIALIZATION_ERROR))
 
 }
