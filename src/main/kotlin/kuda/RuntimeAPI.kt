@@ -35,7 +35,8 @@ class RuntimeAPI {
     fun getErrorString(error: Error) : String{
         return getErrorName(error.num)
     }
-
+    external fun getLastError() : Int
+    external fun peekAtLastError() : Int
     companion object {
         private var isLibraryLoaded = false
 
