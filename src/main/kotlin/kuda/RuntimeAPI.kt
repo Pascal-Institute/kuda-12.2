@@ -37,6 +37,8 @@ class RuntimeAPI {
     }
     external fun getLastError() : Int
     external fun peekAtLastError() : Int
+
+    //6.4 Stream Management
     companion object {
         private var isLibraryLoaded = false
 

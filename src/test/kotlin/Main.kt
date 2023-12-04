@@ -1,4 +1,5 @@
 import kuda.*
+import kuda.runtime.EventHandler
 import kuda.type.Error
 import kuda.type.FunctionCache
 import kuda.type.Limit
@@ -13,6 +14,8 @@ fun main(args: Array<String>) {
     val device = runtimeAPI.getDevice()
     val driverDevice = driverAPI.getDevice(0)
     val deviceCount = driverAPI.getDeviceCount()
+
+    val eventHandler = EventHandler()
 
     driverAPI.init(0)
     println("CUDA Version : $cudaVersion")
@@ -35,5 +38,7 @@ fun main(args: Array<String>) {
 
     println(runtimeAPI.getErrorName(Error.ERROR_UNKNOWN))
     println(runtimeAPI.getErrorString(Error.INITIALIZATION_ERROR))
+
+    println(eventHandler.create(123L))
 
 }
