@@ -40,6 +40,8 @@ class RuntimeAPI {
 
     //6.4 Stream Management
     external fun streamCreate() : Long
+
+    external fun streamCreateWithFlags(flags : Int) : Long
     companion object {
         private var isLibraryLoaded = false
 
