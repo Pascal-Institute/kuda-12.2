@@ -42,7 +42,7 @@ publishing {
             groupId = "com.snacklab"
             artifactId = "kuda"
 
-            version = "1.0.2"
+            version = "1.0.3"
 
             from(components["java"])
         }
