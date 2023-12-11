@@ -19,7 +19,7 @@ dependencies {
 sourceSets {
     main {
         resources {
-            srcDirs("libs")
+            srcDir("resources")
         }
     }
 }
