@@ -1,4 +1,7 @@
-import kuda.*
+
+import kuda.DriverAPI
+import kuda.RuntimeAPI
+import kuda.runtimeapi.DeviceHandler
 import kuda.type.Error
 import kuda.type.FunctionCache
 import kuda.type.Limit
@@ -19,20 +22,24 @@ fun main(args: Array<String>) {
     println("CUDA Device: $device")
     println("CUDA Device count : $deviceCount")
     println(driverDevice)
-    println(runtimeAPI.deviceGetLimit(Limit.PRINT_FIFO_SIZE))
-    println(runtimeAPI.deviceGetLimit(Limit.MALLOC_HEAP_SIZE))
-    println(runtimeAPI.deviceGetLimit(Limit.STACK_SIZE))
-    println(runtimeAPI.deviceGetLimit(Limit.DEV_RUNTIME_SYNC_DEPTH))
-    println(runtimeAPI.deviceGetLimit(Limit.MAX_L2_FETCH_GRANULARITY))
-    println(runtimeAPI.deviceGetLimit(Limit.DEV_RUNTIME_PENDING_LAUNCH_COUNT))
-    println(runtimeAPI.deviceGetLimit(Limit.PERSISTING_L2_CACHE_SIZE))
+    println(DeviceHandler.getLimit(Limit.PRINT_FIFO_SIZE))
+    println(DeviceHandler.getLimit(Limit.MALLOC_HEAP_SIZE))
+    println(DeviceHandler.getLimit(Limit.STACK_SIZE))
+    println(DeviceHandler.getLimit(Limit.DEV_RUNTIME_SYNC_DEPTH))
+    println(DeviceHandler.getLimit(Limit.MAX_L2_FETCH_GRANULARITY))
+    println(DeviceHandler.getLimit(Limit.DEV_RUNTIME_PENDING_LAUNCH_COUNT))
+    println(DeviceHandler.getLimit(Limit.PERSISTING_L2_CACHE_SIZE))
 
-    println(runtimeAPI.deviceGetPCIBusId(device))
-    println(runtimeAPI.deviceGetStreamPriorityRange())
+    println(DeviceHandler.getPCIBusId(device))
+    println(DeviceHandler.getStreamPriorityRange())
 
-    println(runtimeAPI.deviceSetCacheConfig(FunctionCache.PREFER_NONE))
+    println(DeviceHandler.setCacheConfig(FunctionCache.PREFER_NONE))
+    println(DeviceHandler.synchronize())
+    println(DeviceHandler.reset())
 
     println(runtimeAPI.getErrorName(Error.ERROR_UNKNOWN))
     println(runtimeAPI.getErrorString(Error.INITIALIZATION_ERROR))
+
+    var stream = runtimeAPI.streamCreate()
 
 }

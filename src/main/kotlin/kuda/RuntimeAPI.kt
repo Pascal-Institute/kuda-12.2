@@ -1,26 +1,8 @@
 package kuda
 
 import kuda.type.Error
-import kuda.type.FunctionCache
-import kuda.type.Limit
 
 class RuntimeAPI {
-
-    fun deviceGetLimit(limit : Limit) : Int {
-        return deviceGetLimit(limit.byte)
-    }
-    private external fun deviceGetLimit(byte: Byte) : Int
-    external fun deviceGetPCIBusId(device : Int) : String
-    external fun deviceGetStreamPriorityRange() : Int
-    private external fun deviceSetCacheConfig(cacheConfig : Int) : Int
-    fun deviceSetCacheConfig(functionCache: FunctionCache) : Int{
-        return deviceSetCacheConfig(functionCache.num)
-    }
-    private external fun deviceSetLimit(limit : Byte, size : Int) : Int
-    fun deviceSetLimit(limit: Limit, size: Int) : Int{
-        return deviceSetLimit(limit.byte, size)
-    }
-    external fun deviceSynchronize() : Int
     external fun runtimeGetVersion(): Int
     external fun getDevice() : Int
     external fun getDeviceCount() : Int
