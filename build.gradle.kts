@@ -1,13 +1,14 @@
 plugins {
     kotlin("jvm") version "1.9.0"
     application
+    `maven-publish`
 }
-
-group = "com.snacklab"
-version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+    maven{
+        url = uri("https://jitpack.io")
+    }
 }
 
 dependencies {
@@ -24,4 +25,17 @@ kotlin {
 
 application {
     mainClass.set("MainKt")
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "com.snacklab"
+            artifactId = "kuda"
+
+            version = "1.0.0"
+
+            from(components["java"])
+        }
+    }
 }
