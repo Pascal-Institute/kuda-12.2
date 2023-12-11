@@ -13,6 +13,15 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+    implementation(files("libs/kudadll.dll"))
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDirs("libs")
+        }
+    }
 }
 
 tasks.test {
