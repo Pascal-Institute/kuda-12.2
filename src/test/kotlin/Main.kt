@@ -42,4 +42,11 @@ fun main(args: Array<String>) {
 
     var stream = runtimeAPI.streamCreate()
 
+    var eventStart = runtimeAPI.eventCreate()
+    var eventEnd = runtimeAPI.eventCreate()
+    runtimeAPI.eventDestroy(eventStart)
+    eventStart = runtimeAPI.eventCreate()
+    var time = runtimeAPI.eventElapsedTime(eventStart, eventEnd)
+    println(time)
+
 }
