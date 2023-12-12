@@ -6,7 +6,9 @@ The gpu library (wrapping cuda) written by Kotlin
 
 ## How to use? (Please Check Latest Version)
 
-### build.gradle.kts
+### 0. Install JDK(17) & CUDA Toolkit (12.2)
+
+### 1. Add library in build.gradle.kts
 ```kotlin
 repositories {
     maven{
@@ -19,6 +21,16 @@ dependencies {
 }
 
 ```
+
+### 2. add vm options
+
+```kotlin
+-Djava.library.path=./src/main/resources
+```
+
+### 3. add dll files into /src/main/resources
+
+![img.png](img.png)
 
 ## JDK Version
 17
