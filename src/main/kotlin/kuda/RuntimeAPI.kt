@@ -21,9 +21,24 @@ class RuntimeAPI {
     external fun peekAtLastError() : Int
 
     //6.4 Stream Management
-    external fun streamCreate() : Long
 
+    external fun ctxResetPersistingL2Cache() : Int
+    external fun streamCreate() : Long
     external fun streamCreateWithFlags(flags : Int) : Long
+
+    //6.5 Event ManageMent
+    external fun eventCreate() : Long
+
+    external fun eventCreateWithFlags(flags : Int) : Long
+
+    external fun eventDestroy(event : Long) : Int
+
+    external fun eventElapsedTime(start : Long, end : Long) : Float
+
+    external fun eventQuery(event : Long) : Int
+
+    external fun eventSynchronize(event : Long) : Int
+
     companion object {
         private var isLibraryLoaded = false
 

@@ -19,7 +19,7 @@ dependencies {
 sourceSets {
     main {
         resources {
-            srcDirs("libs")
+            srcDir("resources")
         }
     }
 }
@@ -42,7 +42,7 @@ publishing {
             groupId = "com.snacklab"
             artifactId = "kuda"
 
-            version = "1.0.0"
+            version = "1.0.3"
 
             from(components["java"])
         }
