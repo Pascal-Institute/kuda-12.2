@@ -2,6 +2,7 @@
 import kuda.DriverAPI
 import kuda.RuntimeAPI
 import kuda.runtimeapi.DeviceHandler
+import kuda.runtimeapi.EventHandler
 import kuda.type.Error
 import kuda.type.FunctionCache
 import kuda.type.Limit
@@ -42,11 +43,11 @@ fun main(args: Array<String>) {
 
     var stream = runtimeAPI.streamCreate()
 
-    var eventStart = runtimeAPI.eventCreate()
-    var eventEnd = runtimeAPI.eventCreate()
-    runtimeAPI.eventDestroy(eventStart)
-    eventStart = runtimeAPI.eventCreate()
-    var time = runtimeAPI.eventElapsedTime(eventStart, eventEnd)
+    var eventStart = EventHandler.create()
+    var eventEnd = EventHandler.create()
+    EventHandler.destroy(eventStart)
+    eventStart = EventHandler.create()
+    var time = EventHandler.elapsedTime(eventStart, eventEnd)
     println(time)
 
 }
