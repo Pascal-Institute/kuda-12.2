@@ -38,6 +38,8 @@ fun main(args: Array<String>) {
     println(DeviceHandler.synchronize())
     println(DeviceHandler.reset())
 
+    println(runtimeAPI.driverGetVersion())
+
     println(runtimeAPI.getErrorName(Error.ERROR_UNKNOWN))
     println(runtimeAPI.getErrorString(Error.INITIALIZATION_ERROR))
 

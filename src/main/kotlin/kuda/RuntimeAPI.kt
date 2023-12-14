@@ -4,7 +4,6 @@ import kuda.type.Error
 import kuda.type.StreamCaptureStatus
 
 class RuntimeAPI {
-    external fun runtimeGetVersion(): Int
     external fun getDevice() : Int
     external fun getDeviceCount() : Int
     external fun setDevice(device : Int) : Int
@@ -44,7 +43,11 @@ class RuntimeAPI {
 
     external fun streamCreateWithPriority(flags : Int, priority : Int) : Long
 
-    external fun streamDestroy(stream : Long);
+    external fun streamDestroy(stream : Long)
+
+    //6.27 Version Management
+    external fun driverGetVersion() : Int
+    external fun runtimeGetVersion() : Int
 
     companion object {
         private var isLibraryLoaded = false
