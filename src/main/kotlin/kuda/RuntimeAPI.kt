@@ -1,6 +1,7 @@
 package kuda
 
 import kuda.type.Error
+import kuda.type.StreamCaptureStatus
 
 class RuntimeAPI {
     external fun runtimeGetVersion(): Int
@@ -23,8 +24,27 @@ class RuntimeAPI {
     //6.4 Stream Management
 
     external fun ctxResetPersistingL2Cache() : Int
+
+    //cudaStreamAddCallback
+
+    //cudaStreamAttachMemAsync
+
+    private external fun streamBeginCapture(stream : Long, mode : Int) : Int
+    fun streamBeginCapture(stream: Long, streamCaptureStatus: StreamCaptureStatus) : Int{
+        return streamBeginCapture(stream, streamCaptureStatus.num)
+    }
+
+    //cudaStreamBeginCaptureToGraph
+
+    external fun streamCopyAttributes(dst : Long, src : Long) : Int
+
     external fun streamCreate() : Long
+
     external fun streamCreateWithFlags(flags : Int) : Long
+
+    external fun streamCreateWithPriority(flags : Int, priority : Int) : Long
+
+    external fun streamDestroy(stream : Long);
 
     companion object {
         private var isLibraryLoaded = false
