@@ -43,7 +43,19 @@ class RuntimeAPI {
 
     external fun streamCreateWithPriority(flags : Int, priority : Int) : Long
 
-    external fun streamDestroy(stream : Long)
+    external fun streamDestroy(stream : Long) : Int
+
+    external fun streamQuery(stream : Long) : Int
+
+    //cudaStreamSetAttribute
+
+    external fun streamSynchronize(stream : Long) : Int
+
+    //cudaStreamUpdateCaptureDependencies
+
+    //cudaStreamUpdateCaptureDependencies_v2
+
+    external fun streamWaitEvent(stream : Long, event : Long, flags : Int) : Int
 
     //6.27 Version Management
     external fun driverGetVersion() : Int
