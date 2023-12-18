@@ -51,6 +51,12 @@ class RuntimeAPI {
 
     external fun streamSynchronize(stream : Long) : Int
 
+    //cudaStreamUpdateCaptureDependencies
+
+    //cudaStreamUpdateCaptureDependencies_v2
+
+    external fun streamWaitEvent(stream : Long, event : Long, flags : Int) : Int
+
     //6.27 Version Management
     external fun driverGetVersion() : Int
     external fun runtimeGetVersion() : Int
