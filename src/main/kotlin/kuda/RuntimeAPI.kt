@@ -20,8 +20,14 @@ class RuntimeAPI {
 
     external fun peekAtLastError() : Int
 
+    //6.6 External Resource Interoperability
+    external fun destroyExternalMemory(extMem : Long) : Int
+
+    external fun destroyExternalSemaphore(extSem : Long) : Int
+
     //6.27 Version Management
     external fun driverGetVersion() : Int
+
     external fun runtimeGetVersion() : Int
 
     companion object {
