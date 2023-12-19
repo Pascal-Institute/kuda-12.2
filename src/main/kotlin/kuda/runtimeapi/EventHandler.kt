@@ -17,8 +17,6 @@ class EventHandler {
             }
         }
 
-        //6.5 Event Management
-
         @JvmStatic
         external fun create() : Long
 

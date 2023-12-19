@@ -3,6 +3,7 @@ import kuda.DriverAPI
 import kuda.RuntimeAPI
 import kuda.runtimeapi.DeviceHandler
 import kuda.runtimeapi.EventHandler
+import kuda.runtimeapi.StreamHandler
 import kuda.type.Error
 import kuda.type.FunctionCache
 import kuda.type.Limit
@@ -43,7 +44,7 @@ fun main(args: Array<String>) {
     println(runtimeAPI.getErrorName(Error.ERROR_UNKNOWN))
     println(runtimeAPI.getErrorString(Error.INITIALIZATION_ERROR))
 
-    var stream = runtimeAPI.streamCreate()
+    var stream = StreamHandler.create()
 
     var eventStart = EventHandler.create()
     var eventEnd = EventHandler.create()
