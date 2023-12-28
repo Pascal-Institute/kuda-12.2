@@ -4,6 +4,8 @@ The gpu library (wrapping cuda) written by Kotlin
 [![](https://jitpack.io/v/volta2030/kuda.svg)](https://jitpack.io/#volta2030/kuda)
 [![](https://jitpack.io/v/volta2030/kuda/month.svg)](https://jitpack.io/#volta2030/kuda)
 
+![kuda_icon.png](src%2Fmain%2Fresources%2Fkuda_icon.png)
+
 ## How to use? (Please Check Latest Version)
 
 ### 0. Install JDK(17) & CUDA Toolkit (12.2)
