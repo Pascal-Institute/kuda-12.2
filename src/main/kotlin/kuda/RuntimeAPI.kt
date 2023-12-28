@@ -1,7 +1,6 @@
 package kuda
 
-import kuda.type.Error
-import kuda.type.StreamCaptureStatus
+import kuda.prop.Error
 
 class RuntimeAPI {
     external fun getDevice() : Int
@@ -18,47 +17,17 @@ class RuntimeAPI {
         return getErrorName(error.num)
     }
     external fun getLastError() : Int
+
     external fun peekAtLastError() : Int
 
-    //6.4 Stream Management
+    //6.6 External Resource Interoperability
+    external fun destroyExternalMemory(extMem : Long) : Int
 
-    external fun ctxResetPersistingL2Cache() : Int
-
-    //cudaStreamAddCallback
-
-    //cudaStreamAttachMemAsync
-
-    private external fun streamBeginCapture(stream : Long, mode : Int) : Int
-    fun streamBeginCapture(stream: Long, streamCaptureStatus: StreamCaptureStatus) : Int{
-        return streamBeginCapture(stream, streamCaptureStatus.num)
-    }
-
-    //cudaStreamBeginCaptureToGraph
-
-    external fun streamCopyAttributes(dst : Long, src : Long) : Int
-
-    external fun streamCreate() : Long
-
-    external fun streamCreateWithFlags(flags : Int) : Long
-
-    external fun streamCreateWithPriority(flags : Int, priority : Int) : Long
-
-    external fun streamDestroy(stream : Long) : Int
-
-    external fun streamQuery(stream : Long) : Int
-
-    //cudaStreamSetAttribute
-
-    external fun streamSynchronize(stream : Long) : Int
-
-    //cudaStreamUpdateCaptureDependencies
-
-    //cudaStreamUpdateCaptureDependencies_v2
-
-    external fun streamWaitEvent(stream : Long, event : Long, flags : Int) : Int
+    external fun destroyExternalSemaphore(extSem : Long) : Int
 
     //6.27 Version Management
     external fun driverGetVersion() : Int
+
     external fun runtimeGetVersion() : Int
 
     companion object {

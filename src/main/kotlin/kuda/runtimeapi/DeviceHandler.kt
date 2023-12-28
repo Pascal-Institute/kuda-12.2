@@ -1,7 +1,7 @@
 package kuda.runtimeapi
 
-import kuda.type.FunctionCache
-import kuda.type.Limit
+import kuda.prop.FunctionCache
+import kuda.prop.Limit
 
 class DeviceHandler {
     companion object {

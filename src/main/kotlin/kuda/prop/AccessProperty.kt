@@ -1,4 +1,4 @@
-package kuda.type
+package kuda.prop
 
 enum class AccessProperty(val num : Int) {
     NORMAL(0),

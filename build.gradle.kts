@@ -39,7 +39,7 @@ application {
 publishing {
     publications {
         create<MavenPublication>("maven") {
-            groupId = "com.snacklab"
+            groupId = "com.pascal"
             artifactId = "kuda"
 
             version = "1.0.6"

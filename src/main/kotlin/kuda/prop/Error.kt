@@ -1,4 +1,4 @@
-package kuda.type
+package kuda.prop
 
 enum class Error(val num : Int) {
     SUCCESS(0),

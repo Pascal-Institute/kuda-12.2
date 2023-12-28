@@ -1,4 +1,4 @@
-package kuda.type
+package kuda.prop
 
 enum class StreamCaptureStatus(val num : Int) {
     NONE(0),

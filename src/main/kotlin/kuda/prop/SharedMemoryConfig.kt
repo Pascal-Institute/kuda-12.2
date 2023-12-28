@@ -1,4 +1,4 @@
-package kuda.type
+package kuda.prop
 
 enum class SharedMemoryConfig(val num : Int) {
     BANK_SIZE_DEFAULT(0),
