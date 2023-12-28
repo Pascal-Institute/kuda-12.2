@@ -1,4 +1,4 @@
-package kuda
+package kuda.block
 
 //https://docs.nvidia.com/cuda/cuda-runtime-api/structcudaChannelFormatDesc.html#structcudaChannelFormatDesc
 
