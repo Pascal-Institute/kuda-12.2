@@ -4,9 +4,9 @@ import kuda.RuntimeAPI
 import kuda.runtimeapi.DeviceHandler
 import kuda.runtimeapi.EventHandler
 import kuda.runtimeapi.StreamHandler
-import kuda.type.Error
-import kuda.type.FunctionCache
-import kuda.type.Limit
+import kuda.prop.Error
+import kuda.prop.FunctionCache
+import kuda.prop.Limit
 
 fun main(args: Array<String>) {
     val runtimeAPI = RuntimeAPI()

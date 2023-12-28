@@ -1,6 +1,6 @@
 package kuda.runtimeapi
 
-import kuda.type.StreamCaptureStatus
+import kuda.prop.StreamCaptureStatus
 
 class StreamHandler {
     companion object{

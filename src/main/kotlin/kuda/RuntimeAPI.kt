@@ -1,6 +1,6 @@
 package kuda
 
-import kuda.type.Error
+import kuda.prop.Error
 
 class RuntimeAPI {
     external fun getDevice() : Int
