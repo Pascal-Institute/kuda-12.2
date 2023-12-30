@@ -34,6 +34,8 @@ class RuntimeAPI {
 
     external fun freeMipmappedArray(mipMappedArray : Long) : Int
 
+    external fun hostUnregister(ptr : Long) : Int
+
     //6.27 Version Management
     external fun driverGetVersion() : Int
 
