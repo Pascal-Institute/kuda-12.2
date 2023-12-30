@@ -36,6 +36,8 @@ class RuntimeAPI {
 
     external fun hostUnregister(ptr : Long) : Int
 
+    external fun malloc(size : Int) : Long
+
     //6.27 Version Management
     external fun driverGetVersion() : Int
 

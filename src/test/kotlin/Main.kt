@@ -46,6 +46,9 @@ fun main(args: Array<String>) {
 
     var stream = StreamHandler.create()
 
+    var mallocPointer = runtimeAPI.malloc(32)
+    println(mallocPointer)
+
     var eventStart = EventHandler.create()
     var eventEnd = EventHandler.create()
     EventHandler.destroy(eventStart)
