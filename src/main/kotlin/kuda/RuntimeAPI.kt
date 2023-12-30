@@ -25,10 +25,14 @@ class RuntimeAPI {
 
     external fun destroyExternalSemaphore(extSem : Long) : Int
 
-    //6.6 Memory Management
+    //6.9 Memory Management
     external fun free(devPtr : Long) : Int
 
+    external fun freeArray(array : Long) : Int
+
     external fun freeHost(ptr : Long) : Int
+
+    external fun freeMipmappedArray(mipMappedArray : Long) : Int
 
     //6.27 Version Management
     external fun driverGetVersion() : Int
