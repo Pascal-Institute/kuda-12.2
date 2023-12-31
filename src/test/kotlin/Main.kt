@@ -53,6 +53,8 @@ fun main(args: Array<String>) {
     println(mallocHostPointer)
     runtimeAPI.freeHost(mallocHostPointer)
 
+    DeviceHandler.getMemPool(device)
+
     var eventStart = EventHandler.create()
     var eventEnd = EventHandler.create()
     EventHandler.destroy(eventStart)
