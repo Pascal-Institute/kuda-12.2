@@ -40,6 +40,8 @@ class RuntimeAPI {
 
     external fun malloc(size : Int) : Long
 
+    external fun mallocHost(size: Int) : Long
+
     //6.27 Version Management
     external fun driverGetVersion() : Int
 
