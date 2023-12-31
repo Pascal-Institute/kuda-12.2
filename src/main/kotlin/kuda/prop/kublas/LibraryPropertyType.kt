@@ -1,4 +1,4 @@
-package kuda.prop
+package kuda.prop.kublas
 
 //https://docs.nvidia.com/cuda/cublas/index.html#cublasgetproperty
 
