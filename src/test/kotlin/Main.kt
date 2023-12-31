@@ -1,5 +1,6 @@
 
 import kuda.DriverAPI
+import kuda.Kublas
 import kuda.RuntimeAPI
 import kuda.runtimeapi.DeviceHandler
 import kuda.runtimeapi.EventHandler
@@ -61,5 +62,9 @@ fun main(args: Array<String>) {
     eventStart = EventHandler.create()
     var time = EventHandler.elapsedTime(eventStart, eventEnd)
     println(time)
+
+    val kublas = Kublas()
+    val handle = kublas.create()
+    kublas.destroy(handle)
 
 }
