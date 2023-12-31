@@ -47,6 +47,14 @@ class RuntimeAPI {
 
     external fun runtimeGetVersion() : Int
 
+
+    //6.13  Peer Device Memory Access
+    external fun deviceCanAccessPeer(device : Int, peerDevice : Int) : Int
+
+    external fun deviceDisablePeerAccess(peerDevice : Int): Int
+
+    external fun deviceEnablePeerAccess(peerDevice : Int, flags : Int): Int
+
     companion object {
         private var isLibraryLoaded = false
 
