@@ -26,6 +26,7 @@ class DeviceHandler {
         @JvmStatic
         private external fun flushGPUDirectRDMAWrites(scope : Int) : Int
 
+        @JvmStatic
         external fun getDefaultMemPool(device: Int) : Long
 
         private fun flushGPUDirectRDMAWrites(target: FlushGPUDirectRDMAWritesTarget, scope : FlushGPUDirectRDMAWritesScope): Int {
