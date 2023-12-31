@@ -34,6 +34,8 @@ class RuntimeAPI {
 
     external fun freeMipmappedArray(mipMappedArray : Long) : Int
 
+    external fun hostRegister(size : Int, flags : Int) : Long
+
     external fun hostUnregister(ptr : Long) : Int
 
     external fun malloc(size : Int) : Long
