@@ -42,7 +42,7 @@ publishing {
             groupId = "com.pascal"
             artifactId = "kuda"
 
-            version = "1.0.3"
+            version = "1.0.7"
 
             from(components["java"])
         }

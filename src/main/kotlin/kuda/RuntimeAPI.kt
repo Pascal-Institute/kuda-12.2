@@ -34,12 +34,26 @@ class RuntimeAPI {
 
     external fun freeMipmappedArray(mipMappedArray : Long) : Int
 
+    external fun hostRegister(size : Int, flags : Int) : Long
+
     external fun hostUnregister(ptr : Long) : Int
+
+    external fun malloc(size : Int) : Long
+
+    external fun mallocHost(size: Int) : Long
 
     //6.27 Version Management
     external fun driverGetVersion() : Int
 
     external fun runtimeGetVersion() : Int
+
+
+    //6.13  Peer Device Memory Access
+    external fun deviceCanAccessPeer(device : Int, peerDevice : Int) : Int
+
+    external fun deviceDisablePeerAccess(peerDevice : Int): Int
+
+    external fun deviceEnablePeerAccess(peerDevice : Int, flags : Int): Int
 
     companion object {
         private var isLibraryLoaded = false
