@@ -1,5 +1,7 @@
 package kuda.runtimeapi
 
+import kuda.prop.FlushGPUDirectRDMAWritesScope
+import kuda.prop.FlushGPUDirectRDMAWritesTarget
 import kuda.prop.FunctionCache
 import kuda.prop.Limit
 
@@ -21,12 +23,22 @@ class DeviceHandler {
         }
 
 
+        @JvmStatic
+        private external fun flushGPUDirectRDMAWrites(scope : Int) : Int
+
+        private fun flushGPUDirectRDMAWrites(target: FlushGPUDirectRDMAWritesTarget, scope : FlushGPUDirectRDMAWritesScope): Int {
+            return flushGPUDirectRDMAWrites(scope.num)
+        }
+
         fun getLimit(limit : Limit) : Int {
             return getLimit(limit.byte)
         }
 
         @JvmStatic
         private external fun getLimit(byte: Byte) : Int
+
+        @JvmStatic
+        external fun getMemPool(device : Int) : Long
 
         @JvmStatic
         external fun getPCIBusId(device : Int) : String
