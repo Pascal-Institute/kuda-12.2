@@ -3,7 +3,10 @@ package kuda
 class Kublas {
 
     external fun create() : Long
+
     external fun destroy(handle : Long) : Int
+
+    external fun getVersion(handle : Long) : Int
 
     companion object {
         private var isLibraryLoaded = false

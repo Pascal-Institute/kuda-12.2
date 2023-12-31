@@ -66,5 +66,6 @@ fun main(args: Array<String>) {
     val kublas = Kublas()
     val handle = kublas.create()
     kublas.destroy(handle)
+    println(kublas.getVersion(handle))
 
 }
