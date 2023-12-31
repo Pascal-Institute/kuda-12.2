@@ -33,6 +33,12 @@ class EventHandler {
         external fun query(event : Long) : Int
 
         @JvmStatic
+        external fun record(event : Long, stream : Long) : Int
+
+        @JvmStatic
+        external fun recordWithFlags(event : Long, stream : Long, flags : Int) : Int
+
+        @JvmStatic
         external fun synchronize(event : Long) : Int
 
     }
