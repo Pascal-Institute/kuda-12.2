@@ -1,12 +1,20 @@
 package kuda
 
+import kuda.prop.kublas.LibraryPropertyType
+
 class Kublas {
 
-    external fun create() : Long
+    external fun create(): Long
 
-    external fun destroy(handle : Long) : Int
+    external fun destroy(handle: Long): Int
 
-    external fun getVersion(handle : Long) : Int
+    external fun getVersion(handle: Long): Int
+
+    fun getProperty(libraryPropertyType: LibraryPropertyType): Int {
+        return getProperty(libraryPropertyType.num)
+    }
+
+    private external fun getProperty(type: Int): Int
 
     companion object {
         private var isLibraryLoaded = false
