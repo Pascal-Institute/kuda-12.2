@@ -17,7 +17,7 @@ class DeviceHandler {
         @Synchronized
         private fun loadLibraryIfNotLoaded() {
             if (!isLibraryLoaded) {
-                System.loadLibrary("runtimeapi")
+                System.loadLibrary("kudadll")
                 isLibraryLoaded = true
             }
         }
