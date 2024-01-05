@@ -1,4 +1,4 @@
-package kuda.prop.kublas
+package kuda.kublas.prop
 
 enum class Status(val num : Int) {
     SUCCESS(0),

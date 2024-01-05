@@ -1,4 +1,4 @@
-package kuda.prop
+package kuda.runtimeapi.prop
 
 enum class FlushGPUDirectRDMAWritesScope(val num : Int) {
     TO_OWNER(100),

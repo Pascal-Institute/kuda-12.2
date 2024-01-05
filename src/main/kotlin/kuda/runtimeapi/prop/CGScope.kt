@@ -1,4 +1,4 @@
-package kuda.prop
+package kuda.runtimeapi.prop
 
 enum class CGScope(val num : Int) {
     INVALID(0),

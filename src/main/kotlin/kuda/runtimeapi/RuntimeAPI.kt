@@ -1,6 +1,4 @@
-package kuda
-
-import kuda.prop.Error
+package kuda.runtimeapi
 
 class RuntimeAPI {
     external fun getDevice() : Int
@@ -8,12 +6,12 @@ class RuntimeAPI {
     external fun setDevice(device : Int) : Int
     external fun setDeviceFlags(flags : Int) : Int
     private external fun getErrorName(error : Int) : String
-    fun getErrorName(error: Error) : String{
+    fun getErrorName(error: kuda.runtimeapi.prop.Error) : String{
         return getErrorName(error.num)
     }
 
     private external fun getErrorString(error : Int) : String
-    fun getErrorString(error: Error) : String{
+    fun getErrorString(error: kuda.runtimeapi.prop.Error) : String{
         return getErrorName(error.num)
     }
     external fun getLastError() : Int

@@ -1,4 +1,4 @@
-package kuda.prop
+package kuda.runtimeapi.prop
 
 enum class Limit(val byte: Byte) {
     STACK_SIZE((0).toByte()),

@@ -1,9 +1,9 @@
 package kuda.runtimeapi
 
-import kuda.prop.FlushGPUDirectRDMAWritesScope
-import kuda.prop.FlushGPUDirectRDMAWritesTarget
-import kuda.prop.FunctionCache
-import kuda.prop.Limit
+import kuda.runtimeapi.prop.FlushGPUDirectRDMAWritesScope
+import kuda.runtimeapi.prop.FlushGPUDirectRDMAWritesTarget
+import kuda.runtimeapi.prop.FunctionCache
+import kuda.runtimeapi.prop.Limit
 
 class DeviceHandler {
     companion object {

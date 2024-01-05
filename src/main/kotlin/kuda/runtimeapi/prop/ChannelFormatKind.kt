@@ -1,4 +1,4 @@
-package kuda.prop
+package kuda.runtimeapi.prop
 
 enum class ChannelFormatKind(val num: Int) {
     SIGNED(0),

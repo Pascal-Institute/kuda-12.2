@@ -1,13 +1,12 @@
 
 import kuda.DriverAPI
-import kuda.Kublas
-import kuda.RuntimeAPI
+import kuda.kublas.Kublas
 import kuda.runtimeapi.DeviceHandler
 import kuda.runtimeapi.EventHandler
+import kuda.runtimeapi.RuntimeAPI
 import kuda.runtimeapi.StreamHandler
-import kuda.prop.Error
-import kuda.prop.FunctionCache
-import kuda.prop.Limit
+import kuda.runtimeapi.prop.FunctionCache
+import kuda.runtimeapi.prop.Limit
 
 fun main(args: Array<String>) {
     val runtimeAPI = RuntimeAPI()
@@ -42,8 +41,8 @@ fun main(args: Array<String>) {
 
     println(runtimeAPI.driverGetVersion())
 
-    println(runtimeAPI.getErrorName(Error.ERROR_UNKNOWN))
-    println(runtimeAPI.getErrorString(Error.INITIALIZATION_ERROR))
+    println(runtimeAPI.getErrorName(kuda.runtimeapi.prop.Error.ERROR_UNKNOWN))
+    println(runtimeAPI.getErrorString(kuda.runtimeapi.prop.Error.INITIALIZATION_ERROR))
 
     var stream = StreamHandler.create()
 
