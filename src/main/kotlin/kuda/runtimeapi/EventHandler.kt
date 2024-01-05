@@ -12,7 +12,7 @@ class EventHandler {
         @Synchronized
         private fun loadLibraryIfNotLoaded() {
             if (!isLibraryLoaded) {
-                System.loadLibrary("kudadll")
+                System.loadLibrary("runtimeapi")
                 isLibraryLoaded = true
             }
         }
