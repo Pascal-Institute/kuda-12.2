@@ -1,4 +1,4 @@
-package kuda.block
+package kuda.runtimeapi.structure
 
 //https://docs.nvidia.com/cuda/cuda-runtime-api/structcudaExtent.html#structcudaExtent
 

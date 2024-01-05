@@ -1,4 +1,4 @@
-package kuda.prop
+package kuda.runtimeapi.prop
 
 enum class Error(val num : Int) {
     SUCCESS(0),

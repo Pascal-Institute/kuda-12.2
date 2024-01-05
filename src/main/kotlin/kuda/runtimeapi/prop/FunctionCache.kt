@@ -1,4 +1,4 @@
-package kuda.prop
+package kuda.runtimeapi.prop
 
 enum class FunctionCache(val num : Int) {
     PREFER_NONE(0),

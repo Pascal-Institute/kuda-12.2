@@ -1,4 +1,4 @@
-package kuda.prop
+package kuda.runtimeapi.prop
 
 enum class DeviceP2PAttribute(val num : Int) {
     PERFORMANCE_RANK(1),

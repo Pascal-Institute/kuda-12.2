@@ -1,4 +1,4 @@
-package kuda.prop
+package kuda.runtimeapi.prop
 
 enum class SharedMemoryConfig(val num : Int) {
     BANK_SIZE_DEFAULT(0),

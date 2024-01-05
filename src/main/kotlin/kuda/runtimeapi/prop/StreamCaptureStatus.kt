@@ -1,4 +1,4 @@
-package kuda.prop
+package kuda.runtimeapi.prop
 
 enum class StreamCaptureStatus(val num : Int) {
     NONE(0),

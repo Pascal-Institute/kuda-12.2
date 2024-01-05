@@ -1,6 +1,6 @@
-package kuda
+package kuda.kublas
 
-import kuda.prop.kublas.LibraryPropertyType
+import kuda.kublas.prop.LibraryPropertyType
 
 class Kublas {
 
