@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test
 
 class Fail {
 
+    //The socket error reason was native code field signature
     @Test
     fun `test getDeviceProperties`(){
         val runtimeAPI = RuntimeAPI()
