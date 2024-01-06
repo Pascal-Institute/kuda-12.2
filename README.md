@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-    implementation ("com.github.volta2030:kuda:1.0.0")
+    implementation ("com.github.kudakit:kuda:1.0.9")
 }
 
 ```

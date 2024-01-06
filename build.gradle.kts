@@ -39,10 +39,10 @@ application {
 publishing {
     publications {
         create<MavenPublication>("maven") {
-            groupId = "com.pascal"
+            groupId = "com.kudakit"
             artifactId = "kuda"
 
-            version = "1.0.8"
+            version = "1.0.9"
 
             from(components["java"])
         }

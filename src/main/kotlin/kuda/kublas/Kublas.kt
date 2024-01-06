@@ -26,7 +26,7 @@ class Kublas {
         @Synchronized
         private fun loadLibraryIfNotLoaded() {
             if (!isLibraryLoaded) {
-                System.loadLibrary("kublas")
+                System.loadLibrary("kudadll")
                 isLibraryLoaded = true
             }
         }
