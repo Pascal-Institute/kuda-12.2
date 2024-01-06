@@ -3,6 +3,9 @@ package kuda.runtimeapi
 class RuntimeAPI {
     external fun getDevice() : Int
     external fun getDeviceCount() : Int
+
+    external fun initDevice(device : Int, flags : Int) : Int
+
     external fun setDevice(device : Int) : Int
     external fun setDeviceFlags(flags : Int) : Int
     private external fun getErrorName(error : Int) : String

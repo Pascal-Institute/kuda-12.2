@@ -19,6 +19,7 @@ class KudaTest {
         val driverVersion = driverAPI.getDriverVersion()
 
         val device = runtimeAPI.getDevice()
+        runtimeAPI.initDevice(device, 0)
         val driverDevice = driverAPI.getDevice(0)
         val deviceCount = driverAPI.getDeviceCount()
         driverAPI.init(0)
