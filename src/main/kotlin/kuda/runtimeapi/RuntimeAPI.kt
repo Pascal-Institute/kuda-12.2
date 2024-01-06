@@ -1,8 +1,12 @@
 package kuda.runtimeapi
 
+import kuda.runtimeapi.structure.DeviceProp
+
 class RuntimeAPI {
     external fun getDevice() : Int
     external fun getDeviceCount() : Int
+
+    external fun getDeviceProperties(device: Int) : DeviceProp
 
     external fun initDevice(device : Int, flags : Int) : Int
 
