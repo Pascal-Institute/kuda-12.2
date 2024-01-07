@@ -37,10 +37,10 @@ data class DeviceProp(
     var major : Int,
     var managedMemory : Int,
     var maxBlocksPerMultiProcessor : Int,
-//int  maxGridSize[3]
+    var maxGridSize : IntArray = IntArray(3) ,
     var maxSurface1D : Int,
-//int  maxSurface1DLayered[2]
-//int  maxSurface2D[2]
+    var maxSurface1DLayered : IntArray = IntArray(2),
+    var maxSurface2D : IntArray = IntArray(2),
 //int  maxSurface2DLayered[3]
 //int  maxSurface3D[3]
     var maxSurfaceCubemap : Int,

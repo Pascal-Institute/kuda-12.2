@@ -52,7 +52,6 @@ class RuntimeAPI {
 
     external fun runtimeGetVersion() : Int
 
-
     //6.13  Peer Device Memory Access
     external fun deviceCanAccessPeer(device : Int, peerDevice : Int) : Int
 

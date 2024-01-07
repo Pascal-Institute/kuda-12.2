@@ -11,5 +11,6 @@ class Fail {
         val device = runtimeAPI.getDevice()
         runtimeAPI.initDevice(device, 0)
         val prop = runtimeAPI.getDeviceProperties(device)
+        prop
     }
 }
