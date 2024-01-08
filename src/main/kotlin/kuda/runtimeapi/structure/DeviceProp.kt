@@ -32,7 +32,7 @@ data class DeviceProp(
     var kernelExecTimeoutEnabled : Int,
     var l2CacheSize : Int,
     var localL1CacheSupported : Int,
-//    char  luid[8]
+    var luid : String,
     var luidDeviceNodeMask : UInt,
     var major : Int,
     var managedMemory : Int,
@@ -57,11 +57,11 @@ data class DeviceProp(
     var maxTexture3D : IntArray = IntArray(3),
     var maxTexture3DAlt : IntArray = IntArray(3),
     var maxTextureCubemap : Int,
-//int  maxTextureCubemapLayered[2]
-//int  maxThreadsDim[3]
+    var maxTextureCubemapLayered : IntArray = IntArray(2),
+    var maxThreadsDim : IntArray = IntArray(3),
     var maxThreadsPerBlock : Int,
     var maxThreadsPerMultiProcessor : Int,
-//size_t  memPitch
+    var memPitch : Long,
     var memoryBusWidth : Int,
     var memoryClockRate : Int,
     var memoryPoolSupportedHandleTypes : UInt,
@@ -69,7 +69,7 @@ data class DeviceProp(
     var minor : Int,
     var multiGpuBoardGroupID : Int,
     var multiProcessorCount : Int,
-//char  name[256]
+    var name : String,
     var pageableMemoryAccess : Int,
     var pageableMemoryAccessUsesHostPageTables : Int,
     var pciBusID : Int,
