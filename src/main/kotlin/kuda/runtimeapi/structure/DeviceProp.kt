@@ -41,15 +41,15 @@ data class DeviceProp(
     var maxSurface1D : Int,
     var maxSurface1DLayered : IntArray = IntArray(2),
     var maxSurface2D : IntArray = IntArray(2),
-//int  maxSurface2DLayered[3]
-//int  maxSurface3D[3]
+    var maxSurface2DLayered : IntArray = IntArray(3),
+    var maxSurface3D : IntArray = IntArray(3),
     var maxSurfaceCubemap : Int,
-//int  maxSurfaceCubemapLayered[2]
+    var maxSurfaceCubemapLayered : IntArray = IntArray(2),
     var maxTexture1D : Int,
-//int  maxTexture1DLayered[2]
+    var maxTexture1DLayeredArray : IntArray = IntArray(2),
     var maxTexture1DLinear : Int,
     var maxTexture1DMipmap : Int,
-//int  maxTexture2D[2]
+    var maxTexture2D : IntArray = IntArray(2),
 //int  maxTexture2DGather[2]
 //int  maxTexture2DLayered[3]
 //int  maxTexture2DLinear[3]
