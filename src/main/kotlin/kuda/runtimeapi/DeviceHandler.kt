@@ -4,6 +4,7 @@ import kuda.runtimeapi.prop.FlushGPUDirectRDMAWritesScope
 import kuda.runtimeapi.prop.FlushGPUDirectRDMAWritesTarget
 import kuda.runtimeapi.prop.FunctionCache
 import kuda.runtimeapi.prop.Limit
+import kuda.runtimeapi.structure.DeviceProp
 
 class DeviceHandler {
     companion object {
@@ -22,6 +23,8 @@ class DeviceHandler {
             }
         }
 
+        @JvmStatic
+        external fun chooseDevice(deviceProp : DeviceProp) : Int
 
         @JvmStatic
         private external fun flushGPUDirectRDMAWrites(scope : Int) : Int
