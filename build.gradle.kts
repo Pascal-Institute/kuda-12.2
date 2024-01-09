@@ -25,6 +25,7 @@ sourceSets {
 }
 
 tasks.test {
+    systemProperty("java.library.path", "src/main/resources")
     useJUnitPlatform()
 }
 
