@@ -78,12 +78,12 @@ data class DeviceProp(
     var persistingL2CacheMaxSize : Int,
     var regsPerBlock : Int,
     var regsPerMultiprocessor : Int,
-//int  reserved[60]
-//int  reserved1[1]
-//size_t  reservedSharedMemPerBlock
-//size_t  sharedMemPerBlock
-//size_t  sharedMemPerBlockOptin
-//size_t  sharedMemPerMultiprocessor
+    var reserved : IntArray = IntArray(61),
+    var reserved2 : IntArray = IntArray(2),
+    var reservedSharedMemPerBlock : Long,
+    var sharedMemPerBlock : Long,
+    var sharedMemPerBlockOptin : Long,
+    var sharedMemPerMultiprocessor : Long,
     var singleToDoublePrecisionPerfRatio : Int,
     var sparseCudaArraySupported : Int,
     var streamPrioritiesSupported : Int,
