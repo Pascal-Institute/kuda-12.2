@@ -48,7 +48,7 @@ data class DeviceProp(
     var maxSurfaceCubemap : Int,
     var maxSurfaceCubemapLayered : IntArray = IntArray(2),
     var maxTexture1D : Int,
-    var maxTexture1DLayeredArray : IntArray = IntArray(2),
+    var maxTexture1DLayered : IntArray = IntArray(2),
     var maxTexture1DLinear : Int,
     var maxTexture1DMipmap : Int,
     var maxTexture2D : IntArray = IntArray(2),
