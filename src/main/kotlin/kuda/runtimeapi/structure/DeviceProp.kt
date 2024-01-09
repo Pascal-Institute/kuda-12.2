@@ -1,6 +1,8 @@
 package kuda.runtimeapi.structure
 
-//https://docs.nvidia.com/cuda/cuda-runtime-api/structcudaDeviceProp.html#structcudaDeviceProp
+/*
+* @See https://docs.nvidia.com/cuda/cuda-runtime-api/structcudaDeviceProp.html#structcudaDeviceProp
+* */
 
 data class DeviceProp(
     var eccEnabled: Int,
@@ -87,15 +89,15 @@ data class DeviceProp(
     var singleToDoublePrecisionPerfRatio : Int,
     var sparseCudaArraySupported : Int,
     var streamPrioritiesSupported : Int,
-//size_t  surfaceAlignment
+    var surfaceAlignment : Long,
     var tccDriver : Int,
-//size_t  textureAlignment
-//size_t  texturePitchAlignment
+    var textureAlignment : Long,
+    var texturePitchAlignment : Long,
     var timelineSemaphoreInteropSupported : Int,
-//size_t  totalConstMem
-//size_t  totalGlobalMem
+    var totalConstMem : Long,
+    var totalGlobalMem : Long,
     var unifiedAddressing : Int,
     var unifiedFunctionPointers : Int,
-//cudaUUID_t  uuid
+    var kudaUUID_t : ByteArray = ByteArray(16),
     var warpSize : Int
 )
