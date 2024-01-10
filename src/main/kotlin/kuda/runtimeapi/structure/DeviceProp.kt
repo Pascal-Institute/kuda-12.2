@@ -98,6 +98,6 @@ data class DeviceProp(
     var totalGlobalMem : Long,
     var unifiedAddressing : Int,
     var unifiedFunctionPointers : Int,
-    var kudaUUID_t : ByteArray = ByteArray(16),
+    var uuid : ByteArray = ByteArray(16),
     var warpSize : Int
 )
