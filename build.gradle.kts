@@ -43,7 +43,7 @@ publishing {
             groupId = "com.kudakit"
             artifactId = "kuda"
 
-            version = "1.0.9"
+            version = "1.0.10"
 
             from(components["java"])
         }
