@@ -69,5 +69,26 @@ class DeviceHandler {
 
         @JvmStatic
         external fun reset() : Int
+
+        @JvmStatic
+        external fun getDevice() : Int
+
+        @JvmStatic
+        external fun getDeviceCount() : Int
+
+        @JvmStatic
+        external fun getDeviceProperties(device: Int) : DeviceProp
+
+        @JvmStatic
+        external fun initDevice(device : Int, flags : Int) : Int
+
+        @JvmStatic
+        external fun lpcCloseMemHandle(devicePtr : Long) : Int
+
+        @JvmStatic
+        external fun setDevice(device : Int) : Int
+
+        @JvmStatic
+        external fun setDeviceFlags(flags : Int) : Int
     }
 }
