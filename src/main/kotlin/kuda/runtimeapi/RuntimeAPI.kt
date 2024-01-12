@@ -10,8 +10,12 @@ class RuntimeAPI {
 
     external fun initDevice(device : Int, flags : Int) : Int
 
+    external fun lpcCloseMemHandle(devicePtr : Long) : Int
+
     external fun setDevice(device : Int) : Int
+
     external fun setDeviceFlags(flags : Int) : Int
+
     private external fun getErrorName(error : Int) : String
     fun getErrorName(error: kuda.runtimeapi.prop.Error) : String{
         return getErrorName(error.num)
