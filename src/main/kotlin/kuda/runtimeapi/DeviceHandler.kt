@@ -71,6 +71,9 @@ class DeviceHandler {
         external fun reset() : Int
 
         @JvmStatic
+        external fun setValidDevices() : Int
+
+        @JvmStatic
         external fun getDevice() : Int
 
         @JvmStatic
