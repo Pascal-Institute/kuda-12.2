@@ -15,12 +15,13 @@ class Test {
         val runtimeAPI = RuntimeAPI()
         val driverAPI = DriverAPI()
 
+
         val cudaVersion = runtimeAPI.runtimeGetVersion()
         val driverVersion = driverAPI.getDriverVersion()
 
-        val device = runtimeAPI.getDevice()
+        val device = DeviceHandler.getDevice()
 
-        runtimeAPI.initDevice(device, 0)
+        DeviceHandler.initDevice(device, 0)
 
         val driverDevice = driverAPI.getDevice(0)
         val deviceCount = driverAPI.getDeviceCount()
@@ -76,18 +77,16 @@ class Test {
 
     @Test
     fun `test getDeviceProperties`(){
-        val runtimeAPI = RuntimeAPI()
-        val device = runtimeAPI.getDevice()
-        runtimeAPI.initDevice(device, 0)
-        val prop = runtimeAPI.getDeviceProperties(device)
+        val device = DeviceHandler.getDevice()
+        DeviceHandler.initDevice(device, 0)
+        val prop = DeviceHandler.getDeviceProperties(device)
     }
 
     @Test
     fun `test chooseDevice`(){
-        val runtimeAPI = RuntimeAPI()
-        val device = runtimeAPI.getDevice()
-        runtimeAPI.initDevice(device, 0)
-        val prop = runtimeAPI.getDeviceProperties(device)
+        val device = DeviceHandler.getDevice()
+        DeviceHandler.initDevice(device, 0)
+        val prop = DeviceHandler.getDeviceProperties(device)
 
         println(DeviceHandler.chooseDevice(prop))
     }
