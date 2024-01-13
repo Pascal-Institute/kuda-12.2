@@ -1,7 +1,4 @@
 package kuda.runtimeapi.prop
-
-import kuda.runtimeapi.prop.MemLocationType.*
-
 /**
  * @property OPAQUE_FD Handle is an opaque file descriptor
  * @property OPAQUE_WIN32 Handle is an opaque shared NT handle
