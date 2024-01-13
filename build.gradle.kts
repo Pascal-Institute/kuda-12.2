@@ -25,6 +25,7 @@ sourceSets {
 }
 
 tasks.test {
+    systemProperty("java.library.path", "src/main/resources")
     useJUnitPlatform()
 }
 
@@ -39,10 +40,10 @@ application {
 publishing {
     publications {
         create<MavenPublication>("maven") {
-            groupId = "com.pascal"
+            groupId = "com.kudakit"
             artifactId = "kuda"
 
-            version = "1.0.8"
+            version = "1.0.10"
 
             from(components["java"])
         }

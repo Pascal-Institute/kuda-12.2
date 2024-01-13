@@ -1,10 +1,8 @@
 package kuda.runtimeapi
 
+import kuda.runtimeapi.structure.DeviceProp
+
 class RuntimeAPI {
-    external fun getDevice() : Int
-    external fun getDeviceCount() : Int
-    external fun setDevice(device : Int) : Int
-    external fun setDeviceFlags(flags : Int) : Int
     private external fun getErrorName(error : Int) : String
     fun getErrorName(error: kuda.runtimeapi.prop.Error) : String{
         return getErrorName(error.num)
@@ -44,7 +42,6 @@ class RuntimeAPI {
     external fun driverGetVersion() : Int
 
     external fun runtimeGetVersion() : Int
-
 
     //6.13  Peer Device Memory Access
     external fun deviceCanAccessPeer(device : Int, peerDevice : Int) : Int
