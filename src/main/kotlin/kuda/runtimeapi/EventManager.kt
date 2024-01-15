@@ -1,6 +1,6 @@
 package kuda.runtimeapi
 
-class EventHandler {
+class EventManager {
     companion object {
 
         private var isLibraryLoaded = false
