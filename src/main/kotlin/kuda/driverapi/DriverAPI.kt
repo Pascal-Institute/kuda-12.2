@@ -1,4 +1,4 @@
-package kuda
+package kuda.driverapi
 
 class DriverAPI {
 

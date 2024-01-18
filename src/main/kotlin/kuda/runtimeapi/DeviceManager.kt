@@ -3,7 +3,7 @@ package kuda.runtimeapi
 import kuda.runtimeapi.prop.*
 import kuda.runtimeapi.structure.DeviceProp
 
-class DeviceHandler {
+class DeviceManager {
     companion object {
 
         private var isLibraryLoaded = false

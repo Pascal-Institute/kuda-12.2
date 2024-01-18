@@ -2,7 +2,7 @@ package kuda.runtimeapi
 
 import kuda.runtimeapi.prop.StreamCaptureStatus
 
-class StreamHandler {
+class StreamManager {
     companion object{
         private var isLibraryLoaded = false
 
