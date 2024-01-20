@@ -1,12 +1,9 @@
 package kuda.runtimeapi
 
-import kuda.runtimeapi.prop.FlushGPUDirectRDMAWritesScope
-import kuda.runtimeapi.prop.FlushGPUDirectRDMAWritesTarget
-import kuda.runtimeapi.prop.FunctionCache
-import kuda.runtimeapi.prop.Limit
+import kuda.runtimeapi.prop.*
 import kuda.runtimeapi.structure.DeviceProp
 
-class DeviceHandler {
+class DeviceManager {
     companion object {
 
         private var isLibraryLoaded = false
@@ -45,6 +42,20 @@ class DeviceHandler {
 
         @JvmStatic
         external fun getMemPool(device : Int) : Long
+
+        /**
+         * Queries attributes of the link between two devices.
+         *
+         * @param attr
+         * @param srcDevice The source device of the target link.
+         * @param dstDevice The destination device of the target link.
+         * @return Returns in *value the value of the requested attribute attrib of the link between srcDevice and dstDevice.
+         */
+        @JvmStatic
+        private external fun getP2PAttribute(attr : Int, scrDevice : Int, dstDevice : Int) : Int
+        fun getP2PAttribute(attr : DeviceP2PAttr, scrDevice : Int, dstDevice : Int) : Int {
+            return getP2PAttribute(attr.num, scrDevice, dstDevice)
+        }
 
         @JvmStatic
         external fun getPCIBusId(device : Int) : String

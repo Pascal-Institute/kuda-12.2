@@ -8,7 +8,7 @@ data class DeviceProp(
     var eccEnabled: Int,
     var accessPolicyMaxWindowSize : Int,
     var asyncEngineCount : Int,
-    var  canMapHostMemory : Int,
+    var canMapHostMemory : Int,
     var canUseHostPointerForRegisteredMem : Int,
     var clockRate : Int,
     var clusterLaunch : Int,
