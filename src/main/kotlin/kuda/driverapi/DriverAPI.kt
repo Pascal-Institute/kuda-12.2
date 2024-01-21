@@ -13,9 +13,18 @@ class DriverAPI {
         return getErrorString(error.num)
     }
     external fun init(flags : Int) : Int
+
     external fun driverGetVersion() : Int
+
     external fun deviceGet(ordinal : Int) : Int
+
     external fun deviceGetCount() : Int
+
+    external fun devicePrimaryCtxRelease(dev : Int) : Int
+
+    external fun devicePrimaryCtxReset(dev : Int) : Int
+
+    external fun devicePrimaryCtxSetFlags(dev : Int, flags : UInt) : Int
 
     companion object {
         private var isLibraryLoaded = false
