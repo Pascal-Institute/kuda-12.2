@@ -26,6 +26,17 @@ class DriverAPI {
 
     external fun devicePrimaryCtxSetFlags(dev : Int, flags : UInt) : Int
 
+    //8. Context Management
+    /**
+     * 		Sets the flags for the current context.
+     * */
+    external fun ctxSetFlags(flags : UInt) : Int
+
+    /**
+     * 	Block for a context's tasks to complete.
+     * */
+    external fun ctxSynchronize() : Int
+
     companion object {
         private var isLibraryLoaded = false
 
