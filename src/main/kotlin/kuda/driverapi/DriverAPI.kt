@@ -14,8 +14,8 @@ class DriverAPI {
     }
     external fun init(flags : Int) : Int
     external fun getDriverVersion() : Int
-    external fun getDevice(ordinal : Int) : Int
-    external fun getDeviceCount() : Int
+    external fun deviceGet(ordinal : Int) : Int
+    external fun deviceGetCount() : Int
 
     companion object {
         private var isLibraryLoaded = false

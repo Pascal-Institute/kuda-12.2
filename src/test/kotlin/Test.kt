@@ -24,8 +24,8 @@ class Test {
 
         DeviceManager.initDevice(device, 0)
 
-        val driverDevice = driverAPI.getDevice(0)
-        val deviceCount = driverAPI.getDeviceCount()
+        val driverDevice = driverAPI.deviceGet(0)
+        val deviceCount = driverAPI.deviceGetCount()
         driverAPI.init(0)
         println("CUDA Version : $cudaVersion")
         println("CUDA Driver version : $driverVersion")
