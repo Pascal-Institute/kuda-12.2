@@ -13,7 +13,7 @@ class DriverAPI {
         return getErrorString(error.num)
     }
     external fun init(flags : Int) : Int
-    external fun getDriverVersion() : Int
+    external fun driverGetVersion() : Int
     external fun deviceGet(ordinal : Int) : Int
     external fun deviceGetCount() : Int
 

@@ -18,7 +18,7 @@ class Test {
 
 
         val cudaVersion = runtimeAPI.runtimeGetVersion()
-        val driverVersion = driverAPI.getDriverVersion()
+        val driverVersion = driverAPI.driverGetVersion()
 
         val device = DeviceManager.getDevice()
 
