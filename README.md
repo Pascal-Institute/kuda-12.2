@@ -34,6 +34,9 @@ dependencies {
 
 ![img.png](img.png)
 
+## Support OS
+Windows
+
 ## JDK Version
 17
 
