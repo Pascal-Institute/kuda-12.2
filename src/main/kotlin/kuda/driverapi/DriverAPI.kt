@@ -29,22 +29,31 @@ class DriverAPI {
 
     //8. Context Management
     /**
-     * 		Sets the flags for the current context.
-     * */
+     * Returns the flags for the current context.
+     */
     external fun ctxGetFlags() : UInt
 
+    /**
+     * Resets all persisting lines in cache to normal status.
+     */
     external fun ctxResetPersistingL2Cache() : Int
 
+    /**
+     * Sets the flags for the current context.
+     */
     external fun ctxSetFlags(flags : UInt) : Int
 
+    /**
+     * Set resource limits.
+     */
     private external fun ctxSetLimit(limit : Byte, value : Int) : Int
     fun ctxSetLimit(limit : Limit, value : Int) : Int {
         return ctxSetLimit(limit.byte, value)
     }
 
     /**
-     * 	Block for a context's tasks to complete.
-     * */
+     * Block for a context's tasks to complete.
+     */
     external fun ctxSynchronize() : Int
 
     companion object {
