@@ -1,5 +1,6 @@
 package kuda.driverapi
 
+import kuda.driverapi.prop.FuncCache
 import kuda.driverapi.prop.Limit
 import kuda.driverapi.prop.Result
 
@@ -37,6 +38,14 @@ class DriverAPI {
      * Resets all persisting lines in cache to normal status.
      */
     external fun ctxResetPersistingL2Cache() : Int
+
+    /**
+     * Sets the preferred cache configuration for the current context.
+     */
+    private external fun ctxSetCacheConfig(config : Int) : Int
+    fun ctxSetCacheConfig(config : FuncCache) : Int {
+        return ctxSetCacheConfig(config.num)
+    }
 
     /**
      * Sets the flags for the current context.
