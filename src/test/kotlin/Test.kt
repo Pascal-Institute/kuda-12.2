@@ -1,4 +1,5 @@
 import kuda.driverapi.DriverAPI
+import kuda.driverapi.prop.Result
 import kuda.kublas.Kublas
 import kuda.runtimeapi.DeviceManager
 import kuda.runtimeapi.EventManager
@@ -17,14 +18,14 @@ class Test {
 
 
         val cudaVersion = runtimeAPI.runtimeGetVersion()
-        val driverVersion = driverAPI.getDriverVersion()
+        val driverVersion = driverAPI.driverGetVersion()
 
         val device = DeviceManager.getDevice()
 
         DeviceManager.initDevice(device, 0)
 
-        val driverDevice = driverAPI.getDevice(0)
-        val deviceCount = driverAPI.getDeviceCount()
+        val driverDevice = driverAPI.deviceGet(0)
+        val deviceCount = driverAPI.deviceGetCount()
         driverAPI.init(0)
         println("CUDA Version : $cudaVersion")
         println("CUDA Driver version : $driverVersion")
@@ -89,5 +90,12 @@ class Test {
         val prop = DeviceManager.getDeviceProperties(device)
 
         println(DeviceManager.chooseDevice(prop))
+    }
+
+    @Test
+    fun `test errorhandling`(){
+        var driverAPI = DriverAPI()
+        println(driverAPI.getErrorName(Result.ERROR_MPS_RPC_FAILURE))
+        println(driverAPI.getErrorString(Result.ERROR_MPS_RPC_FAILURE))
     }
 }
