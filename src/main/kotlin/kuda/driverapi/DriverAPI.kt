@@ -1,5 +1,6 @@
 package kuda.driverapi
 
+import kuda.driverapi.prop.Limit
 import kuda.driverapi.prop.Result
 
 class DriverAPI {
@@ -30,7 +31,16 @@ class DriverAPI {
     /**
      * 		Sets the flags for the current context.
      * */
+    external fun ctxGetFlags() : UInt
+
+    external fun ctxResetPersistingL2Cache() : Int
+
     external fun ctxSetFlags(flags : UInt) : Int
+
+    private external fun ctxSetLimit(limit : Byte, value : Int) : Int
+    fun ctxSetLimit(limit : Limit, value : Int) : Int {
+        return ctxSetLimit(limit.byte, value)
+    }
 
     /**
      * 	Block for a context's tasks to complete.
