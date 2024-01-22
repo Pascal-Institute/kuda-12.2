@@ -25,7 +25,12 @@ sourceSets {
 }
 
 tasks.test {
-    systemProperty("java.library.path", "src/main/resources")
+    val osName = System.getProperty("os.name").toLowerCase()
+    if (osName.contains("win")) {
+        systemProperty("java.library.path", "src/main/resources/windows")
+    } else if (osName.contains("nix") || osName.contains("nux") || osName.contains("mac")) {
+        systemProperty("java.library.path", "src/main/resources/linux")
+    }
     useJUnitPlatform()
 }
 

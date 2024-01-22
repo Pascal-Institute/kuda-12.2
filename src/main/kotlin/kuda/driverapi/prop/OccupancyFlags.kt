@@ -1,6 +1,9 @@
 package kuda.driverapi.prop
 
 /**
+ *
+ * Occupancy calculator flag
+ *
  * @property DEFAULT Default behavior
  * @property DISABLE_CACHING_OVERRIDE Assume global caching is enabled and cannot be automatically turned off
  */

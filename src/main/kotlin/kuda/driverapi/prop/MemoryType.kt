@@ -1,6 +1,9 @@
 package kuda.driverapi.prop
 
 /**
+ *
+ * Memory types
+ *
  * @property HOST Host memory
  * @property DEVICE Device memory
  * @property ARRAY Array memory
