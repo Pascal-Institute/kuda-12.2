@@ -10,6 +10,10 @@ import kuda.runtimeapi.prop.Limit
 import org.junit.jupiter.api.Test
 
 class Test {
+    @Test
+    fun `test get os name`(){
+        println(System.getProperty("os.name"))
+    }
 
     @Test
     fun `test defalut`(){
