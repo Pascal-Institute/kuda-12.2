@@ -7,7 +7,7 @@ package kuda.driverapi.prop
  * @property DMA_BUF_FD
  * @property MAX
  */
-enum class MemRangeHandleType(val byte : Byte) {
+enum class MemRangeHandleType(val num : Int) {
     DMA_BUF_FD(0x1),
-    MAX((0x7FFFFFFF).toByte())
+    MAX(0x7FFFFFFF)
 }
