@@ -1,5 +1,6 @@
 package kuda.driverapi
 
+import kuda.driverapi.prop.FuncCache
 import kuda.driverapi.prop.Limit
 import kuda.driverapi.prop.Result
 
@@ -27,6 +28,19 @@ class DriverAPI {
 
     external fun devicePrimaryCtxSetFlags(dev : Int, flags : UInt) : Int
 
+    /**
+     * Returns the preferred cache configuration for the current context. (cuCtxGetCacheConfig)
+     */
+    private external fun ctxGetCacheConfig(dummy : Boolean) : Int
+    fun ctxGetCacheConfig() : FuncCache {
+       return FuncCache.fromInt(ctxGetCacheConfig(false))!!
+    }
+
+    /**
+     * Returns the device ID for the current context. (cuCtxGetDevice)
+     */
+    external fun ctxGetDevice() : Int
+
     //8. Context Management
     /**
      * Returns the flags for the current context.
@@ -37,6 +51,14 @@ class DriverAPI {
      * Resets all persisting lines in cache to normal status.
      */
     external fun ctxResetPersistingL2Cache() : Int
+
+    /**
+     * Sets the preferred cache configuration for the current context.
+     */
+    private external fun ctxSetCacheConfig(config : Int) : Int
+    fun ctxSetCacheConfig(config : FuncCache) : Int {
+        return ctxSetCacheConfig(config.num)
+    }
 
     /**
      * Sets the flags for the current context.
