@@ -78,6 +78,19 @@ class DriverAPI {
      */
     external fun ctxSynchronize() : Int
 
+    //9. Context Management (DEPRECATED)
+
+    //10. Module Management
+    /**
+     * Destroys state for a JIT linker invocation. (cuLinkDestroy)
+     */
+    external fun linkDestroy(state : Long) : Int
+
+    /**
+     * Unloads a module. (cuModuleUnload)
+     */
+    external fun moduleUnload(hmod : Long) : Int
+
     companion object {
         private var isLibraryLoaded = false
 
