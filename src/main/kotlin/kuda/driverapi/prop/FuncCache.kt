@@ -15,4 +15,7 @@ enum class FuncCache(val num : Int) {
     PREFER_L1(0x02),
     PREFER_EQUAL(0x03);
 
+    companion object{
+        fun fromInt(num : Int) : FuncCache ? = entries.find { it.num == num }
+    }
 }
