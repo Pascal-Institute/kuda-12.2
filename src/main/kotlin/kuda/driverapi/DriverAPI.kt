@@ -28,6 +28,11 @@ class DriverAPI {
 
     external fun devicePrimaryCtxSetFlags(dev : Int, flags : UInt) : Int
 
+    /**
+     * Returns the device ID for the current context. (cuCtxGetDevice)
+     */
+    external fun ctxGetDevice() : Int
+
     //8. Context Management
     /**
      * Returns the flags for the current context.
