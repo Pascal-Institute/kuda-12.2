@@ -91,6 +91,14 @@ class DriverAPI {
      */
     external fun moduleUnload(hmod : Long) : Int
 
+    //11. Module Management (DEPRECATED)
+
+    //12. Library Management
+    /**
+     * Unloads a library. (cuLibraryUnload)
+     */
+    external fun libraryUnload(library : Long) : Int
+
     companion object {
         private var isLibraryLoaded = false
 
