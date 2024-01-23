@@ -13,5 +13,6 @@ enum class FuncCache(val num : Int) {
     PREFER_NONE(0x00),
     PREFER_SHARED(0x01),
     PREFER_L1(0x02),
-    PREFER_EQUAL(0x03)
+    PREFER_EQUAL(0x03);
+
 }

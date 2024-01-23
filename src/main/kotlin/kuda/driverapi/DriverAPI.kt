@@ -28,6 +28,11 @@ class DriverAPI {
 
     external fun devicePrimaryCtxSetFlags(dev : Int, flags : UInt) : Int
 
+//    private external fun ctxGetCacheConfig() : Int
+//    fun ctxGetCacheConfig() {
+//       return FuncCache.valueof(ctxGetCacheConfg())
+//    } : FuncCache
+
     /**
      * Returns the device ID for the current context. (cuCtxGetDevice)
      */
