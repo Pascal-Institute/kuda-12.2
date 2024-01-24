@@ -2,7 +2,7 @@ package kuda.driverapi.prop
 
 /**
  *
- * CUDA Ipc Mem Flags
+ * CUDA Ipc Mem Flags (CUipcMem_flags)
  *
  * @property LAZY_ENABLE_PEER_ACCESS Automatically enable peer access between remote devices as needed
  */
