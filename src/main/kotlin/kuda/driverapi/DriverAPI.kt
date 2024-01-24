@@ -99,6 +99,12 @@ class DriverAPI {
      */
     external fun libraryUnload(library : Long) : Int
 
+    //13. Memory Management
+    /**
+    * Destroys a CUDA array. (cuArrayDestroy)
+    */
+    external fun destroyArray(hArray : Long) : Int
+
     companion object {
         private var isLibraryLoaded = false
 
