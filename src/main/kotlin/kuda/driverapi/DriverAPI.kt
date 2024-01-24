@@ -78,6 +78,43 @@ class DriverAPI {
      */
     external fun ctxSynchronize() : Int
 
+    //9. Context Management (DEPRECATED)
+
+    //10. Module Management
+    /**
+     * Destroys state for a JIT linker invocation. (cuLinkDestroy)
+     */
+    external fun linkDestroy(state : Long) : Int
+
+    /**
+     * Unloads a module. (cuModuleUnload)
+     */
+    external fun moduleUnload(hmod : Long) : Int
+
+    //11. Module Management (DEPRECATED)
+
+    //12. Library Management
+    /**
+     * Unloads a library. (cuLibraryUnload)
+     */
+    external fun libraryUnload(library : Long) : Int
+
+    //13. Memory Management
+    /**
+    * Destroys a CUDA array. (cuArrayDestroy)
+    */
+    external fun destroyArray(hArray : Long) : Int
+
+    /**
+     * 	Attempts to close memory mapped with cuIpcOpenMemHandle. (cuIpcCloseMemHandle)
+     */
+    external fun ipcCloseMemHandle(dptr : Long) : Int
+
+    /**
+     * 		Frees device memory. (cuMemFree)
+     */
+    external fun memFree(dptr : Long) : Int
+
     companion object {
         private var isLibraryLoaded = false
 
