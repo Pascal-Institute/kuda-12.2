@@ -105,6 +105,16 @@ class DriverAPI {
     */
     external fun destroyArray(hArray : Long) : Int
 
+    /**
+     * 	Attempts to close memory mapped with cuIpcOpenMemHandle. (cuIpcCloseMemHandle)
+     */
+    external fun ipcCloseMemHandle(dptr : Long) : Int
+
+    /**
+     * 		Frees device memory. (cuMemFree)
+     */
+    external fun memFree(dptr : Long) : Int
+
     companion object {
         private var isLibraryLoaded = false
 
