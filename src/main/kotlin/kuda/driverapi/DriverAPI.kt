@@ -121,7 +121,7 @@ class DriverAPI {
     external fun memFreeHost(p : Long) : Int
 
     /**
-     * Unregisters a memory range that was registered with cuMemHostRegister. (cuMemHostUnregister)
+     *  Unregisters a memory range that was registered with cuMemHostRegister. (cuMemHostUnregister)
      */
     external fun memHostUnregister(p : Long) : Int
 
@@ -144,6 +144,27 @@ class DriverAPI {
 
     //CUresult cuMemRetainAllocationHandle(CUmemGenericAllocationHandle * handle, void* addr)
     //CUresult cuMemSetAccess(CUdeviceptr ptr, size_t size, const CUmemAccessDesc * desc, size_t count)	//CUresult cuMemUnmap(CUdeviceptr ptr, size_t size)
+
+    //15. Steam Ordered Memory Allocator
+    //CUresult cuMemAllocAsync(CUdeviceptr* dptr, size_t bytesize, CUstream hStream)
+    //CUresult cuMemAllocFromPoolAsync(CUdeviceptr* dptr, size_t bytesize, CUmemoryPool pool, CUstream hStream)
+    //CUresult cuMemFreeAsync(CUdeviceptr dptr, CUstream hStream)
+    //CUresult cuMemPoolCreate(CUmemoryPool* pool, const CUmemPoolProps* poolProps)
+
+    /**
+     * 	Destroys the specified memory pool. (cuMemPoolDestroy)
+     */
+    external fun memPoolDestroy(pool : Long) : Int
+
+    //CUresult cuMemPoolExportPointer(CUmemPoolPtrExportData* shareData_out, CUdeviceptr ptr)
+    //CUresult cuMemPoolExportToShareableHandle(void* handle_out, CUmemoryPool pool, CUmemAllocationHandleType handleType, unsigned long long flags)
+    //CUresult cuMemPoolGetAccess(CUmemAccess_flags* flags, CUmemoryPool memPool, CUmemLocation* location)
+    //CUresult cuMemPoolGetAttribute(CUmemoryPool pool, CUmemPool_attribute attr, void* value)
+    //CUresult cuMemPoolImportFromShareableHandle(CUmemoryPool* pool_out, void* handle, CUmemAllocationHandleType handleType, unsigned long long flags)
+    //CUresult cuMemPoolImportPointer(CUdeviceptr* ptr_out, CUmemoryPool pool, CUmemPoolPtrExportData* shareData)
+    //CUresult cuMemPoolSetAccess(CUmemoryPool pool, const CUmemAccessDesc* map, size_t count)
+    //CUresult cuMemPoolSetAttribute(CUmemoryPool pool, CUmemPool_attribute attr, void* value)
+    //CUresult cuMemPoolTrimTo(CUmemoryPool pool, size_t minBytesToKeep)
 
     companion object {
         private var isLibraryLoaded = false
