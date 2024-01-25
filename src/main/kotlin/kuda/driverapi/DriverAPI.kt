@@ -195,7 +195,7 @@ class DriverAPI {
     //CUresult cuStreamCreateWithPriority(CUstream* phStream, unsigned int  flags, int  priority)
 
     /**
-     * 		Destroys a stream. (cuStreamDestroy)
+     * 	Destroys a stream. (cuStreamDestroy)
      */
     external fun streamDestroy(hStream : Long) : Int
 
@@ -208,7 +208,12 @@ class DriverAPI {
     //CUresult cuStreamGetId(CUstream hStream, unsigned long long* streamId)
     //CUresult cuStreamGetPriority(CUstream hStream, int* priority)
     //CUresult cuStreamIsCapturing(CUstream hStream, CUstreamCaptureStatus * captureStatus)
-    //CUresult cuStreamQuery(CUstream hStream)
+
+    /**
+     * 	Determine status of a compute stream. (cuStreamQuery)
+     */
+    external fun streamQuery(hStream : Long) : Int
+
     //CUresult cuStreamSetAttribute(CUstream hStream, CUstreamAttrID attr, const CUstreamAttrValue * value)
     //CUresult cuStreamSynchronize(CUstream hStream)
     //CUresult cuStreamUpdateCaptureDependencies(CUstream hStream, CUgraphNode * dependencies, size_t numDependencies, unsigned int  flags)
