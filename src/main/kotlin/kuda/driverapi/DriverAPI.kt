@@ -3,6 +3,7 @@ package kuda.driverapi
 import kuda.driverapi.prop.FuncCache
 import kuda.driverapi.prop.Limit
 import kuda.driverapi.prop.Result
+import kuda.driverapi.prop.StreamCaptureMode
 
 class DriverAPI {
 
@@ -10,10 +11,12 @@ class DriverAPI {
     fun getErrorName(error : Result) : String {
         return getErrorName(error.num)
     }
+
     private external fun getErrorString(error : Int) : String
     fun getErrorString(error : Result) : String {
         return getErrorString(error.num)
     }
+
     external fun init(flags : Int) : Int
 
     external fun driverGetVersion() : Int
@@ -215,11 +218,23 @@ class DriverAPI {
     external fun streamQuery(hStream : Long) : Int
 
     //CUresult cuStreamSetAttribute(CUstream hStream, CUstreamAttrID attr, const CUstreamAttrValue * value)
-    //CUresult cuStreamSynchronize(CUstream hStream)
+
+    /**
+     * 	Wait until a stream's tasks are completed. (cuStreamSynchronize)
+     */
+    external fun streamSynchronize(hStream : Long) : Int
+
     //CUresult cuStreamUpdateCaptureDependencies(CUstream hStream, CUgraphNode * dependencies, size_t numDependencies, unsigned int  flags)
     //CUresult cuStreamUpdateCaptureDependencies_v2(CUstream hStream, CUgraphNode * dependencies, const CUgraphEdgeData * dependencyData, size_t numDependencies, unsigned int  flags)
     //CUresult cuStreamWaitEvent(CUstream hStream, CUevent hEvent, unsigned int  Flags)
-    //CUresult cuThreadExchangeStreamCaptureMode(CUstreamCaptureMode * mode)
+
+    /**
+     *  Update the set of dependencies in a capturing stream (11.3+). (cuThreadExchangeStreamCaptureMode)
+     */
+    private external fun threadExchangeStreamCaptureMode(mode : Int) : Int
+    fun threadExchangeStreamCaptureMode(mode : StreamCaptureMode) : Int {
+        return threadExchangeStreamCaptureMode(mode.num)
+    }
 
     companion object {
         private var isLibraryLoaded = false
