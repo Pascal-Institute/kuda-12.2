@@ -236,6 +236,29 @@ class DriverAPI {
         return threadExchangeStreamCaptureMode(mode.num)
     }
 
+    //19.Event Management
+    //CUresult cuEventCreate(CUevent * phEvent, unsigned int  Flags)
+
+    /**
+     *  Destroys an event. (cuEventDestroy)
+     */
+    external fun eventDestroy(hEvent : Long) : Int
+
+    //CUresult cuEventElapsedTime(float* pMilliseconds, CUevent hStart, CUevent hEnd)
+
+    /**
+     *  Queries an event's status (cuEventQuery)
+     */
+    external fun eventQuery(hEvent : Long) : Int
+
+    //CUresult cuEventRecord(CUevent hEvent, CUstream hStream)
+    //CUresult cuEventRecordWithFlags(CUevent hEvent, CUstream hStream, unsigned int  flags)
+
+    /**
+     *  Waits for an event to complete. (cuEventSynchronize)
+     */
+    external fun eventSynchronize(hEvent : Long) : Int
+
     companion object {
         private var isLibraryLoaded = false
 
