@@ -432,7 +432,15 @@ class DriverAPI {
     //CUresult cuTexObjectGetResourceViewDesc(CUDA_RESOURCE_VIEW_DESC * pResViewDesc, CUtexObject texObject)
     //CUresult cuTexObjectGetTextureDesc(CUDA_TEXTURE_DESC * pTexDesc, CUtexObject texObject)
 
+    //29. Surface Object Management
+    //CUresult cuSurfObjectCreate(CUsurfObject* pSurfObject, const CUDA_RESOURCE_DESC* pResDesc)
 
+    /**
+     * 	Destroys a surface object. (cuSurfObjectDestroy)
+     */
+    external fun surfObjectDestroy(surfObject : Long) : Int
+
+    //CUresult cuSurfObjectGetResourceDesc(CUDA_RESOURCE_DESC* pResDesc, CUsurfObject surfObject)
 
     companion object {
         private var isLibraryLoaded = false
