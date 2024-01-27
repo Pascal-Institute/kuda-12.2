@@ -330,8 +330,17 @@ class DriverAPI {
     //CUresult cuGraphConditionalHandleCreate(CUgraphConditionalHandle * pHandle_out, CUgraph hGraph, CUcontext ctx, unsigned int  defaultLaunchValue, unsigned int  flags)
     //CUresult cuGraphCreate(CUgraph * phGraph, unsigned int  flags)
     //CUresult cuGraphDebugDotPrint(CUgraph hGraph, const char* path, unsigned int  flags)
-    //CUresult cuGraphDestroy(CUgraph hGraph)
-    //CUresult cuGraphDestroyNode(CUgraphNode hNode)
+
+    /**
+     *  Destroys a graph. (cuGraphDestroy)
+     */
+    external fun graphDestroy(hGraph : Long) : Int
+
+    /**
+     * 	Remove a node from the graph. (cuGraphDestroyNode)
+     */
+    external fun graphDestroyNode(hNode : Long) : Int
+
     //CUresult cuGraphEventRecordNodeGetEvent(CUgraphNode hNode, CUevent * event_out)
     //CUresult cuGraphEventRecordNodeSetEvent(CUgraphNode hNode, CUevent event)
     //CUresult cuGraphEventWaitNodeGetEvent(CUgraphNode hNode, CUevent * event_out)
