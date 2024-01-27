@@ -414,6 +414,26 @@ class DriverAPI {
     //CUresult cuOccupancyMaxPotentialBlockSize(int* minGridSize, int* blockSize, CUfunction func, CUoccupancyB2DSize blockSizeToDynamicSMemSize, size_t dynamicSMemSize, int  blockSizeLimit)
     //CUresult cuOccupancyMaxPotentialBlockSizeWithFlags(int* minGridSize, int* blockSize, CUfunction func, CUoccupancyB2DSize blockSizeToDynamicSMemSize, size_t dynamicSMemSize, int  blockSizeLimit, unsigned int  flags)
     //CUresult cuOccupancyMaxPotentialClusterSize(int* clusterSize, CUfunction func, const CUlaunchConfig * config)
+
+    //26. Texture Reference Management (DEPRECATED)
+
+    //27. Surface Reference Management (DEPRECATED)
+
+    //28. Texture Object Management
+    //CUresult cuTexObjectCreate(CUtexObject* pTexObject, const CUDA_RESOURCE_DESC* pResDesc, const CUDA_TEXTURE_DESC* pTexDesc, const CUDA_RESOURCE_VIEW_DESC* pResViewDesc)
+
+    /**
+     * 	Destroys a texture object. (cuTextObjectDestroy)
+     */
+    external fun textObjectDestroy(textObject : Long) : Int
+
+    //CUresult cuTexObjectDestroy(CUtexObject texObject)
+    //CUresult cuTexObjectGetResourceDesc(CUDA_RESOURCE_DESC* pResDesc, CUtexObject texObject)
+    //CUresult cuTexObjectGetResourceViewDesc(CUDA_RESOURCE_VIEW_DESC * pResViewDesc, CUtexObject texObject)
+    //CUresult cuTexObjectGetTextureDesc(CUDA_TEXTURE_DESC * pTexDesc, CUtexObject texObject)
+
+
+
     companion object {
         private var isLibraryLoaded = false
 

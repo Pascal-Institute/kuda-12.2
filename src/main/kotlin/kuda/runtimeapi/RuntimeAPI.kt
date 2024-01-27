@@ -1,7 +1,5 @@
 package kuda.runtimeapi
 
-import kuda.runtimeapi.structure.DeviceProp
-
 class RuntimeAPI {
     private external fun getErrorName(error : Int) : String
     fun getErrorName(error: kuda.runtimeapi.prop.Error) : String{
