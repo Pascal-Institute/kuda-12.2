@@ -453,6 +453,19 @@ class DriverAPI {
     //CUresult cuDeviceCanAccessPeer(int* canAccessPeer, CUdevice dev, CUdevice peerDev)
     //CUresult cuDeviceGetP2PAttribute(int* value, CUdevice_P2PAttribute attrib, CUdevice srcDevice, CUdevice dstDevice)
 
+    //32. Graphics Interoperability
+    //CUresult cuGraphicsMapResources(unsigned int  count, CUgraphicsResource* resources, CUstream hStream)
+    //CUresult cuGraphicsResourceGetMappedMipmappedArray(CUmipmappedArray * pMipmappedArray, CUgraphicsResource resource)
+    //CUresult cuGraphicsResourceGetMappedPointer(CUdeviceptr * pDevPtr, size_t * pSize, CUgraphicsResource resource)
+    //CUresult cuGraphicsResourceSetMapFlags(CUgraphicsResource resource, unsigned int  flags)
+    //CUresult cuGraphicsSubResourceGetMappedArray(CUarray * pArray, CUgraphicsResource resource, unsigned int  arrayIndex, unsigned int  mipLevel)
+    //CUresult cuGraphicsUnmapResources(unsigned int  count, CUgraphicsResource * resources, CUstream hStream)
+
+    /**
+     * 	Unregisters a graphics resource for access by CUDA. (cuGraphicsUnregisterResource)
+     */
+    external fun graphicsUnregisterResource(resource : Long) : Int
+
     companion object {
         private var isLibraryLoaded = false
 
