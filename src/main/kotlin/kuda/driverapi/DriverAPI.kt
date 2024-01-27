@@ -266,7 +266,7 @@ class DriverAPI {
     external fun destroyExternalMemory(extMem : Long) : Int
 
     /**
-     *  	Destroys an external semaphore. (cuDestroyExternalSemaphore)
+     *  Destroys an external semaphore. (cuDestroyExternalSemaphore)
      */
     external fun destroyExternalSemaphore(extSem : Long) : Int
 
@@ -298,8 +298,13 @@ class DriverAPI {
     //CUresult cuLaunchKernelEx(const CUlaunchConfig * config, CUfunction f, void** kernelParams, void** extra)
 
     //24. Graph Management
+
     //CUresult cuDeviceGetGraphMemAttribute(CUdevice device, CUgraphMem_attribute attr, void* value)
-    //CUresult cuDeviceGraphMemTrim(CUdevice device)
+
+    /**
+     *  Free unused memory that was cached on the specified device for use with graphs back to the OS. (cuDeviceGraphMemTrim)
+     */
+    external fun deviceGraphMemTrim(device : Int) : Int
     //CUresult cuDeviceSetGraphMemAttribute(CUdevice device, CUgraphMem_attribute attr, void* value)
     //CUresult cuGraphAddBatchMemOpNode(CUgraphNode * phGraphNode, CUgraph hGraph, const CUgraphNode * dependencies, size_t numDependencies, const CUDA_BATCH_MEM_OP_NODE_PARAMS * nodeParams)
     //CUresult cuGraphAddChildGraphNode(CUgraphNode * phGraphNode, CUgraph hGraph, const CUgraphNode * dependencies, size_t numDependencies, CUgraph childGraph)
