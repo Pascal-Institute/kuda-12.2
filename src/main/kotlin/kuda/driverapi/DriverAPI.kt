@@ -442,6 +442,17 @@ class DriverAPI {
 
     //CUresult cuSurfObjectGetResourceDesc(CUDA_RESOURCE_DESC* pResDesc, CUsurfObject surfObject)
 
+    //31. Peer Context Memory Access
+
+    /**
+     * 	Disables direct access to memory allocations in a peer context and unregisters any registered allocations. (cuCtxDisablePeerAccess)
+     */
+    external fun ctxDisablePeerAccess(peerContext : Long) : Int
+
+    //CUresult cuCtxEnablePeerAccess(CUcontext peerContext, unsigned int  Flags)
+    //CUresult cuDeviceCanAccessPeer(int* canAccessPeer, CUdevice dev, CUdevice peerDev)
+    //CUresult cuDeviceGetP2PAttribute(int* value, CUdevice_P2PAttribute attrib, CUdevice srcDevice, CUdevice dstDevice)
+
     companion object {
         private var isLibraryLoaded = false
 
