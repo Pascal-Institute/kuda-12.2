@@ -347,7 +347,12 @@ class DriverAPI {
     //CUresult cuGraphEventWaitNodeSetEvent(CUgraphNode hNode, CUevent event)
     //CUresult cuGraphExecBatchMemOpNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, const CUDA_BATCH_MEM_OP_NODE_PARAMS * nodeParams)
     //CUresult cuGraphExecChildGraphNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, CUgraph childGraph)
-    //CUresult cuGraphExecDestroy(CUgraphExec hGraphExec)
+
+    /**
+     * 	Destroys an executable graph. (cuGraphExecDestroy)
+     */
+    external fun graphExecDestroy(hGraphExec : Long) : Int
+
     //CUresult cuGraphExecEventRecordNodeSetEvent(CUgraphExec hGraphExec, CUgraphNode hNode, CUevent event)
     //CUresult cuGraphExecEventWaitNodeSetEvent(CUgraphExec hGraphExec, CUgraphNode hNode, CUevent event)
     //CUresult cuGraphExecExternalSemaphoresSignalNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, const CUDA_EXT_SEM_SIGNAL_NODE_PARAMS * nodeParams)
