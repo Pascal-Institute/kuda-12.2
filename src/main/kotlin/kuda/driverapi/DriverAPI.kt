@@ -40,6 +40,12 @@ class DriverAPI {
     }
 
     /**
+     *  Returns the CUDA context bound to the calling CPU thread. (cuCtxGetCurrent)
+     */
+    external fun ctxGetCurrent() : Long
+
+
+    /**
      * Returns the device ID for the current context. (cuCtxGetDevice)
      */
     external fun ctxGetDevice() : Int
