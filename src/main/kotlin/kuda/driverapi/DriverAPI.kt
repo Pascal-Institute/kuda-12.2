@@ -66,9 +66,9 @@ class DriverAPI {
     /**
      *  Returns the preferred cache configuration for the current context. (cuCtxGetCacheConfig)
      */
-    external fun ctxGetCacheConfig(dummy : Boolean) : Int
-    fun ctxGetCacheConfig() : SharedConfig {
-        return SharedConfig.fromInt(ctxGetCacheConfig(false))!!
+    external fun ctxGetSharedMemConfig(dummy : Boolean) : Int
+    fun ctxGetSharedMemConfig() : SharedConfig {
+        return ctxGetSharedMemConfig.fromInt(ctxGetSharedMemConfig(false))!!
     }
 
 
