@@ -124,7 +124,7 @@ class DriverAPI {
      *  Query lazy loading mode. (cuModuleGetLoadingMode)
      */
     private external fun moduleGetLoadingMode(dummy : Boolean) : Int
-    external fun moduleGetLoadingMode() : ModuleLoadingMode {
+    fun moduleGetLoadingMode() : ModuleLoadingMode {
         return ModuleLoadingMode.fromInt(moduleGetLoadingMode(false))!!
     }
 
