@@ -64,13 +64,22 @@ class DriverAPI {
     external fun ctxGetFlags() : UInt
 
     /**
-     *  Returns the preferred cache configuration for the current context. (cuCtxGetCacheConfig)
+     *  Returns the current shared memory configuration for the current context. (cuCtxGetSharedMemConfig)
      */
     external fun ctxGetSharedMemConfig(dummy : Boolean) : Int
     fun ctxGetSharedMemConfig() : SharedConfig {
         return ctxGetSharedMemConfig.fromInt(ctxGetSharedMemConfig(false))!!
     }
 
+    /**
+     *  Returns numerical values that correspond to the least and greatest stream priorities. (cuCtxGetStreamPriorityRange)
+     */
+    external fun ctxGetStreamPriorityRange() : IntArray
+
+    /**
+     *  	Pushes a context on the current CPU thread. (cuCtxPushCurrent)
+     */
+    external fun ctxPushCurrent(ctx : Long) : Int
 
     /**
      * Resets all persisting lines in cache to normal status.
