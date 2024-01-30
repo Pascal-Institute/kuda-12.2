@@ -116,9 +116,17 @@ class DriverAPI {
 
     //10. Module Management
     /**
-     * Destroys state for a JIT linker invocation. (cuLinkDestroy)
+     *  Destroys state for a JIT linker invocation. (cuLinkDestroy)
      */
     external fun linkDestroy(state : Long) : Int
+
+    /**
+     *  Query lazy loading mode. (cuModuleGetLoadingMode)
+     */
+    private external fun moduleGetLoadingMode(dummy : Boolean) : Int
+    external fun moduleGetLoadingMode() : ModuleLoadingMode {
+        return ModuleLoadingMode.fromInt(moduleGetLoadingMode(false))!!
+    }
 
     /**
      * Unloads a module. (cuModuleUnload)
