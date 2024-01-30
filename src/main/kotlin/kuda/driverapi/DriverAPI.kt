@@ -1,9 +1,6 @@
 package kuda.driverapi
 
-import kuda.driverapi.prop.FuncCache
-import kuda.driverapi.prop.Limit
-import kuda.driverapi.prop.Result
-import kuda.driverapi.prop.StreamCaptureMode
+import kuda.driverapi.prop.*
 
 class DriverAPI {
 
@@ -32,6 +29,16 @@ class DriverAPI {
     external fun devicePrimaryCtxSetFlags(dev : Int, flags : UInt) : Int
 
     /**
+     *  Destroy a CUDA context. (cuCtxDestroy)
+     */
+    external fun ctxDestroy(ctx : Long) : Int
+
+    /**
+     *  Gets the context's API version. (cuCtxGetApiVersion)
+     */
+    external fun ctxGetApiVersion(ctx : Long) : Int
+
+    /**
      * Returns the preferred cache configuration for the current context. (cuCtxGetCacheConfig)
      */
     private external fun ctxGetCacheConfig(dummy : Boolean) : Int
@@ -52,9 +59,18 @@ class DriverAPI {
 
     //8. Context Management
     /**
-     * Returns the flags for the current context.
+     *  Returns the flags for the current context. (cuCtxGetFlags)
      */
     external fun ctxGetFlags() : UInt
+
+    /**
+     *  Returns the preferred cache configuration for the current context. (cuCtxGetCacheConfig)
+     */
+    external fun ctxGetCacheConfig(dummy : Boolean) : Int
+    fun ctxGetCacheConfig() : SharedConfig {
+        return SharedConfig.fromInt(ctxGetCacheConfig(false))!!
+    }
+
 
     /**
      * Resets all persisting lines in cache to normal status.

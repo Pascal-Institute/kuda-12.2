@@ -12,4 +12,8 @@ enum class SharedConfig(val num : Int) {
    DEFAULT_BANK_SIZE(0x00),
    FOUR_BYTE_BANK_SIZE(0x01),
    EIGHT_BYTE_BANK_SIZE(0x02)
+
+   companion object{
+      fun fromInt(num : Int) : FuncCache ? = entries.find { it.num == num }
+   }
 }
