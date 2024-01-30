@@ -9,5 +9,9 @@ package kuda.driverapi.prop
  */
 enum class ModuleLoadingMode(val num: Int) {
     EAGER_LOADING(0x1),
-    LAZY_LOADING(0x2)
+    LAZY_LOADING(0x2);
+
+    companion object{
+        fun fromInt(num : Int) : ModuleLoadingMode ? = entries.find { it.num == num }
+    }
 }
