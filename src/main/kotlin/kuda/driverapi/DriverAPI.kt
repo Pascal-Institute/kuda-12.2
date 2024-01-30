@@ -68,7 +68,7 @@ class DriverAPI {
      */
     external fun ctxGetSharedMemConfig(dummy : Boolean) : Int
     fun ctxGetSharedMemConfig() : SharedConfig {
-        return ctxGetSharedMemConfig.fromInt(ctxGetSharedMemConfig(false))!!
+        return SharedConfig.fromInt(ctxGetSharedMemConfig(false))!!
     }
 
     /**
@@ -77,7 +77,7 @@ class DriverAPI {
     external fun ctxGetStreamPriorityRange() : IntArray
 
     /**
-     *  	Pushes a context on the current CPU thread. (cuCtxPushCurrent)
+     *  Pushes a context on the current CPU thread. (cuCtxPushCurrent)
      */
     external fun ctxPushCurrent(ctx : Long) : Int
 
