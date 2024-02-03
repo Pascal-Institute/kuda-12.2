@@ -1,7 +1,6 @@
 package kuda.driverapi.prop
 
 /**
- *
  * Shared memory configurations (CUsharedconfig)
  *
  * @property DEFAULT_BANK_SIZE set default shared memory bank size
