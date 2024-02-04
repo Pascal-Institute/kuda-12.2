@@ -118,6 +118,14 @@ class DriverAPI {
     }
 
     /**
+     *  Sets the shared memory configuration for the current context. (cuCtxSetSharedMemConfig)
+     */
+    private external fun ctxSetSharedMemConfig(config : Int) : Int
+    fun ctxSetSharedMemConfig(config : SharedConfig) : Int{
+        return ctxSetSharedMemConfig(config.num)
+    }
+
+    /**
      * Block for a context's tasks to complete.
      */
     external fun ctxSynchronize() : Int
