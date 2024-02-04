@@ -26,6 +26,11 @@ class DriverAPI {
 
     external fun devicePrimaryCtxReset(dev : Int) : Int
 
+    /**
+     *  Retain the primary context on the GPU. (cuDevicePrimaryCtxRetain)
+     */
+    external fun devicePrimaryCtxRetain(dev : Int) : Long
+
     external fun devicePrimaryCtxSetFlags(dev : Int, flags : UInt) : Int
 
     /**
@@ -75,6 +80,11 @@ class DriverAPI {
      *  Returns numerical values that correspond to the least and greatest stream priorities. (cuCtxGetStreamPriorityRange)
      */
     external fun ctxGetStreamPriorityRange() : IntArray
+
+    /**
+     *  Pops the current CUDA context from the current CPU thread. (cuCtxPopCurrent)
+     */
+    external fun ctxPopCurrent() : Long
 
     /**
      *  Pushes a context on the current CPU thread. (cuCtxPushCurrent)
