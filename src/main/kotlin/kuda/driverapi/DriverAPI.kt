@@ -155,6 +155,11 @@ class DriverAPI {
 
     //12. Library Management
     /**
+     * 	Returns a function handle. (cuKernelGetFunction)
+     */
+    external fun kernelGetFunction(kernel : Long) : Long
+
+    /**
      * Unloads a library. (cuLibraryUnload)
      */
     external fun libraryUnload(library : Long) : Int
