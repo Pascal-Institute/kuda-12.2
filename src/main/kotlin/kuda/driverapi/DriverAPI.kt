@@ -190,6 +190,16 @@ class DriverAPI {
      */
     external fun memHostUnregister(p : Long) : Int
 
+    /**
+     *  Returns a handle to a compute device. (cuDeviceGetByPCIBusId)
+     */
+    external fun deviceGetByPCIBusId() : String
+
+    /**
+     *  Returns a PCI Bus Id string for the device. (cuDeviceGetPCIBusId)
+     */
+    external fun deviceGetPCIBusId(len : Int, dev : Int) : String
+
     //14. Virtual Memory Management
     //CUresult cuMemAddressFree(CUdeviceptr ptr, size_t size)
     //CUresult cuMemAddressReserve(CUdeviceptr* ptr, size_t size, size_t alignment, CUdeviceptr addr, unsigned long long flags)
