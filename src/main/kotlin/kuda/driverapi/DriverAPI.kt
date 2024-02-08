@@ -521,7 +521,12 @@ class DriverAPI {
      */
     external fun ctxDisablePeerAccess(peerContext : Long) : Int
 
-    //CUresult cuCtxEnablePeerAccess(CUcontext peerContext, unsigned int  Flags)
+
+    /**
+     *  Enables direct access to memory allocations in a peer context. (cuCtxEnablePeerAccess)
+     */
+    external fun ctxEnablePeerAccess(peerContext: Long, flags : UInt) : Int
+
     //CUresult cuDeviceCanAccessPeer(int* canAccessPeer, CUdevice dev, CUdevice peerDev)
     //CUresult cuDeviceGetP2PAttribute(int* value, CUdevice_P2PAttribute attrib, CUdevice srcDevice, CUdevice dstDevice)
 
