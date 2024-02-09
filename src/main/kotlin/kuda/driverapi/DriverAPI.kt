@@ -453,6 +453,12 @@ class DriverAPI {
     //CUresult cuGraphKernelNodeGetParams(CUgraphNode hNode, CUDA_KERNEL_NODE_PARAMS * nodeParams)
     //CUresult cuGraphKernelNodeSetAttribute(CUgraphNode hNode, CUkernelNodeAttrID attr, const CUkernelNodeAttrValue * value)
     //CUresult cuGraphKernelNodeSetParams(CUgraphNode hNode, const CUDA_KERNEL_NODE_PARAMS * nodeParams)
+
+    /**
+     *  Launches an executable graph in a stream. (cuGraphLaunch)
+     */
+    external fun graphLaunch(hGraphExec : Long, hStream : Long) : Int
+
     //CUresult cuGraphLaunch(CUgraphExec hGraphExec, CUstream hStream)
     //CUresult cuGraphMemAllocNodeGetParams(CUgraphNode hNode, CUDA_MEM_ALLOC_NODE_PARAMS * params_out)
     //CUresult cuGraphMemFreeNodeGetParams(CUgraphNode hNode, CUdeviceptr * dptr_out)
