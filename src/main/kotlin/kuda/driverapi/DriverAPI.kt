@@ -126,7 +126,7 @@ class DriverAPI {
     }
 
     /**
-     * Block for a context's tasks to complete.
+     *  Block for a context's tasks to complete. (cuCtxSynchronize)
      */
     external fun ctxSynchronize() : Int
 
@@ -289,7 +289,12 @@ class DriverAPI {
      */
     external fun streamGetFlags(hStream : Long) : Int
     //CUresult cuStreamGetId(CUstream hStream, unsigned long long* streamId)
-    //CUresult cuStreamGetPriority(CUstream hStream, int* priority)
+
+    /**
+     * 	Query the priority of a given stream. (cuStreamGetPriority)
+     */
+    external fun streamGetPriority(hStream : Long) : Int
+
     //CUresult cuStreamIsCapturing(CUstream hStream, CUstreamCaptureStatus * captureStatus)
 
     /**
