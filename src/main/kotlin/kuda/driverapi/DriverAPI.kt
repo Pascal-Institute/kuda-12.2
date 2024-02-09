@@ -278,7 +278,11 @@ class DriverAPI {
     //CUresult cuStreamGetAttribute(CUstream hStream, CUstreamAttrID attr, CUstreamAttrValue* value_out)
     //CUresult cuStreamGetCaptureInfo(CUstream hStream, CUstreamCaptureStatus* captureStatus_out, cuuint64_t* id_out, CUgraph* graph_out, const CUgraphNode** dependencies_out, size_t* numDependencies_out)
     //CUresult cuStreamGetCaptureInfo_v3(CUstream hStream, CUstreamCaptureStatus * captureStatus_out, cuuint64_t * id_out, CUgraph * graph_out, const CUgraphNode * *dependencies_out, const CUgraphEdgeData * *edgeData_out, size_t * numDependencies_out)
-    //CUresult cuStreamGetCtx(CUstream hStream, CUcontext * pctx)
+
+    /**
+     *  Query the context associated with a stream. (cuStreamGetCtx)
+     */
+    external fun streamGetCtx(hStream: Long) : Long
 
     /**
      * 	Query the flags of a given stream. (cuStreamGetFlags)
