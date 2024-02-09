@@ -448,6 +448,12 @@ class DriverAPI {
     //CUresult cuGraphHostNodeSetParams(CUgraphNode hNode, const CUDA_HOST_NODE_PARAMS * nodeParams)
     //CUresult cuGraphInstantiate(CUgraphExec * phGraphExec, CUgraph hGraph, unsigned long long flags)
     //CUresult cuGraphInstantiateWithParams(CUgraphExec * phGraphExec, CUgraph hGraph, CUDA_GRAPH_INSTANTIATE_PARAMS * instantiateParams)
+
+    /**
+     *  Copies attributes from source node to destination node. (cuGraphKernelNodeCopyAttributes)
+     */
+    external fun graphKernelNodeCopyAttributes(dst : Long, src : Long) : Int
+
     //CUresult cuGraphKernelNodeCopyAttributes(CUgraphNode dst, CUgraphNode src)
     //CUresult cuGraphKernelNodeGetAttribute(CUgraphNode hNode, CUkernelNodeAttrID attr, CUkernelNodeAttrValue * value_out)
     //CUresult cuGraphKernelNodeGetParams(CUgraphNode hNode, CUDA_KERNEL_NODE_PARAMS * nodeParams)
