@@ -279,7 +279,11 @@ class DriverAPI {
     //CUresult cuStreamGetCaptureInfo(CUstream hStream, CUstreamCaptureStatus* captureStatus_out, cuuint64_t* id_out, CUgraph* graph_out, const CUgraphNode** dependencies_out, size_t* numDependencies_out)
     //CUresult cuStreamGetCaptureInfo_v3(CUstream hStream, CUstreamCaptureStatus * captureStatus_out, cuuint64_t * id_out, CUgraph * graph_out, const CUgraphNode * *dependencies_out, const CUgraphEdgeData * *edgeData_out, size_t * numDependencies_out)
     //CUresult cuStreamGetCtx(CUstream hStream, CUcontext * pctx)
-    //CUresult cuStreamGetFlags(CUstream hStream, unsigned int* flags)
+
+    /**
+     * 	Query the flags of a given stream. (cuStreamGetFlags)
+     */
+    external fun streamGetFlags(hStream : Long) : Int
     //CUresult cuStreamGetId(CUstream hStream, unsigned long long* streamId)
     //CUresult cuStreamGetPriority(CUstream hStream, int* priority)
     //CUresult cuStreamIsCapturing(CUstream hStream, CUstreamCaptureStatus * captureStatus)
