@@ -475,8 +475,16 @@ class DriverAPI {
     //CUresult cuGraphRetainUserObject(CUgraph graph, CUuserObject object, unsigned int  count, unsigned int  flags)
     //CUresult cuGraphUpload(CUgraphExec hGraphExec, CUstream hStream)
     //CUresult cuUserObjectCreate(CUuserObject * object_out, void* ptr, CUhostFn destroy, unsigned int  initialRefcount, unsigned int  flags)
-    //CUresult cuUserObjectRelease(CUuserObject object, unsigned int  count)
-    //CUresult cuUserObjectRetain(CUuserObject object, unsigned int  count)
+
+    /**
+     *  Release a reference to a user object. (cuUserObjectRelease)
+     */
+    external fun userObjectRelease(cuObject : Long, count : UInt) : Int
+
+    /**
+     *  Retain a reference to a user object. (cuUserObjectRetain)
+     */
+    external fun userObjectRetain(cuObject : Long, count : UInt) : Int
 
     //25. Occupancy
     //CUresult cuOccupancyAvailableDynamicSMemPerBlock(size_t* dynamicSmemSize, CUfunction func, int  numBlocks, int  blockSize)
