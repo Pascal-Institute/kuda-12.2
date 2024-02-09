@@ -265,7 +265,12 @@ class DriverAPI {
     //CUresult cuStreamAttachMemAsync(CUstream hStream, CUdeviceptr dptr, size_t length, unsigned int  flags)
     //CUresult cuStreamBeginCapture(CUstream hStream, CUstreamCaptureMode mode)
     //CUresult cuStreamBeginCaptureToGraph(CUstream hStream, CUgraph hGraph, const CUgraphNode* dependencies, const CUgraphEdgeData* dependencyData, size_t numDependencies, CUstreamCaptureMode mode)
-    //CUresult cuStreamCopyAttributes(CUstream dst, CUstream src)
+
+    /**
+     * 	Copies attributes from source stream to destination stream. (cuStreamCopyAttributes)
+     */
+    external fun streamCopyAttributes(dst : Long, src : Long) : Int
+
     //CUresult cuStreamCreate(CUstream* phStream, unsigned int  Flags)
     //CUresult cuStreamCreateWithPriority(CUstream* phStream, unsigned int  flags, int  priority)
 
