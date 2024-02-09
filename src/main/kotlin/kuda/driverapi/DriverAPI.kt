@@ -414,7 +414,12 @@ class DriverAPI {
     external fun graphDestroyNode(hNode : Long) : Int
 
     //CUresult cuGraphEventRecordNodeGetEvent(CUgraphNode hNode, CUevent * event_out)
-    //CUresult cuGraphEventRecordNodeSetEvent(CUgraphNode hNode, CUevent event)
+
+    /**
+     *  Sets an event record node's event. (cuGraphEventRecordNodeSetEvent)
+     */
+    external fun graphEventRecordNodeSetEvent(hNode : Long, event : Long)
+
     //CUresult cuGraphEventWaitNodeGetEvent(CUgraphNode hNode, CUevent * event_out)
 
     /**
