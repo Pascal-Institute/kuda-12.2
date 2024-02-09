@@ -298,7 +298,11 @@ class DriverAPI {
 
     //CUresult cuStreamUpdateCaptureDependencies(CUstream hStream, CUgraphNode * dependencies, size_t numDependencies, unsigned int  flags)
     //CUresult cuStreamUpdateCaptureDependencies_v2(CUstream hStream, CUgraphNode * dependencies, const CUgraphEdgeData * dependencyData, size_t numDependencies, unsigned int  flags)
-    //CUresult cuStreamWaitEvent(CUstream hStream, CUevent hEvent, unsigned int  Flags)
+
+    /**
+     * 	Make a compute stream wait on an event. (cuStreamWaitEvent)
+     */
+    external fun streamWaitEvent(hStream: Long, hEvent: Long, flags : UInt) : Int
 
     /**
      *  Update the set of dependencies in a capturing stream (11.3+). (cuThreadExchangeStreamCaptureMode)
