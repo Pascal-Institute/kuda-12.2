@@ -473,7 +473,12 @@ class DriverAPI {
     //CUresult cuGraphRemoveDependencies(CUgraph hGraph, const CUgraphNode * from, const CUgraphNode * to, size_t numDependencies)
     //CUresult cuGraphRemoveDependencies_v2(CUgraph hGraph, const CUgraphNode * from, const CUgraphNode * to, const CUgraphEdgeData * edgeData, size_t numDependencies)
     //CUresult cuGraphRetainUserObject(CUgraph graph, CUuserObject object, unsigned int  count, unsigned int  flags)
-    //CUresult cuGraphUpload(CUgraphExec hGraphExec, CUstream hStream)
+
+    /**
+     *  Uploads an executable graph in a stream. (cuGraphUpload)
+     */
+    external fun graphUpload(hGraphExec : Long, hStream : Long) : Int
+
     //CUresult cuUserObjectCreate(CUuserObject * object_out, void* ptr, CUhostFn destroy, unsigned int  initialRefcount, unsigned int  flags)
 
     /**
