@@ -26,6 +26,11 @@ class DriverAPI {
 
     external fun devicePrimaryCtxReset(dev : Int) : Int
 
+    /**
+     *  Retain the primary context on the GPU. (cuDevicePrimaryCtxRetain)
+     */
+    external fun devicePrimaryCtxRetain(dev : Int) : Long
+
     external fun devicePrimaryCtxSetFlags(dev : Int, flags : UInt) : Int
 
     /**
@@ -77,6 +82,11 @@ class DriverAPI {
     external fun ctxGetStreamPriorityRange() : IntArray
 
     /**
+     *  Pops the current CUDA context from the current CPU thread. (cuCtxPopCurrent)
+     */
+    external fun ctxPopCurrent() : Long
+
+    /**
      *  Pushes a context on the current CPU thread. (cuCtxPushCurrent)
      */
     external fun ctxPushCurrent(ctx : Long) : Int
@@ -105,6 +115,14 @@ class DriverAPI {
     private external fun ctxSetLimit(limit : Byte, value : Int) : Int
     fun ctxSetLimit(limit : Limit, value : Int) : Int {
         return ctxSetLimit(limit.byte, value)
+    }
+
+    /**
+     *  Sets the shared memory configuration for the current context. (cuCtxSetSharedMemConfig)
+     */
+    private external fun ctxSetSharedMemConfig(config : Int) : Int
+    fun ctxSetSharedMemConfig(config : SharedConfig) : Int{
+        return ctxSetSharedMemConfig(config.num)
     }
 
     /**
@@ -137,6 +155,11 @@ class DriverAPI {
 
     //12. Library Management
     /**
+     * 	Returns a function handle. (cuKernelGetFunction)
+     */
+    external fun kernelGetFunction(kernel : Long) : Long
+
+    /**
      * Unloads a library. (cuLibraryUnload)
      */
     external fun libraryUnload(library : Long) : Int
@@ -166,6 +189,16 @@ class DriverAPI {
      *  Unregisters a memory range that was registered with cuMemHostRegister. (cuMemHostUnregister)
      */
     external fun memHostUnregister(p : Long) : Int
+
+    /**
+     *  Returns a handle to a compute device. (cuDeviceGetByPCIBusId)
+     */
+    external fun deviceGetByPCIBusId() : String
+
+    /**
+     *  Returns a PCI Bus Id string for the device. (cuDeviceGetPCIBusId)
+     */
+    external fun deviceGetPCIBusId(len : Int, dev : Int) : String
 
     //14. Virtual Memory Management
     //CUresult cuMemAddressFree(CUdeviceptr ptr, size_t size)
@@ -420,6 +453,12 @@ class DriverAPI {
     //CUresult cuGraphKernelNodeGetParams(CUgraphNode hNode, CUDA_KERNEL_NODE_PARAMS * nodeParams)
     //CUresult cuGraphKernelNodeSetAttribute(CUgraphNode hNode, CUkernelNodeAttrID attr, const CUkernelNodeAttrValue * value)
     //CUresult cuGraphKernelNodeSetParams(CUgraphNode hNode, const CUDA_KERNEL_NODE_PARAMS * nodeParams)
+
+    /**
+     *  Launches an executable graph in a stream. (cuGraphLaunch)
+     */
+    external fun graphLaunch(hGraphExec : Long, hStream : Long) : Int
+
     //CUresult cuGraphLaunch(CUgraphExec hGraphExec, CUstream hStream)
     //CUresult cuGraphMemAllocNodeGetParams(CUgraphNode hNode, CUDA_MEM_ALLOC_NODE_PARAMS * params_out)
     //CUresult cuGraphMemFreeNodeGetParams(CUgraphNode hNode, CUdeviceptr * dptr_out)
@@ -440,10 +479,23 @@ class DriverAPI {
     //CUresult cuGraphRemoveDependencies(CUgraph hGraph, const CUgraphNode * from, const CUgraphNode * to, size_t numDependencies)
     //CUresult cuGraphRemoveDependencies_v2(CUgraph hGraph, const CUgraphNode * from, const CUgraphNode * to, const CUgraphEdgeData * edgeData, size_t numDependencies)
     //CUresult cuGraphRetainUserObject(CUgraph graph, CUuserObject object, unsigned int  count, unsigned int  flags)
-    //CUresult cuGraphUpload(CUgraphExec hGraphExec, CUstream hStream)
+
+    /**
+     *  Uploads an executable graph in a stream. (cuGraphUpload)
+     */
+    external fun graphUpload(hGraphExec : Long, hStream : Long) : Int
+
     //CUresult cuUserObjectCreate(CUuserObject * object_out, void* ptr, CUhostFn destroy, unsigned int  initialRefcount, unsigned int  flags)
-    //CUresult cuUserObjectRelease(CUuserObject object, unsigned int  count)
-    //CUresult cuUserObjectRetain(CUuserObject object, unsigned int  count)
+
+    /**
+     *  Release a reference to a user object. (cuUserObjectRelease)
+     */
+    external fun userObjectRelease(cuObject : Long, count : UInt) : Int
+
+    /**
+     *  Retain a reference to a user object. (cuUserObjectRetain)
+     */
+    external fun userObjectRetain(cuObject : Long, count : UInt) : Int
 
     //25. Occupancy
     //CUresult cuOccupancyAvailableDynamicSMemPerBlock(size_t* dynamicSmemSize, CUfunction func, int  numBlocks, int  blockSize)
@@ -488,7 +540,12 @@ class DriverAPI {
      */
     external fun ctxDisablePeerAccess(peerContext : Long) : Int
 
-    //CUresult cuCtxEnablePeerAccess(CUcontext peerContext, unsigned int  Flags)
+
+    /**
+     *  Enables direct access to memory allocations in a peer context. (cuCtxEnablePeerAccess)
+     */
+    external fun ctxEnablePeerAccess(peerContext: Long, flags : UInt) : Int
+
     //CUresult cuDeviceCanAccessPeer(int* canAccessPeer, CUdevice dev, CUdevice peerDev)
     //CUresult cuDeviceGetP2PAttribute(int* value, CUdevice_P2PAttribute attrib, CUdevice srcDevice, CUdevice dstDevice)
 
@@ -496,7 +553,12 @@ class DriverAPI {
     //CUresult cuGraphicsMapResources(unsigned int  count, CUgraphicsResource* resources, CUstream hStream)
     //CUresult cuGraphicsResourceGetMappedMipmappedArray(CUmipmappedArray * pMipmappedArray, CUgraphicsResource resource)
     //CUresult cuGraphicsResourceGetMappedPointer(CUdeviceptr * pDevPtr, size_t * pSize, CUgraphicsResource resource)
-    //CUresult cuGraphicsResourceSetMapFlags(CUgraphicsResource resource, unsigned int  flags)
+
+    /**
+     *  Set usage flags for mapping a graphics resource. (cuGraphicsResourceSetMapFlags)
+     */
+    external fun graphicsResourceSetMapFlags(resource: Long, flags : UInt) : Int
+
     //CUresult cuGraphicsSubResourceGetMappedArray(CUarray * pArray, CUgraphicsResource resource, unsigned int  arrayIndex, unsigned int  mipLevel)
     //CUresult cuGraphicsUnmapResources(unsigned int  count, CUgraphicsResource * resources, CUstream hStream)
 
