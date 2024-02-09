@@ -126,7 +126,7 @@ class DriverAPI {
     }
 
     /**
-     * Block for a context's tasks to complete.
+     *  Block for a context's tasks to complete. (cuCtxSynchronize)
      */
     external fun ctxSynchronize() : Int
 
@@ -278,10 +278,23 @@ class DriverAPI {
     //CUresult cuStreamGetAttribute(CUstream hStream, CUstreamAttrID attr, CUstreamAttrValue* value_out)
     //CUresult cuStreamGetCaptureInfo(CUstream hStream, CUstreamCaptureStatus* captureStatus_out, cuuint64_t* id_out, CUgraph* graph_out, const CUgraphNode** dependencies_out, size_t* numDependencies_out)
     //CUresult cuStreamGetCaptureInfo_v3(CUstream hStream, CUstreamCaptureStatus * captureStatus_out, cuuint64_t * id_out, CUgraph * graph_out, const CUgraphNode * *dependencies_out, const CUgraphEdgeData * *edgeData_out, size_t * numDependencies_out)
-    //CUresult cuStreamGetCtx(CUstream hStream, CUcontext * pctx)
-    //CUresult cuStreamGetFlags(CUstream hStream, unsigned int* flags)
+
+    /**
+     *  Query the context associated with a stream. (cuStreamGetCtx)
+     */
+    external fun streamGetCtx(hStream: Long) : Long
+
+    /**
+     * 	Query the flags of a given stream. (cuStreamGetFlags)
+     */
+    external fun streamGetFlags(hStream : Long) : Int
     //CUresult cuStreamGetId(CUstream hStream, unsigned long long* streamId)
-    //CUresult cuStreamGetPriority(CUstream hStream, int* priority)
+
+    /**
+     * 	Query the priority of a given stream. (cuStreamGetPriority)
+     */
+    external fun streamGetPriority(hStream : Long) : Int
+
     //CUresult cuStreamIsCapturing(CUstream hStream, CUstreamCaptureStatus * captureStatus)
 
     /**
@@ -298,7 +311,11 @@ class DriverAPI {
 
     //CUresult cuStreamUpdateCaptureDependencies(CUstream hStream, CUgraphNode * dependencies, size_t numDependencies, unsigned int  flags)
     //CUresult cuStreamUpdateCaptureDependencies_v2(CUstream hStream, CUgraphNode * dependencies, const CUgraphEdgeData * dependencyData, size_t numDependencies, unsigned int  flags)
-    //CUresult cuStreamWaitEvent(CUstream hStream, CUevent hEvent, unsigned int  Flags)
+
+    /**
+     * 	Make a compute stream wait on an event. (cuStreamWaitEvent)
+     */
+    external fun streamWaitEvent(hStream: Long, hEvent: Long, flags : UInt) : Int
 
     /**
      *  Update the set of dependencies in a capturing stream (11.3+). (cuThreadExchangeStreamCaptureMode)
@@ -414,9 +431,19 @@ class DriverAPI {
     external fun graphDestroyNode(hNode : Long) : Int
 
     //CUresult cuGraphEventRecordNodeGetEvent(CUgraphNode hNode, CUevent * event_out)
-    //CUresult cuGraphEventRecordNodeSetEvent(CUgraphNode hNode, CUevent event)
+
+    /**
+     *  Sets an event record node's event. (cuGraphEventRecordNodeSetEvent)
+     */
+    external fun graphEventRecordNodeSetEvent(hNode : Long, event : Long)
+
     //CUresult cuGraphEventWaitNodeGetEvent(CUgraphNode hNode, CUevent * event_out)
-    //CUresult cuGraphEventWaitNodeSetEvent(CUgraphNode hNode, CUevent event)
+
+    /**
+     *  Sets an event wait node's event. (cuGraphEventWaitNodeSetEvent)
+     */
+    external fun graphEventWaitNodeSetEvent(hNode : Long, event : Long)
+
     //CUresult cuGraphExecBatchMemOpNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, const CUDA_BATCH_MEM_OP_NODE_PARAMS * nodeParams)
     //CUresult cuGraphExecChildGraphNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, CUgraph childGraph)
 
@@ -448,6 +475,12 @@ class DriverAPI {
     //CUresult cuGraphHostNodeSetParams(CUgraphNode hNode, const CUDA_HOST_NODE_PARAMS * nodeParams)
     //CUresult cuGraphInstantiate(CUgraphExec * phGraphExec, CUgraph hGraph, unsigned long long flags)
     //CUresult cuGraphInstantiateWithParams(CUgraphExec * phGraphExec, CUgraph hGraph, CUDA_GRAPH_INSTANTIATE_PARAMS * instantiateParams)
+
+    /**
+     *  Copies attributes from source node to destination node. (cuGraphKernelNodeCopyAttributes)
+     */
+    external fun graphKernelNodeCopyAttributes(dst : Long, src : Long) : Int
+
     //CUresult cuGraphKernelNodeCopyAttributes(CUgraphNode dst, CUgraphNode src)
     //CUresult cuGraphKernelNodeGetAttribute(CUgraphNode hNode, CUkernelNodeAttrID attr, CUkernelNodeAttrValue * value_out)
     //CUresult cuGraphKernelNodeGetParams(CUgraphNode hNode, CUDA_KERNEL_NODE_PARAMS * nodeParams)
