@@ -242,7 +242,13 @@ class DriverAPI {
     //CUresult cuMemPoolTrimTo(CUmemoryPool pool, size_t minBytesToKeep)
 
     //16. Multicast Object Management
-    //CUresult cuMulticastAddDevice(CUmemGenericAllocationHandle mcHandle, CUdevice dev)
+    /**
+     * 	Associate a device to a multicast object. (cuMulticastAddDevice)
+     * 	@param mcHandle Handle representing a multicast object.
+     * 	@param dev Device that will be associated to the multicast object.
+     */
+    external fun multicastAddDevice(mcHandle : Long, dev: Int)
+
     //CUresult cuMulticastBindAddr(CUmemGenericAllocationHandle mcHandle, size_t mcOffset, CUdeviceptr memptr, size_t size, unsigned long long flags)
     //CUresult cuMulticastBindMem(CUmemGenericAllocationHandle mcHandle, size_t mcOffset, CUmemGenericAllocationHandle memHandle, size_t memOffset, size_t size, unsigned long long flags)
     //CUresult cuMulticastCreate(CUmemGenericAllocationHandle* mcHandle, const CUmulticastObjectProp* prop)
@@ -265,7 +271,12 @@ class DriverAPI {
     //CUresult cuStreamAttachMemAsync(CUstream hStream, CUdeviceptr dptr, size_t length, unsigned int  flags)
     //CUresult cuStreamBeginCapture(CUstream hStream, CUstreamCaptureMode mode)
     //CUresult cuStreamBeginCaptureToGraph(CUstream hStream, CUgraph hGraph, const CUgraphNode* dependencies, const CUgraphEdgeData* dependencyData, size_t numDependencies, CUstreamCaptureMode mode)
-    //CUresult cuStreamCopyAttributes(CUstream dst, CUstream src)
+
+    /**
+     * 	Copies attributes from source stream to destination stream. (cuStreamCopyAttributes)
+     */
+    external fun streamCopyAttributes(dst : Long, src : Long) : Int
+
     //CUresult cuStreamCreate(CUstream* phStream, unsigned int  Flags)
     //CUresult cuStreamCreateWithPriority(CUstream* phStream, unsigned int  flags, int  priority)
 
