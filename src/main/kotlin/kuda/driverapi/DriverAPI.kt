@@ -242,7 +242,13 @@ class DriverAPI {
     //CUresult cuMemPoolTrimTo(CUmemoryPool pool, size_t minBytesToKeep)
 
     //16. Multicast Object Management
-    //CUresult cuMulticastAddDevice(CUmemGenericAllocationHandle mcHandle, CUdevice dev)
+    /**
+     * 	Associate a device to a multicast object. (cuMulticastAddDevice)
+     * 	@param mcHandle Handle representing a multicast object.
+     * 	@param dev Device that will be associated to the multicast object.
+     */
+    external fun multicastAddDevice(mcHandle : Long, dev: Int)
+
     //CUresult cuMulticastBindAddr(CUmemGenericAllocationHandle mcHandle, size_t mcOffset, CUdeviceptr memptr, size_t size, unsigned long long flags)
     //CUresult cuMulticastBindMem(CUmemGenericAllocationHandle mcHandle, size_t mcOffset, CUmemGenericAllocationHandle memHandle, size_t memOffset, size_t size, unsigned long long flags)
     //CUresult cuMulticastCreate(CUmemGenericAllocationHandle* mcHandle, const CUmulticastObjectProp* prop)
