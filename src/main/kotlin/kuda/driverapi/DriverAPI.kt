@@ -26,6 +26,11 @@ class DriverAPI {
 
     external fun devicePrimaryCtxReset(dev : Int) : Int
 
+    /**
+     *  Retain the primary context on the GPU. (cuDevicePrimaryCtxRetain)
+     */
+    external fun devicePrimaryCtxRetain(dev : Int) : Long
+
     external fun devicePrimaryCtxSetFlags(dev : Int, flags : UInt) : Int
 
     /**
@@ -77,6 +82,11 @@ class DriverAPI {
     external fun ctxGetStreamPriorityRange() : IntArray
 
     /**
+     *  Pops the current CUDA context from the current CPU thread. (cuCtxPopCurrent)
+     */
+    external fun ctxPopCurrent() : Long
+
+    /**
      *  Pushes a context on the current CPU thread. (cuCtxPushCurrent)
      */
     external fun ctxPushCurrent(ctx : Long) : Int
@@ -108,7 +118,15 @@ class DriverAPI {
     }
 
     /**
-     * Block for a context's tasks to complete.
+     *  Sets the shared memory configuration for the current context. (cuCtxSetSharedMemConfig)
+     */
+    private external fun ctxSetSharedMemConfig(config : Int) : Int
+    fun ctxSetSharedMemConfig(config : SharedConfig) : Int{
+        return ctxSetSharedMemConfig(config.num)
+    }
+
+    /**
+     *  Block for a context's tasks to complete. (cuCtxSynchronize)
      */
     external fun ctxSynchronize() : Int
 
@@ -136,6 +154,11 @@ class DriverAPI {
     //11. Module Management (DEPRECATED)
 
     //12. Library Management
+    /**
+     * 	Returns a function handle. (cuKernelGetFunction)
+     */
+    external fun kernelGetFunction(kernel : Long) : Long
+
     /**
      * Unloads a library. (cuLibraryUnload)
      */
@@ -166,6 +189,16 @@ class DriverAPI {
      *  Unregisters a memory range that was registered with cuMemHostRegister. (cuMemHostUnregister)
      */
     external fun memHostUnregister(p : Long) : Int
+
+    /**
+     *  Returns a handle to a compute device. (cuDeviceGetByPCIBusId)
+     */
+    external fun deviceGetByPCIBusId() : String
+
+    /**
+     *  Returns a PCI Bus Id string for the device. (cuDeviceGetPCIBusId)
+     */
+    external fun deviceGetPCIBusId(len : Int, dev : Int) : String
 
     //14. Virtual Memory Management
     //CUresult cuMemAddressFree(CUdeviceptr ptr, size_t size)
@@ -209,7 +242,13 @@ class DriverAPI {
     //CUresult cuMemPoolTrimTo(CUmemoryPool pool, size_t minBytesToKeep)
 
     //16. Multicast Object Management
-    //CUresult cuMulticastAddDevice(CUmemGenericAllocationHandle mcHandle, CUdevice dev)
+    /**
+     * 	Associate a device to a multicast object. (cuMulticastAddDevice)
+     * 	@param mcHandle Handle representing a multicast object.
+     * 	@param dev Device that will be associated to the multicast object.
+     */
+    external fun multicastAddDevice(mcHandle : Long, dev: Int)
+
     //CUresult cuMulticastBindAddr(CUmemGenericAllocationHandle mcHandle, size_t mcOffset, CUdeviceptr memptr, size_t size, unsigned long long flags)
     //CUresult cuMulticastBindMem(CUmemGenericAllocationHandle mcHandle, size_t mcOffset, CUmemGenericAllocationHandle memHandle, size_t memOffset, size_t size, unsigned long long flags)
     //CUresult cuMulticastCreate(CUmemGenericAllocationHandle* mcHandle, const CUmulticastObjectProp* prop)
@@ -232,7 +271,12 @@ class DriverAPI {
     //CUresult cuStreamAttachMemAsync(CUstream hStream, CUdeviceptr dptr, size_t length, unsigned int  flags)
     //CUresult cuStreamBeginCapture(CUstream hStream, CUstreamCaptureMode mode)
     //CUresult cuStreamBeginCaptureToGraph(CUstream hStream, CUgraph hGraph, const CUgraphNode* dependencies, const CUgraphEdgeData* dependencyData, size_t numDependencies, CUstreamCaptureMode mode)
-    //CUresult cuStreamCopyAttributes(CUstream dst, CUstream src)
+
+    /**
+     * 	Copies attributes from source stream to destination stream. (cuStreamCopyAttributes)
+     */
+    external fun streamCopyAttributes(dst : Long, src : Long) : Int
+
     //CUresult cuStreamCreate(CUstream* phStream, unsigned int  Flags)
     //CUresult cuStreamCreateWithPriority(CUstream* phStream, unsigned int  flags, int  priority)
 
@@ -245,10 +289,23 @@ class DriverAPI {
     //CUresult cuStreamGetAttribute(CUstream hStream, CUstreamAttrID attr, CUstreamAttrValue* value_out)
     //CUresult cuStreamGetCaptureInfo(CUstream hStream, CUstreamCaptureStatus* captureStatus_out, cuuint64_t* id_out, CUgraph* graph_out, const CUgraphNode** dependencies_out, size_t* numDependencies_out)
     //CUresult cuStreamGetCaptureInfo_v3(CUstream hStream, CUstreamCaptureStatus * captureStatus_out, cuuint64_t * id_out, CUgraph * graph_out, const CUgraphNode * *dependencies_out, const CUgraphEdgeData * *edgeData_out, size_t * numDependencies_out)
-    //CUresult cuStreamGetCtx(CUstream hStream, CUcontext * pctx)
-    //CUresult cuStreamGetFlags(CUstream hStream, unsigned int* flags)
+
+    /**
+     *  Query the context associated with a stream. (cuStreamGetCtx)
+     */
+    external fun streamGetCtx(hStream: Long) : Long
+
+    /**
+     * 	Query the flags of a given stream. (cuStreamGetFlags)
+     */
+    external fun streamGetFlags(hStream : Long) : Int
     //CUresult cuStreamGetId(CUstream hStream, unsigned long long* streamId)
-    //CUresult cuStreamGetPriority(CUstream hStream, int* priority)
+
+    /**
+     * 	Query the priority of a given stream. (cuStreamGetPriority)
+     */
+    external fun streamGetPriority(hStream : Long) : Int
+
     //CUresult cuStreamIsCapturing(CUstream hStream, CUstreamCaptureStatus * captureStatus)
 
     /**
@@ -265,7 +322,11 @@ class DriverAPI {
 
     //CUresult cuStreamUpdateCaptureDependencies(CUstream hStream, CUgraphNode * dependencies, size_t numDependencies, unsigned int  flags)
     //CUresult cuStreamUpdateCaptureDependencies_v2(CUstream hStream, CUgraphNode * dependencies, const CUgraphEdgeData * dependencyData, size_t numDependencies, unsigned int  flags)
-    //CUresult cuStreamWaitEvent(CUstream hStream, CUevent hEvent, unsigned int  Flags)
+
+    /**
+     * 	Make a compute stream wait on an event. (cuStreamWaitEvent)
+     */
+    external fun streamWaitEvent(hStream: Long, hEvent: Long, flags : UInt) : Int
 
     /**
      *  Update the set of dependencies in a capturing stream (11.3+). (cuThreadExchangeStreamCaptureMode)
@@ -381,9 +442,19 @@ class DriverAPI {
     external fun graphDestroyNode(hNode : Long) : Int
 
     //CUresult cuGraphEventRecordNodeGetEvent(CUgraphNode hNode, CUevent * event_out)
-    //CUresult cuGraphEventRecordNodeSetEvent(CUgraphNode hNode, CUevent event)
+
+    /**
+     *  Sets an event record node's event. (cuGraphEventRecordNodeSetEvent)
+     */
+    external fun graphEventRecordNodeSetEvent(hNode : Long, event : Long)
+
     //CUresult cuGraphEventWaitNodeGetEvent(CUgraphNode hNode, CUevent * event_out)
-    //CUresult cuGraphEventWaitNodeSetEvent(CUgraphNode hNode, CUevent event)
+
+    /**
+     *  Sets an event wait node's event. (cuGraphEventWaitNodeSetEvent)
+     */
+    external fun graphEventWaitNodeSetEvent(hNode : Long, event : Long)
+
     //CUresult cuGraphExecBatchMemOpNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, const CUDA_BATCH_MEM_OP_NODE_PARAMS * nodeParams)
     //CUresult cuGraphExecChildGraphNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, CUgraph childGraph)
 
@@ -415,11 +486,23 @@ class DriverAPI {
     //CUresult cuGraphHostNodeSetParams(CUgraphNode hNode, const CUDA_HOST_NODE_PARAMS * nodeParams)
     //CUresult cuGraphInstantiate(CUgraphExec * phGraphExec, CUgraph hGraph, unsigned long long flags)
     //CUresult cuGraphInstantiateWithParams(CUgraphExec * phGraphExec, CUgraph hGraph, CUDA_GRAPH_INSTANTIATE_PARAMS * instantiateParams)
+
+    /**
+     *  Copies attributes from source node to destination node. (cuGraphKernelNodeCopyAttributes)
+     */
+    external fun graphKernelNodeCopyAttributes(dst : Long, src : Long) : Int
+
     //CUresult cuGraphKernelNodeCopyAttributes(CUgraphNode dst, CUgraphNode src)
     //CUresult cuGraphKernelNodeGetAttribute(CUgraphNode hNode, CUkernelNodeAttrID attr, CUkernelNodeAttrValue * value_out)
     //CUresult cuGraphKernelNodeGetParams(CUgraphNode hNode, CUDA_KERNEL_NODE_PARAMS * nodeParams)
     //CUresult cuGraphKernelNodeSetAttribute(CUgraphNode hNode, CUkernelNodeAttrID attr, const CUkernelNodeAttrValue * value)
     //CUresult cuGraphKernelNodeSetParams(CUgraphNode hNode, const CUDA_KERNEL_NODE_PARAMS * nodeParams)
+
+    /**
+     *  Launches an executable graph in a stream. (cuGraphLaunch)
+     */
+    external fun graphLaunch(hGraphExec : Long, hStream : Long) : Int
+
     //CUresult cuGraphLaunch(CUgraphExec hGraphExec, CUstream hStream)
     //CUresult cuGraphMemAllocNodeGetParams(CUgraphNode hNode, CUDA_MEM_ALLOC_NODE_PARAMS * params_out)
     //CUresult cuGraphMemFreeNodeGetParams(CUgraphNode hNode, CUdeviceptr * dptr_out)
@@ -440,10 +523,23 @@ class DriverAPI {
     //CUresult cuGraphRemoveDependencies(CUgraph hGraph, const CUgraphNode * from, const CUgraphNode * to, size_t numDependencies)
     //CUresult cuGraphRemoveDependencies_v2(CUgraph hGraph, const CUgraphNode * from, const CUgraphNode * to, const CUgraphEdgeData * edgeData, size_t numDependencies)
     //CUresult cuGraphRetainUserObject(CUgraph graph, CUuserObject object, unsigned int  count, unsigned int  flags)
-    //CUresult cuGraphUpload(CUgraphExec hGraphExec, CUstream hStream)
+
+    /**
+     *  Uploads an executable graph in a stream. (cuGraphUpload)
+     */
+    external fun graphUpload(hGraphExec : Long, hStream : Long) : Int
+
     //CUresult cuUserObjectCreate(CUuserObject * object_out, void* ptr, CUhostFn destroy, unsigned int  initialRefcount, unsigned int  flags)
-    //CUresult cuUserObjectRelease(CUuserObject object, unsigned int  count)
-    //CUresult cuUserObjectRetain(CUuserObject object, unsigned int  count)
+
+    /**
+     *  Release a reference to a user object. (cuUserObjectRelease)
+     */
+    external fun userObjectRelease(cuObject : Long, count : UInt) : Int
+
+    /**
+     *  Retain a reference to a user object. (cuUserObjectRetain)
+     */
+    external fun userObjectRetain(cuObject : Long, count : UInt) : Int
 
     //25. Occupancy
     //CUresult cuOccupancyAvailableDynamicSMemPerBlock(size_t* dynamicSmemSize, CUfunction func, int  numBlocks, int  blockSize)
@@ -488,7 +584,12 @@ class DriverAPI {
      */
     external fun ctxDisablePeerAccess(peerContext : Long) : Int
 
-    //CUresult cuCtxEnablePeerAccess(CUcontext peerContext, unsigned int  Flags)
+
+    /**
+     *  Enables direct access to memory allocations in a peer context. (cuCtxEnablePeerAccess)
+     */
+    external fun ctxEnablePeerAccess(peerContext: Long, flags : UInt) : Int
+
     //CUresult cuDeviceCanAccessPeer(int* canAccessPeer, CUdevice dev, CUdevice peerDev)
     //CUresult cuDeviceGetP2PAttribute(int* value, CUdevice_P2PAttribute attrib, CUdevice srcDevice, CUdevice dstDevice)
 
@@ -496,7 +597,12 @@ class DriverAPI {
     //CUresult cuGraphicsMapResources(unsigned int  count, CUgraphicsResource* resources, CUstream hStream)
     //CUresult cuGraphicsResourceGetMappedMipmappedArray(CUmipmappedArray * pMipmappedArray, CUgraphicsResource resource)
     //CUresult cuGraphicsResourceGetMappedPointer(CUdeviceptr * pDevPtr, size_t * pSize, CUgraphicsResource resource)
-    //CUresult cuGraphicsResourceSetMapFlags(CUgraphicsResource resource, unsigned int  flags)
+
+    /**
+     *  Set usage flags for mapping a graphics resource. (cuGraphicsResourceSetMapFlags)
+     */
+    external fun graphicsResourceSetMapFlags(resource: Long, flags : UInt) : Int
+
     //CUresult cuGraphicsSubResourceGetMappedArray(CUarray * pArray, CUgraphicsResource resource, unsigned int  arrayIndex, unsigned int  mipLevel)
     //CUresult cuGraphicsUnmapResources(unsigned int  count, CUgraphicsResource * resources, CUstream hStream)
 
