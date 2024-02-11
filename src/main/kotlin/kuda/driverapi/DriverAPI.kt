@@ -244,6 +244,7 @@ class DriverAPI {
     //16. Multicast Object Management
     /**
      * 	Associate a device to a multicast object. (cuMulticastAddDevice)
+     *
      * 	@param mcHandle Handle representing a multicast object.
      * 	@param dev Device that will be associated to the multicast object.
      */
@@ -337,7 +338,13 @@ class DriverAPI {
     }
 
     //19.Event Management
-    //CUresult cuEventCreate(CUevent * phEvent, unsigned int  Flags)
+    /**
+     *  Creates an event. (cuEventCreate)
+     *
+     *  @param phEvent Returns newly created event
+     *  @param flags Event creation flags
+     */
+    external fun eventCreate(flags : UInt) : Long
 
     /**
      *  Destroys an event. (cuEventDestroy)
