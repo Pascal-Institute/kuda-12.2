@@ -294,7 +294,15 @@ class DriverAPI {
      */
     external fun streamDestroy(hStream: Long): Int
 
-    //CUresult cuStreamEndCapture(CUstream hStream, CUgraph* phGraph)
+    /**
+     * 	Ends capture on a stream, returning the captured graph. (cuStreamEndCapture)
+     *
+     * 	@param hStream Stream to query
+     *
+     * 	@return The captured graph
+     */
+    external fun streamEndCapture(hStream: Long) : Long
+
     //CUresult cuStreamGetAttribute(CUstream hStream, CUstreamAttrID attr, CUstreamAttrValue* value_out)
     //CUresult cuStreamGetCaptureInfo(CUstream hStream, CUstreamCaptureStatus* captureStatus_out, cuuint64_t* id_out, CUgraph* graph_out, const CUgraphNode** dependencies_out, size_t* numDependencies_out)
     //CUresult cuStreamGetCaptureInfo_v3(CUstream hStream, CUstreamCaptureStatus * captureStatus_out, cuuint64_t * id_out, CUgraph * graph_out, const CUgraphNode * *dependencies_out, const CUgraphEdgeData * *edgeData_out, size_t * numDependencies_out)
