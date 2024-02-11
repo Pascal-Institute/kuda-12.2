@@ -1,12 +1,79 @@
 package kuda.runtimeapi
 
-import kuda.runtimeapi.prop.StreamCaptureStatus
+import kuda.runtimeapi.prop.*
+import kuda.runtimeapi.structure.DeviceProp
 
 class RuntimeAPI {
     private external fun getErrorName(error : Int) : String
     fun getErrorName(error: kuda.runtimeapi.prop.Error) : String{
         return getErrorName(error.num)
     }
+
+    //1. Device Management
+    external fun chooseDevice(deviceProp : DeviceProp) : Int
+
+    private external fun flushGPUDirectRDMAWrites(scope : Int) : Int
+
+    external fun getDefaultMemPool(device: Int) : Long
+
+    private fun flushGPUDirectRDMAWrites(target: FlushGPUDirectRDMAWritesTarget, scope : FlushGPUDirectRDMAWritesScope): Int {
+        return flushGPUDirectRDMAWrites(scope.num)
+    }
+
+    fun getLimit(limit : Limit) : Int {
+        return getLimit(limit.byte)
+    }
+
+    private external fun getLimit(byte: Byte) : Int
+
+    external fun getMemPool(device : Int) : Long
+
+    /**
+     * Queries attributes of the link between two devices.
+     *
+     * @param attr
+     * @param srcDevice The source device of the target link.
+     * @param dstDevice The destination device of the target link.
+     * @return Returns in *value the value of the requested attribute attrib of the link between srcDevice and dstDevice.
+     */
+    private external fun getP2PAttribute(attr : Int, scrDevice : Int, dstDevice : Int) : Int
+    fun getP2PAttribute(attr : DeviceP2PAttr, scrDevice : Int, dstDevice : Int) : Int {
+        return getP2PAttribute(attr.num, scrDevice, dstDevice)
+    }
+
+    external fun getPCIBusId(device : Int) : String
+
+    external fun getStreamPriorityRange() : Int
+
+    private external fun setCacheConfig(cacheConfig : Int) : Int
+    fun setCacheConfig(functionCache: FunctionCache) : Int{
+        return setCacheConfig(functionCache.num)
+    }
+
+    private external fun setLimit(limit : Byte, size : Int) : Int
+    fun setLimit(limit: Limit, size: Int) : Int{
+        return setLimit(limit.byte, size)
+    }
+
+    external fun synchronize() : Int
+
+    external fun reset() : Int
+
+    external fun getDevice() : Int
+
+    external fun getDeviceCount() : Int
+
+    external fun getDeviceProperties(device: Int) : DeviceProp
+
+    external fun initDevice(device : Int, flags : Int) : Int
+
+    external fun lpcCloseMemHandle(devicePtr : Long) : Int
+
+    external fun setDevice(device : Int) : Int
+
+    external fun setDeviceFlags(flags : Int) : Int
+
+    external fun setValidDevices(deviceArr : IntArray, len : Int) : Int
 
     private external fun getErrorString(error : Int) : String
     fun getErrorString(error: kuda.runtimeapi.prop.Error) : String{
