@@ -1,5 +1,7 @@
 package kuda.runtimeapi
 
+import kuda.runtimeapi.prop.StreamCaptureStatus
+
 class RuntimeAPI {
     private external fun getErrorName(error : Int) : String
     fun getErrorName(error: kuda.runtimeapi.prop.Error) : String{
@@ -13,6 +15,43 @@ class RuntimeAPI {
     external fun getLastError() : Int
 
     external fun peekAtLastError() : Int
+
+    //4. Stream Management
+    external fun ctxResetPersistingL2Cache() : Int
+
+    //cudaStreamAddCallback
+
+    //cudaStreamAttachMemAsync
+
+    private external fun streamBeginCapture(stream : Long, mode : Int) : Int
+
+    fun streamBeginCapture(stream: Long, streamCaptureStatus: StreamCaptureStatus) : Int{
+        return streamBeginCapture(stream, streamCaptureStatus.num)
+    }
+
+    //cudaStreamBeginCaptureToGraph
+
+    external fun streamCopyAttributes(dst : Long, src : Long) : Int
+
+    external fun streamCreate() : Long
+
+    external fun streamCreateWithFlags(flags : Int) : Long
+
+    external fun streamCreateWithPriority(flags : Int, priority : Int) : Long
+
+    external fun streamDestroy(stream : Long) : Int
+
+    external fun streamQuery(stream : Long) : Int
+
+    //cudaStreamSetAttribute
+
+    external fun streamSynchronize(stream : Long) : Int
+
+    //cudaStreamUpdateCaptureDependencies
+
+    //cudaStreamUpdateCaptureDependencies_v2
+
+    external fun streamWaitEvent(stream : Long, event : Long, flags : Int) : Int
 
     //5. Event Management
     external fun eventCreate() : Long

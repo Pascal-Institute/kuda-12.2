@@ -3,7 +3,6 @@ import kuda.driverapi.prop.Result
 import kuda.kublas.Kublas
 import kuda.runtimeapi.DeviceManager
 import kuda.runtimeapi.RuntimeAPI
-import kuda.runtimeapi.StreamManager
 import kuda.runtimeapi.prop.FunctionCache
 import kuda.runtimeapi.prop.Limit
 import org.junit.jupiter.api.Test
@@ -55,7 +54,7 @@ class Test {
         println(runtimeAPI.getErrorName(kuda.runtimeapi.prop.Error.ERROR_UNKNOWN))
         println(runtimeAPI.getErrorString(kuda.runtimeapi.prop.Error.INITIALIZATION_ERROR))
 
-        var stream = StreamManager.create()
+        var stream = runtimeAPI.create()
 
         var mallocPointer = runtimeAPI.malloc(32)
         println(mallocPointer)
