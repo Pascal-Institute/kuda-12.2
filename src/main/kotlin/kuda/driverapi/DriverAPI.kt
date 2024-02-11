@@ -287,7 +287,15 @@ class DriverAPI {
      */
     external fun streamCreate(flags : Int) : Long
 
-    //CUresult cuStreamCreateWithPriority(CUstream* phStream, unsigned int  flags, int  priority)
+    /**
+     *  Create a stream with the given priority. (cuStreamCreateWithPriority)
+     *
+     *  @param flags Flags for stream creation. See streamCreate for a list of valid flags
+     *  @param priority Stream priority. Lower numbers represent higher priorities. See ctxGetStreamPriorityRange for more information about meaningful stream priorities that can be passed.
+     *
+     *  @return Returned newly created stream
+     */
+    external fun streamCreateWithPriority(flags : Int, priority : Int) : Long
 
     /**
      * 	Destroys a stream. (cuStreamDestroy)
