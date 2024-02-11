@@ -66,11 +66,11 @@ class Test {
 
         DeviceManager.getMemPool(device)
 
-        var eventStart =  runtimeAPI.create()
-        var eventEnd = runtimeAPI.create()
-        runtimeAPI.destroy(eventStart)
-        eventStart = runtimeAPI.create()
-        var time = runtimeAPI.elapsedTime(eventStart, eventEnd)
+        var eventStart =  runtimeAPI.eventCreate()
+        var eventEnd = runtimeAPI.eventCreate()
+        runtimeAPI.eventDestroy(eventStart)
+        eventStart = runtimeAPI.eventCreate()
+        var time = runtimeAPI.eventElapsedTime(eventStart, eventEnd)
         println(time)
 
         val kublas = Kublas()
