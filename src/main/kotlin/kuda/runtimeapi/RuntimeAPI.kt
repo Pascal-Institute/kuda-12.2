@@ -14,6 +14,23 @@ class RuntimeAPI {
 
     external fun peekAtLastError() : Int
 
+    //5. Event Management
+    external fun eventCreate() : Long
+
+    external fun eventCreateWithFlags(flags : Int) : Long
+
+    external fun eventDestroy(event : Long) : Int
+
+    external fun eventElapsedTime(start : Long, end : Long) : Float
+
+    external fun eventQuery(event : Long) : Int
+
+    external fun eventRecord(event : Long, stream : Long) : Int
+
+    external fun eventRecordWithFlags(event : Long, stream : Long, flags : Int) : Int
+
+    external fun eventSynchronize(event : Long) : Int
+
     //6.6 External Resource Interoperability
     external fun destroyExternalMemory(extMem : Long) : Int
 
