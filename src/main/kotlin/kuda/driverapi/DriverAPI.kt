@@ -375,7 +375,14 @@ class DriverAPI {
      */
     external fun eventRecord(hEvent : Long, hStream: Long) : Int
 
-    //CUresult cuEventRecordWithFlags(CUevent hEvent, CUstream hStream, unsigned int  flags)
+    /**
+     *  Records an event. (cuEventRecordWithFlags)
+     *
+     *  @param hEvent Event to record
+     *  @param hStream Stream to record event for
+     *  @param flags See EventRecordFlags
+     */
+    external fun eventRecordWithFlags(hEvent : Long, hStream: Long, flags : Int) : Int
 
     /**
      *  Waits for an event to complete. (cuEventSynchronize)
