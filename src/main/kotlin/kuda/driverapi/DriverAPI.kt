@@ -278,7 +278,15 @@ class DriverAPI {
      */
     external fun streamCopyAttributes(dst: Long, src: Long): Int
 
-    //CUresult cuStreamCreate(CUstream* phStream, unsigned int  Flags)
+    /**
+     * 	Create a stream. (cuStreamCreate)
+     *
+     * 	@param flags Parameters for stream creation
+     *
+     * 	@return Returned newly created stream
+     */
+    external fun streamCreate(flags : Int) : Long
+
     //CUresult cuStreamCreateWithPriority(CUstream* phStream, unsigned int  flags, int  priority)
 
     /**
