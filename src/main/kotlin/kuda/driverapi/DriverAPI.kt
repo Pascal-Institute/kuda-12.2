@@ -342,6 +342,7 @@ class DriverAPI {
      *  Creates an event. (cuEventCreate)
      *
      *  @param flags Event creation flags
+     *
      *  @return event
      */
     external fun eventCreate(flags: Int): Long
@@ -351,7 +352,15 @@ class DriverAPI {
      */
     external fun eventDestroy(hEvent: Long): Int
 
-    //CUresult cuEventElapsedTime(float* pMilliseconds, CUevent hStart, CUevent hEnd)
+    /**
+     *  Computes the elapsed time between two events. (cuEventElapsedTime)
+     *
+     *  @param hStart Starting event
+     *  @param hEnd Ending event
+     *
+     *  @return Time between hStart and hEnd in ms
+     */
+    external fun eventElapsedTime(hStart : Long, hEnd : Long)
 
     /**
      *  Queries an event's status (cuEventQuery)
