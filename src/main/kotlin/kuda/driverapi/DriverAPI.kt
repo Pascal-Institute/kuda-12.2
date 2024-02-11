@@ -270,7 +270,19 @@ class DriverAPI {
     //18. Stream Management
     //CUresult cuStreamAddCallback(CUstream hStream, CUstreamCallback callback, void* userData, unsigned int  flags)
     //CUresult cuStreamAttachMemAsync(CUstream hStream, CUdeviceptr dptr, size_t length, unsigned int  flags)
-    //CUresult cuStreamBeginCapture(CUstream hStream, CUstreamCaptureMode mode)
+
+    /**
+     * 	Begins graph capture on a stream. (cuStreamBeginCapture)
+     *
+     * 	@param hStream Stream in which to initiate capture
+     * 	@param mode Controls the interaction of this capture sequence with other API calls that are potentially unsafe.
+     */
+    private external fun streamBeginCapture(hStream: Long, mode : Int): Int
+    fun streamBeginCapture(hStream: Long, mode : StreamCaptureMode) : Int {
+        return streamBeginCapture(hStream, mode.num)
+    }
+
+
     //CUresult cuStreamBeginCaptureToGraph(CUstream hStream, CUgraph hGraph, const CUgraphNode* dependencies, const CUgraphEdgeData* dependencyData, size_t numDependencies, CUstreamCaptureMode mode)
 
     /**
