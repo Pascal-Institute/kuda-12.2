@@ -18,4 +18,12 @@ class DriverAPITest {
         driverAPI.init(0)
         driverAPI.ctxSetCacheConfig(FuncCache.PREFER_L1)
     }
+
+    @Test
+    fun `test eventCreate`(){
+        var driverAPI = DriverAPI()
+        driverAPI.init(0)
+        val event = driverAPI.eventCreate(0)
+        println(event)
+    }
 }
