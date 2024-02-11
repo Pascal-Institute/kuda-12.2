@@ -12,52 +12,50 @@ class RuntimeAPI {
     //1. Device Management
     external fun chooseDevice(deviceProp : DeviceProp) : Int
 
-    private external fun flushGPUDirectRDMAWrites(scope : Int) : Int
-
-    external fun getDefaultMemPool(device: Int) : Long
-
-    private fun flushGPUDirectRDMAWrites(target: FlushGPUDirectRDMAWritesTarget, scope : FlushGPUDirectRDMAWritesScope): Int {
-        return flushGPUDirectRDMAWrites(scope.num)
+    private external fun deviceFlushGPUDirectRDMAWrites(scope : Int) : Int
+    fun deviceFlushGPUDirectRDMAWrites(target: FlushGPUDirectRDMAWritesTarget, scope : FlushGPUDirectRDMAWritesScope): Int {
+        return deviceFlushGPUDirectRDMAWrites(scope.num)
     }
 
-    fun getLimit(limit : Limit) : Int {
-        return getLimit(limit.byte)
+    external fun deviceGetDefaultMemPool(device: Int) : Long
+
+    private external fun deviceGetLimit(byte: Byte) : Int
+    fun deviceGetLimit(limit : Limit) : Int {
+        return deviceGetLimit(limit.byte)
     }
 
-    private external fun getLimit(byte: Byte) : Int
-
-    external fun getMemPool(device : Int) : Long
+    external fun deviceGetMemPool(device : Int) : Long
 
     /**
-     * Queries attributes of the link between two devices.
+     * Queries attributes of the link between two devices. (cudaDeviceGetP2PAttribute)
      *
      * @param attr
      * @param srcDevice The source device of the target link.
      * @param dstDevice The destination device of the target link.
      * @return Returns in *value the value of the requested attribute attrib of the link between srcDevice and dstDevice.
      */
-    private external fun getP2PAttribute(attr : Int, scrDevice : Int, dstDevice : Int) : Int
-    fun getP2PAttribute(attr : DeviceP2PAttr, scrDevice : Int, dstDevice : Int) : Int {
-        return getP2PAttribute(attr.num, scrDevice, dstDevice)
+    private external fun deviceGetP2PAttribute(attr : Int, scrDevice : Int, dstDevice : Int) : Int
+    fun deviceGetP2PAttribute(attr : DeviceP2PAttr, scrDevice : Int, dstDevice : Int) : Int {
+        return deviceGetP2PAttribute(attr.num, scrDevice, dstDevice)
     }
 
-    external fun getPCIBusId(device : Int) : String
+    external fun deviceGetPCIBusId(device : Int) : String
 
-    external fun getStreamPriorityRange() : Int
+    external fun deviceGetStreamPriorityRange() : Int
 
-    private external fun setCacheConfig(cacheConfig : Int) : Int
-    fun setCacheConfig(functionCache: FunctionCache) : Int{
-        return setCacheConfig(functionCache.num)
+    private external fun deviceSetCacheConfig(cacheConfig : Int) : Int
+    fun deviceSetCacheConfig(functionCache: FunctionCache) : Int{
+        return deviceSetCacheConfig(functionCache.num)
     }
 
-    private external fun setLimit(limit : Byte, size : Int) : Int
-    fun setLimit(limit: Limit, size: Int) : Int{
-        return setLimit(limit.byte, size)
+    private external fun deviceSetLimit(limit : Byte, size : Int) : Int
+    fun deviceSetLimit(limit: Limit, size: Int) : Int{
+        return deviceSetLimit(limit.byte, size)
     }
 
-    external fun synchronize() : Int
+    external fun deviceSynchronize() : Int
 
-    external fun reset() : Int
+    external fun deviceReset() : Int
 
     external fun getDevice() : Int
 
@@ -75,6 +73,7 @@ class RuntimeAPI {
 
     external fun setValidDevices(deviceArr : IntArray, len : Int) : Int
 
+    //3. Error Handling
     private external fun getErrorString(error : Int) : String
     fun getErrorString(error: kuda.runtimeapi.prop.Error) : String{
         return getErrorName(error.num)

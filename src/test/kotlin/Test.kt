@@ -33,20 +33,20 @@ class Test {
         println("CUDA Device: $device")
         println("CUDA Device count : $deviceCount")
         println(driverDevice)
-        println(runtimeAPI.getLimit(Limit.PRINT_FIFO_SIZE))
-        println(runtimeAPI.getLimit(Limit.MALLOC_HEAP_SIZE))
-        println(runtimeAPI.getLimit(Limit.STACK_SIZE))
-        println(runtimeAPI.getLimit(Limit.DEV_RUNTIME_SYNC_DEPTH))
-        println(runtimeAPI.getLimit(Limit.MAX_L2_FETCH_GRANULARITY))
-        println(runtimeAPI.getLimit(Limit.DEV_RUNTIME_PENDING_LAUNCH_COUNT))
-        println(runtimeAPI.getLimit(Limit.PERSISTING_L2_CACHE_SIZE))
+        println(runtimeAPI.deviceGetLimit(Limit.PRINT_FIFO_SIZE))
+        println(runtimeAPI.deviceGetLimit(Limit.MALLOC_HEAP_SIZE))
+        println(runtimeAPI.deviceGetLimit(Limit.STACK_SIZE))
+        println(runtimeAPI.deviceGetLimit(Limit.DEV_RUNTIME_SYNC_DEPTH))
+        println(runtimeAPI.deviceGetLimit(Limit.MAX_L2_FETCH_GRANULARITY))
+        println(runtimeAPI.deviceGetLimit(Limit.DEV_RUNTIME_PENDING_LAUNCH_COUNT))
+        println(runtimeAPI.deviceGetLimit(Limit.PERSISTING_L2_CACHE_SIZE))
 
-        println(runtimeAPI.getPCIBusId(device))
-        println(runtimeAPI.getStreamPriorityRange())
+        println(runtimeAPI.deviceGetPCIBusId(device))
+        println(runtimeAPI.deviceGetStreamPriorityRange())
 
-        println(runtimeAPI.setCacheConfig(FunctionCache.PREFER_NONE))
-        println(runtimeAPI.synchronize())
-        println(runtimeAPI.reset())
+        println(runtimeAPI.deviceSetCacheConfig(FunctionCache.PREFER_NONE))
+        println(runtimeAPI.deviceSynchronize())
+        println(runtimeAPI.deviceReset())
 
         println(runtimeAPI.driverGetVersion())
 
@@ -62,7 +62,7 @@ class Test {
         println(mallocHostPointer)
         runtimeAPI.freeHost(mallocHostPointer)
 
-        runtimeAPI.getMemPool(device)
+        runtimeAPI.deviceGetMemPool(device)
 
         var eventStart =  runtimeAPI.eventCreate()
         var eventEnd = runtimeAPI.eventCreate()
