@@ -54,7 +54,7 @@ class Test {
         println(runtimeAPI.getErrorName(kuda.runtimeapi.prop.Error.ERROR_UNKNOWN))
         println(runtimeAPI.getErrorString(kuda.runtimeapi.prop.Error.INITIALIZATION_ERROR))
 
-        var stream = runtimeAPI.create()
+        var stream = runtimeAPI.streamCreate()
 
         var mallocPointer = runtimeAPI.malloc(32)
         println(mallocPointer)
