@@ -458,7 +458,16 @@ class DriverAPI {
     //CUresult cuGraphChildGraphNodeGetGraph(CUgraphNode hNode, CUgraph * phGraph)
     //CUresult cuGraphClone(CUgraph * phGraphClone, CUgraph originalGraph)
     //CUresult cuGraphConditionalHandleCreate(CUgraphConditionalHandle * pHandle_out, CUgraph hGraph, CUcontext ctx, unsigned int  defaultLaunchValue, unsigned int  flags)
-    //CUresult cuGraphCreate(CUgraph * phGraph, unsigned int  flags)
+
+    /**
+     *  Creates a graph. (cuGraphCreate)
+     *
+     *  @param flags Graph creation flags, must be 0
+     *
+     *  @return Returns newly created graph
+     */
+    external fun graphCreate(flags : Int) : Long
+
     //CUresult cuGraphDebugDotPrint(CUgraph hGraph, const char* path, unsigned int  flags)
 
     /**
