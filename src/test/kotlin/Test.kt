@@ -2,7 +2,6 @@ import kuda.driverapi.DriverAPI
 import kuda.driverapi.prop.Result
 import kuda.kublas.Kublas
 import kuda.runtimeapi.DeviceManager
-import kuda.runtimeapi.EventManager
 import kuda.runtimeapi.RuntimeAPI
 import kuda.runtimeapi.StreamManager
 import kuda.runtimeapi.prop.FunctionCache
@@ -67,11 +66,11 @@ class Test {
 
         DeviceManager.getMemPool(device)
 
-        var eventStart = EventManager.create()
-        var eventEnd = EventManager.create()
-        EventManager.destroy(eventStart)
-        eventStart = EventManager.create()
-        var time = EventManager.elapsedTime(eventStart, eventEnd)
+        var eventStart =  runtimeAPI.create()
+        var eventEnd = runtimeAPI.create()
+        runtimeAPI.destroy(eventStart)
+        eventStart = runtimeAPI.create()
+        var time = runtimeAPI.elapsedTime(eventStart, eventEnd)
         println(time)
 
         val kublas = Kublas()
