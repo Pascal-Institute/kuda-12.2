@@ -26,4 +26,19 @@ class DriverAPITest {
         val event = driverAPI.eventCreate(0)
         println(event)
     }
+
+    @Test
+    fun `test streamGetId`(){
+        val driverAPI = DriverAPI()
+        driverAPI.init(0)
+        val device = driverAPI.deviceGet(0)
+        println(device)
+        val ctx = driverAPI.ctxCreate(0, device)
+        println(ctx)
+        driverAPI.ctxSetCurrent(ctx)
+        val stream= driverAPI.streamCreate(0)
+        println(stream)
+        val id = driverAPI.streamGetId(stream)
+        println(id)
+    }
 }
