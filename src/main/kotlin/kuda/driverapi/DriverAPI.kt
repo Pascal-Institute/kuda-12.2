@@ -62,16 +62,29 @@ class DriverAPI {
      */
     external fun ctxGetDevice(): Int
 
-    //8. Context Management
+    //8. Context Management//
+    /**
+     *  Create a CUDA context. (cuCtxCreate)
+     *
+     *  @param flags Context creation flags
+     *  @param dev Device to create context on
+     *
+     *  @return Returned context handle of the new context
+     */
+    external fun ctxCreate(flags: Int, dev: Int) : Long
+
+
     /**
      *  Returns the flags for the current context. (cuCtxGetFlags)
+     *
+     *  @return Pointer to store flags of current context
      */
-    external fun ctxGetFlags(): UInt
+    external fun ctxGetFlags(): Int
 
     /**
      *  Returns the current shared memory configuration for the current context. (cuCtxGetSharedMemConfig)
      */
-    external fun ctxGetSharedMemConfig(dummy: Boolean): Int
+    private external fun ctxGetSharedMemConfig(dummy: Boolean): Int
     fun ctxGetSharedMemConfig(): SharedConfig {
         return SharedConfig.fromInt(ctxGetSharedMemConfig(false))!!
     }
@@ -105,9 +118,11 @@ class DriverAPI {
     }
 
     /**
-     * Sets the flags for the current context.
+     * 	Binds the specified CUDA context to the calling CPU thread. (cuCtxSetCurrent)
+     *
+     * 	@param ctx Context to bind to the calling CPU thread
      */
-    external fun ctxSetFlags(flags: Int): Int
+    external fun ctxSetCurrent(ctx: Long): Int
 
     /**
      * Set resource limits.
@@ -270,7 +285,19 @@ class DriverAPI {
     //18. Stream Management
     //CUresult cuStreamAddCallback(CUstream hStream, CUstreamCallback callback, void* userData, unsigned int  flags)
     //CUresult cuStreamAttachMemAsync(CUstream hStream, CUdeviceptr dptr, size_t length, unsigned int  flags)
-    //CUresult cuStreamBeginCapture(CUstream hStream, CUstreamCaptureMode mode)
+
+    /**
+     * 	Begins graph capture on a stream. (cuStreamBeginCapture)
+     *
+     * 	@param hStream Stream in which to initiate capture
+     * 	@param mode Controls the interaction of this capture sequence with other API calls that are potentially unsafe.
+     */
+    private external fun streamBeginCapture(hStream: Long, mode : Int): Int
+    fun streamBeginCapture(hStream: Long, mode : StreamCaptureMode) : Int {
+        return streamBeginCapture(hStream, mode.num)
+    }
+
+
     //CUresult cuStreamBeginCaptureToGraph(CUstream hStream, CUgraph hGraph, const CUgraphNode* dependencies, const CUgraphEdgeData* dependencyData, size_t numDependencies, CUstreamCaptureMode mode)
 
     /**
@@ -324,7 +351,15 @@ class DriverAPI {
      * 	Query the flags of a given stream. (cuStreamGetFlags)
      */
     external fun streamGetFlags(hStream: Long): Int
-    //CUresult cuStreamGetId(CUstream hStream, unsigned long long* streamId)
+
+    /**
+     * 	Returns the unique Id associated with the stream handle supplied. (cuStreamGetId)
+     *
+     * 	@param hStream Handle to the stream to be queried
+     *
+     *  @return
+     */
+    external fun streamGetId(hStream: Long) : Long
 
     /**
      * 	Query the priority of a given stream. (cuStreamGetPriority)
