@@ -64,6 +64,17 @@ class DriverAPI {
 
     //8. Context Management
     /**
+     *  Create a CUDA context. (cuCtxCreate)
+     *
+     *  @param flags Context creation flags
+     *  @param dev Device to create context on
+     *
+     *  @return Returned context handle of the new context
+     */
+    external fun ctxCreate(flags: Int, dev: Int) : Long
+
+
+    /**
      *  Returns the flags for the current context. (cuCtxGetFlags)
      */
     external fun ctxGetFlags(): UInt
@@ -71,7 +82,7 @@ class DriverAPI {
     /**
      *  Returns the current shared memory configuration for the current context. (cuCtxGetSharedMemConfig)
      */
-    external fun ctxGetSharedMemConfig(dummy: Boolean): Int
+    private external fun ctxGetSharedMemConfig(dummy: Boolean): Int
     fun ctxGetSharedMemConfig(): SharedConfig {
         return SharedConfig.fromInt(ctxGetSharedMemConfig(false))!!
     }
@@ -336,7 +347,15 @@ class DriverAPI {
      * 	Query the flags of a given stream. (cuStreamGetFlags)
      */
     external fun streamGetFlags(hStream: Long): Int
-    //CUresult cuStreamGetId(CUstream hStream, unsigned long long* streamId)
+
+    /**
+     * 	Returns the unique Id associated with the stream handle supplied. (cuStreamGetId)
+     *
+     * 	@param hStream Handle to the stream to be queried
+     *
+     *  @return
+     */
+    external fun streamGetId(hStream: Long) : Long
 
     /**
      * 	Query the priority of a given stream. (cuStreamGetPriority)
