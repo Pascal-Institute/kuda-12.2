@@ -1,10 +1,7 @@
 import kuda.driverapi.DriverAPI
 import kuda.driverapi.prop.Result
 import kuda.kublas.Kublas
-import kuda.runtimeapi.DeviceManager
-import kuda.runtimeapi.EventManager
 import kuda.runtimeapi.RuntimeAPI
-import kuda.runtimeapi.StreamManager
 import kuda.runtimeapi.prop.FunctionCache
 import kuda.runtimeapi.prop.Limit
 import org.junit.jupiter.api.Test
@@ -24,9 +21,9 @@ class Test {
         val cudaVersion = runtimeAPI.runtimeGetVersion()
         val driverVersion = driverAPI.driverGetVersion()
 
-        val device = DeviceManager.getDevice()
+        val device = runtimeAPI.getDevice()
 
-        DeviceManager.initDevice(device, 0)
+        runtimeAPI.initDevice(device, 0)
 
         val driverDevice = driverAPI.deviceGet(0)
         val deviceCount = driverAPI.deviceGetCount()
@@ -36,27 +33,27 @@ class Test {
         println("CUDA Device: $device")
         println("CUDA Device count : $deviceCount")
         println(driverDevice)
-        println(DeviceManager.getLimit(Limit.PRINT_FIFO_SIZE))
-        println(DeviceManager.getLimit(Limit.MALLOC_HEAP_SIZE))
-        println(DeviceManager.getLimit(Limit.STACK_SIZE))
-        println(DeviceManager.getLimit(Limit.DEV_RUNTIME_SYNC_DEPTH))
-        println(DeviceManager.getLimit(Limit.MAX_L2_FETCH_GRANULARITY))
-        println(DeviceManager.getLimit(Limit.DEV_RUNTIME_PENDING_LAUNCH_COUNT))
-        println(DeviceManager.getLimit(Limit.PERSISTING_L2_CACHE_SIZE))
+        println(runtimeAPI.deviceGetLimit(Limit.PRINT_FIFO_SIZE))
+        println(runtimeAPI.deviceGetLimit(Limit.MALLOC_HEAP_SIZE))
+        println(runtimeAPI.deviceGetLimit(Limit.STACK_SIZE))
+        println(runtimeAPI.deviceGetLimit(Limit.DEV_RUNTIME_SYNC_DEPTH))
+        println(runtimeAPI.deviceGetLimit(Limit.MAX_L2_FETCH_GRANULARITY))
+        println(runtimeAPI.deviceGetLimit(Limit.DEV_RUNTIME_PENDING_LAUNCH_COUNT))
+        println(runtimeAPI.deviceGetLimit(Limit.PERSISTING_L2_CACHE_SIZE))
 
-        println(DeviceManager.getPCIBusId(device))
-        println(DeviceManager.getStreamPriorityRange())
+        println(runtimeAPI.deviceGetPCIBusId(device))
+        println(runtimeAPI.deviceGetStreamPriorityRange())
 
-        println(DeviceManager.setCacheConfig(FunctionCache.PREFER_NONE))
-        println(DeviceManager.synchronize())
-        println(DeviceManager.reset())
+        println(runtimeAPI.deviceSetCacheConfig(FunctionCache.PREFER_NONE))
+        println(runtimeAPI.deviceSynchronize())
+        println(runtimeAPI.deviceReset())
 
         println(runtimeAPI.driverGetVersion())
 
         println(runtimeAPI.getErrorName(kuda.runtimeapi.prop.Error.ERROR_UNKNOWN))
         println(runtimeAPI.getErrorString(kuda.runtimeapi.prop.Error.INITIALIZATION_ERROR))
 
-        var stream = StreamManager.create()
+        var stream = runtimeAPI.streamCreate()
 
         var mallocPointer = runtimeAPI.malloc(32)
         println(mallocPointer)
@@ -65,13 +62,13 @@ class Test {
         println(mallocHostPointer)
         runtimeAPI.freeHost(mallocHostPointer)
 
-        DeviceManager.getMemPool(device)
+        runtimeAPI.deviceGetMemPool(device)
 
-        var eventStart = EventManager.create()
-        var eventEnd = EventManager.create()
-        EventManager.destroy(eventStart)
-        eventStart = EventManager.create()
-        var time = EventManager.elapsedTime(eventStart, eventEnd)
+        var eventStart =  runtimeAPI.eventCreate()
+        var eventEnd = runtimeAPI.eventCreate()
+        runtimeAPI.eventDestroy(eventStart)
+        eventStart = runtimeAPI.eventCreate()
+        var time = runtimeAPI.eventElapsedTime(eventStart, eventEnd)
         println(time)
 
         val kublas = Kublas()
@@ -82,18 +79,20 @@ class Test {
 
     @Test
     fun `test getDeviceProperties`(){
-        val device = DeviceManager.getDevice()
-        DeviceManager.initDevice(device, 0)
-        val prop = DeviceManager.getDeviceProperties(device)
+        val runtimeAPI = RuntimeAPI()
+        val device = runtimeAPI.getDevice()
+        runtimeAPI.initDevice(device, 0)
+        val prop = runtimeAPI.getDeviceProperties(device)
     }
 
     @Test
     fun `test chooseDevice`(){
-        val device = DeviceManager.getDevice()
-        DeviceManager.initDevice(device, 0)
-        val prop = DeviceManager.getDeviceProperties(device)
+        val runtimeAPI = RuntimeAPI()
+        val device = runtimeAPI.getDevice()
+        runtimeAPI.initDevice(device, 0)
+        val prop = runtimeAPI.getDeviceProperties(device)
 
-        println(DeviceManager.chooseDevice(prop))
+        println(runtimeAPI.chooseDevice(prop))
     }
 
     @Test
