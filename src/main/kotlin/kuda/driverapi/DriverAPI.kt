@@ -62,7 +62,7 @@ class DriverAPI {
      */
     external fun ctxGetDevice(): Int
 
-    //8. Context Management
+    //8. Context Management//
     /**
      *  Create a CUDA context. (cuCtxCreate)
      *
@@ -76,8 +76,10 @@ class DriverAPI {
 
     /**
      *  Returns the flags for the current context. (cuCtxGetFlags)
+     *
+     *  @return Pointer to store flags of current context
      */
-    external fun ctxGetFlags(): UInt
+    external fun ctxGetFlags(): Int
 
     /**
      *  Returns the current shared memory configuration for the current context. (cuCtxGetSharedMemConfig)
