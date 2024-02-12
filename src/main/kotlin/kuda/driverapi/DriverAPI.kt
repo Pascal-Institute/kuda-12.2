@@ -118,9 +118,11 @@ class DriverAPI {
     }
 
     /**
-     * Sets the flags for the current context.
+     * 	Binds the specified CUDA context to the calling CPU thread. (cuCtxSetCurrent)
+     *
+     * 	@param ctx Context to bind to the calling CPU thread
      */
-    external fun ctxSetFlags(flags: Int): Int
+    external fun ctxSetCurrent(ctx: Long): Int
 
     /**
      * Set resource limits.
