@@ -123,6 +123,15 @@ class DriverAPI {
     external fun ctxGetFlags(): Int
 
     /**
+     *  Returns the unique Id associated with the context supplied. (cuCtxGetId)
+     *
+     *  @param ctx Context for which to obtain the Id
+     *
+     *  @return Pointer to store the Id of the context
+     */
+    external fun ctxGetId(ctx : Long) : Long
+
+    /**
      *  Returns the current shared memory configuration for the current context. (cuCtxGetSharedMemConfig)
      */
     private external fun ctxGetSharedMemConfig(dummy: Boolean): Int
