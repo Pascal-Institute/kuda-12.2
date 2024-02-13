@@ -311,7 +311,18 @@ class DriverAPI {
      */
     external fun memUnmap(ptr : Long, size : Int) : Int
 
-    //15. Steam Ordered Memory Allocator
+    //15. Steam Ordered Memory Allocator //
+
+    /**
+     * Allocates memory with stream ordered semantics. (cuMemAllocAsync)
+     *
+     * @param bytesize Number of bytes to allocate
+     * @param hStream The stream establishing the stream ordering contract and the memory pool to allocate from
+     *
+     * @return Returned device pointer
+     */
+    external fun memAllocAsync(bytesize: Int, hStream : Long): Long
+
     //CUresult cuMemAllocAsync(CUdeviceptr* dptr, size_t bytesize, CUstream hStream)
     //CUresult cuMemAllocFromPoolAsync(CUdeviceptr* dptr, size_t bytesize, CUmemoryPool pool, CUstream hStream)
     //CUresult cuMemFreeAsync(CUdeviceptr dptr, CUstream hStream)
