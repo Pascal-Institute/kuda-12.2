@@ -18,9 +18,20 @@ class DriverAPI {
 
     external fun driverGetVersion(): Int
 
+    //5. Device Management //
+
     external fun deviceGet(ordinal: Int): Int
 
     external fun deviceGetCount(): Int
+
+    /**
+     *  Gets the current mempool for a device. (cuDeviceGetMemPool)
+     *
+     *  @param dev Device to get mempool
+     *
+     *  @return Gets the current mempool for a device.
+     */
+    external fun devcieGetMemPool(dev : Int) : Long
 
     //7. Primary Context Management //
 
