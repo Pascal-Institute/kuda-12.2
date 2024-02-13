@@ -287,12 +287,20 @@ class DriverAPI {
     //CUresult cuMemMapArrayAsync(CUarrayMapInfo * mapInfoList, unsigned int  count, CUstream hStream)
 
     /**
-     * 	Release a memory handle representing a memory allocation which was previously allocated through cuMemCreate. (cuMemRelease)
+     * Release a memory handle representing a memory allocation which was previously allocated through cuMemCreate. (cuMemRelease)
      */
     external fun memRelease(handle: Long): Int
 
     //CUresult cuMemRetainAllocationHandle(CUmemGenericAllocationHandle * handle, void* addr)
     //CUresult cuMemSetAccess(CUdeviceptr ptr, size_t size, const CUmemAccessDesc * desc, size_t count)	//CUresult cuMemUnmap(CUdeviceptr ptr, size_t size)
+
+    /**
+     * Unmap the backing memory of a given address range. (cuMemUnmap)
+     *
+     * @param ptr Starting address for the virtual address range to unmap
+     * @param size Size of the virtual address range to unmap
+     */
+    external fun memUnmap(ptr : Long, size : Int) : Int
 
     //15. Steam Ordered Memory Allocator
     //CUresult cuMemAllocAsync(CUdeviceptr* dptr, size_t bytesize, CUstream hStream)
