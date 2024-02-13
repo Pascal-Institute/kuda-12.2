@@ -25,6 +25,15 @@ class DriverAPI {
     external fun deviceGetCount(): Int
 
     /**
+     *  Returns the default mempool of a device. (cuDeviceGetDefaultMemPool)
+     *
+     *  @param dev Device to get mempool
+     *
+     *  @return Gets the default mempool for a device.
+     */
+    external fun devcieGetDefaultMemPool(dev : Int) : Long
+
+    /**
      *  Gets the current mempool for a device. (cuDeviceGetMemPool)
      *
      *  @param dev Device to get mempool
@@ -32,6 +41,16 @@ class DriverAPI {
      *  @return Gets the current mempool for a device.
      */
     external fun devcieGetMemPool(dev : Int) : Long
+
+    /**
+     *  Returns an identifier string for the device. (cuDeviceGetName)
+     *
+     *  @param len Maximum length of string to store in name
+     *  @param dev Device to get identifier string for
+     *
+     *  @return Returns an identifier string for the device.
+     */
+    external fun deviceGetName(len : Int, dev : Int) : Int
 
     //7. Primary Context Management //
 
