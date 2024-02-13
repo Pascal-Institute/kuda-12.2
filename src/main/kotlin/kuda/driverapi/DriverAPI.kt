@@ -384,15 +384,25 @@ class DriverAPI {
     //CUresult cuPointerGetAttributes(unsigned int  numAttributes, CUpointer_attribute* attributes, void** data, CUdeviceptr ptr)
     //CUresult cuPointerSetAttribute(const void* value, CUpointer_attribute attribute, CUdeviceptr ptr)
 
-    //18. Stream Management
+    //18. Stream Management //
+
     //CUresult cuStreamAddCallback(CUstream hStream, CUstreamCallback callback, void* userData, unsigned int  flags)
-    //CUresult cuStreamAttachMemAsync(CUstream hStream, CUdeviceptr dptr, size_t length, unsigned int  flags)
 
     /**
-     * 	Begins graph capture on a stream. (cuStreamBeginCapture)
+     * Attach memory to a stream asynchronously. (cuStreamAttachMemAsync)
      *
-     * 	@param hStream Stream in which to initiate capture
-     * 	@param mode Controls the interaction of this capture sequence with other API calls that are potentially unsafe.
+     * @param hStream Stream in which to enqueue the attach operation
+     * @param dptr Pointer to memory (must be a pointer to managed memory or to a valid host-accessible region of system-allocated pageable memory)
+     * @param length Length of memory
+     * @param flags Must be one of MemAttachFlags
+     */
+    external fun streamAttachMemAsync(hStream : Long, dptr : Long, length : Int, flags : Int) : Int
+
+    /**
+     * Begins graph capture on a stream. (cuStreamBeginCapture)
+     *
+     * @param hStream Stream in which to initiate capture
+     * @param mode Controls the interaction of this capture sequence with other API calls that are potentially unsafe.
      */
     private external fun streamBeginCapture(hStream: Long, mode : Int): Int
     fun streamBeginCapture(hStream: Long, mode : StreamCaptureMode) : Int {
