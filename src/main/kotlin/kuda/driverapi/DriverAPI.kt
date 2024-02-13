@@ -800,7 +800,16 @@ class DriverAPI {
      */
     external fun ctxEnablePeerAccess(peerContext: Long, flags: Int): Int
 
-    //CUresult cuDeviceCanAccessPeer(int* canAccessPeer, CUdevice dev, CUdevice peerDev)
+    /**
+     * Queries if a device may directly access a peer device's memory. (cuDeviceCanAccessPeer)
+     *
+     * @param dev Device from which allocations on peerDev are to be directly accessed.
+     * @param peerDev Device on which the allocations to be directly accessed by dev reside.
+     *
+     * @return Returned access capability
+     */
+    external fun deviceCanAccessPeer(dev : Int, peerDev : Int) : Int
+
     //CUresult cuDeviceGetP2PAttribute(int* value, CUdevice_P2PAttribute attrib, CUdevice srcDevice, CUdevice dstDevice)
 
     //32. Graphics Interoperability
