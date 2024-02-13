@@ -225,9 +225,18 @@ class DriverAPI {
     external fun kernelGetFunction(kernel: Long): Long
 
     /**
-     * Unloads a library. (cuLibraryUnload)
+     *  Unloads a library. (cuLibraryUnload)
      */
     external fun libraryUnload(library: Long): Int
+
+    /**
+     *  Returns a module handle. (cuLibraryGetModule)
+     *
+     *  @param library Library to retrieve module from
+     *
+     *  @return Returned module handle
+     */
+    external fun libraryGetModule(library: Long): Long
 
     //13. Memory Management
     /**
