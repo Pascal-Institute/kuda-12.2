@@ -349,14 +349,21 @@ class DriverAPI {
     //CUresult cuMemPoolImportPointer(CUdeviceptr* ptr_out, CUmemoryPool pool, CUmemPoolPtrExportData* shareData)
     //CUresult cuMemPoolSetAccess(CUmemoryPool pool, const CUmemAccessDesc* map, size_t count)
     //CUresult cuMemPoolSetAttribute(CUmemoryPool pool, CUmemPool_attribute attr, void* value)
-    //CUresult cuMemPoolTrimTo(CUmemoryPool pool, size_t minBytesToKeep)
+
+    /**
+     * Tries to release memory back to the OS. (cuMemPoolTrimTo)
+     *
+     * @param pool The memory pool to trim
+     * @param minBytesToKeep If the pool has less than minBytesToKeep reserved, the TrimTo operation is a no-op. Otherwise the pool will be guaranteed to have at least minBytesToKeep bytes reserved after the operation.
+     */
+    external fun memPoolTrimTo(pool: Long, minBytesToKeep : Int) : Int
 
     //16. Multicast Object Management
     /**
-     * 	Associate a device to a multicast object. (cuMulticastAddDevice)
+     * Associate a device to a multicast object. (cuMulticastAddDevice)
      *
-     * 	@param mcHandle Handle representing a multicast object.
-     * 	@param dev Device that will be associated to the multicast object.
+     * @param mcHandle Handle representing a multicast object.
+     * @param dev Device that will be associated to the multicast object.
      */
     external fun multicastAddDevice(mcHandle: Long, dev: Int)
 
@@ -377,15 +384,25 @@ class DriverAPI {
     //CUresult cuPointerGetAttributes(unsigned int  numAttributes, CUpointer_attribute* attributes, void** data, CUdeviceptr ptr)
     //CUresult cuPointerSetAttribute(const void* value, CUpointer_attribute attribute, CUdeviceptr ptr)
 
-    //18. Stream Management
+    //18. Stream Management //
+
     //CUresult cuStreamAddCallback(CUstream hStream, CUstreamCallback callback, void* userData, unsigned int  flags)
-    //CUresult cuStreamAttachMemAsync(CUstream hStream, CUdeviceptr dptr, size_t length, unsigned int  flags)
 
     /**
-     * 	Begins graph capture on a stream. (cuStreamBeginCapture)
+     * Attach memory to a stream asynchronously. (cuStreamAttachMemAsync)
      *
-     * 	@param hStream Stream in which to initiate capture
-     * 	@param mode Controls the interaction of this capture sequence with other API calls that are potentially unsafe.
+     * @param hStream Stream in which to enqueue the attach operation
+     * @param dptr Pointer to memory (must be a pointer to managed memory or to a valid host-accessible region of system-allocated pageable memory)
+     * @param length Length of memory
+     * @param flags Must be one of MemAttachFlags
+     */
+    external fun streamAttachMemAsync(hStream : Long, dptr : Long, length : Int, flags : Int) : Int
+
+    /**
+     * Begins graph capture on a stream. (cuStreamBeginCapture)
+     *
+     * @param hStream Stream in which to initiate capture
+     * @param mode Controls the interaction of this capture sequence with other API calls that are potentially unsafe.
      */
     private external fun streamBeginCapture(hStream: Long, mode : Int): Int
     fun streamBeginCapture(hStream: Long, mode : StreamCaptureMode) : Int {
@@ -673,7 +690,16 @@ class DriverAPI {
     //CUresult cuGraphExternalSemaphoresWaitNodeSetParams(CUgraphNode hNode, const CUDA_EXT_SEM_WAIT_NODE_PARAMS * nodeParams)
     //CUresult cuGraphGetEdges(CUgraph hGraph, CUgraphNode * from, CUgraphNode * to, size_t * numEdges)
     //CUresult cuGraphGetEdges_v2(CUgraph hGraph, CUgraphNode * from, CUgraphNode * to, CUgraphEdgeData * edgeData, size_t * numEdges)
-    //CUresult cuGraphGetNodes(CUgraph hGraph, CUgraphNode * nodes, size_t * numNodes)
+
+    /**
+     * Returns a graph's nodes. (cuGraphGetNodes)
+     *
+     * @param hGraph Graph to query
+     *
+     * @return  Pointer to return the nodes
+     */
+    external fun graphGetNodes(hGraph: Long): Int
+
     //CUresult cuGraphGetRootNodes(CUgraph hGraph, CUgraphNode * rootNodes, size_t * numRootNodes)
     //CUresult cuGraphHostNodeGetParams(CUgraphNode hNode, CUDA_HOST_NODE_PARAMS * nodeParams)
     //CUresult cuGraphHostNodeSetParams(CUgraphNode hNode, const CUDA_HOST_NODE_PARAMS * nodeParams)
@@ -698,7 +724,16 @@ class DriverAPI {
 
     //CUresult cuGraphLaunch(CUgraphExec hGraphExec, CUstream hStream)
     //CUresult cuGraphMemAllocNodeGetParams(CUgraphNode hNode, CUDA_MEM_ALLOC_NODE_PARAMS * params_out)
-    //CUresult cuGraphMemFreeNodeGetParams(CUgraphNode hNode, CUdeviceptr * dptr_out)
+
+    /**
+     * Returns a memory free node's parameters. (cuGraphMemFreeNodeGetParams)
+     *
+     * @param hNode Node to get the parameters for
+     *
+     * @return Pointer to return the device address
+     */
+    external fun graphMemFreeNodeGetParams(hNode : Long) : Long
+
     //CUresult cuGraphMemcpyNodeGetParams(CUgraphNode hNode, CUDA_MEMCPY3D * nodeParams)
     //CUresult cuGraphMemcpyNodeSetParams(CUgraphNode hNode, const CUDA_MEMCPY3D * nodeParams)
     //CUresult cuGraphMemsetNodeGetParams(CUgraphNode hNode, CUDA_MEMSET_NODE_PARAMS * nodeParams)
@@ -783,7 +818,16 @@ class DriverAPI {
      */
     external fun ctxEnablePeerAccess(peerContext: Long, flags: Int): Int
 
-    //CUresult cuDeviceCanAccessPeer(int* canAccessPeer, CUdevice dev, CUdevice peerDev)
+    /**
+     * Queries if a device may directly access a peer device's memory. (cuDeviceCanAccessPeer)
+     *
+     * @param dev Device from which allocations on peerDev are to be directly accessed.
+     * @param peerDev Device on which the allocations to be directly accessed by dev reside.
+     *
+     * @return Returned access capability
+     */
+    external fun deviceCanAccessPeer(dev : Int, peerDev : Int) : Int
+
     //CUresult cuDeviceGetP2PAttribute(int* value, CUdevice_P2PAttribute attrib, CUdevice srcDevice, CUdevice dstDevice)
 
     //32. Graphics Interoperability
