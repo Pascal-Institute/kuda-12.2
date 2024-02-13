@@ -318,7 +318,15 @@ class DriverAPI {
     //CUresult cuMemPoolCreate(CUmemoryPool* pool, const CUmemPoolProps* poolProps)
 
     /**
-     * 	Destroys the specified memory pool. (cuMemPoolDestroy)
+     * Frees memory with stream ordered semantics. (cuMemFreeAsync)
+     *
+     * @param dptr memory to free
+     * @param hStream The stream establishing the stream ordering contract.
+     */
+    external fun memFreeAsync(dptr: Long, hStream : Long): Int
+
+    /**
+     * Destroys the specified memory pool. (cuMemPoolDestroy)
      */
     external fun memPoolDestroy(pool: Long): Int
 
