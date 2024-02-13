@@ -275,6 +275,15 @@ class DriverAPI {
     external fun deviceGetPCIBusId(len: Int, dev: Int): String
 
     //14. Virtual Memory Management
+
+    /**
+     * Free an address range reservation. (cuMemAddressFree)
+     *
+     * @param ptr Starting address of the virtual address range to free
+     * @param size Size of the virtual address region to free
+     */
+    external fun memAddressFree(ptr: Long, size : Int): Int
+
     //CUresult cuMemAddressFree(CUdeviceptr ptr, size_t size)
     //CUresult cuMemAddressReserve(CUdeviceptr* ptr, size_t size, size_t alignment, CUdeviceptr addr, unsigned long long flags)
     //CUresult cuMemCreate(CUmemGenericAllocationHandle* handle, size_t size, const CUmemAllocationProp* prop, unsigned long long flags)
