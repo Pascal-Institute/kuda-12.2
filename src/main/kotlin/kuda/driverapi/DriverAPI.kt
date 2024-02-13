@@ -25,41 +25,41 @@ class DriverAPI {
     external fun deviceGetCount(): Int
 
     /**
-     *  Returns the default mempool of a device. (cuDeviceGetDefaultMemPool)
+     * Returns the default mempool of a device. (cuDeviceGetDefaultMemPool)
      *
-     *  @param dev Device to get mempool
+     * @param dev Device to get mempool
      *
-     *  @return Gets the default mempool for a device.
+     * @return Gets the default mempool for a device.
      */
     external fun devcieGetDefaultMemPool(dev : Int) : Long
 
     /**
-     *  Gets the current mempool for a device. (cuDeviceGetMemPool)
+     * Gets the current mempool for a device. (cuDeviceGetMemPool)
      *
-     *  @param dev Device to get mempool
+     * @param dev Device to get mempool
      *
-     *  @return Gets the current mempool for a device.
+     * @return Gets the current mempool for a device.
      */
     external fun devcieGetMemPool(dev : Int) : Long
 
     /**
-     *  Returns an identifier string for the device. (cuDeviceGetName)
+     * Returns an identifier string for the device. (cuDeviceGetName)
      *
-     *  @param len Maximum length of string to store in name
-     *  @param dev Device to get identifier string for
+     * @param len Maximum length of string to store in name
+     * @param dev Device to get identifier string for
      *
-     *  @return Returns an identifier string for the device.
+     * @return Returns an identifier string for the device.
      */
     external fun deviceGetName(len : Int, dev : Int) : Int
 
     //7. Primary Context Management //
 
     /**
-     *  Get the state of the primary context. (cuDevicePrimaryCtxGetState)
+     * Get the state of the primary context. (cuDevicePrimaryCtxGetState)
      *
-     *  @param dev Device to get primary context flags for
+     * @param dev Device to get primary context flags for
      *
-     *  @return Int to store context state; 0 = inactive, 1 = active
+     * @return Int to store context state; 0 = inactive, 1 = active
      */
     external fun devicePrimaryCtxGetState(dev : Int): Int
 
@@ -68,19 +68,19 @@ class DriverAPI {
     external fun devicePrimaryCtxReset(dev: Int): Int
 
     /**
-     *  Retain the primary context on the GPU. (cuDevicePrimaryCtxRetain)
+     * Retain the primary context on the GPU. (cuDevicePrimaryCtxRetain)
      */
     external fun devicePrimaryCtxRetain(dev: Int): Long
 
     external fun devicePrimaryCtxSetFlags(dev: Int, flags: Int): Int
 
     /**
-     *  Destroy a CUDA context. (cuCtxDestroy)
+     * Destroy a CUDA context. (cuCtxDestroy)
      */
     external fun ctxDestroy(ctx: Long): Int
 
     /**
-     *  Gets the context's API version. (cuCtxGetApiVersion)
+     * Gets the context's API version. (cuCtxGetApiVersion)
      */
     external fun ctxGetApiVersion(ctx: Long): Int
 
@@ -93,7 +93,7 @@ class DriverAPI {
     }
 
     /**
-     *  Returns the CUDA context bound to the calling CPU thread. (cuCtxGetCurrent)
+     * Returns the CUDA context bound to the calling CPU thread. (cuCtxGetCurrent)
      */
     external fun ctxGetCurrent(): Long
 
@@ -105,34 +105,34 @@ class DriverAPI {
 
     //8. Context Management //
     /**
-     *  Create a CUDA context. (cuCtxCreate)
+     * Create a CUDA context. (cuCtxCreate)
      *
-     *  @param flags Context creation flags
-     *  @param dev Device to create context on
+     * @param flags Context creation flags
+     * @param dev Device to create context on
      *
-     *  @return Returned context handle of the new context
+     * @return Returned context handle of the new context
      */
     external fun ctxCreate(flags: Int, dev: Int) : Long
 
 
     /**
-     *  Returns the flags for the current context. (cuCtxGetFlags)
+     * Returns the flags for the current context. (cuCtxGetFlags)
      *
-     *  @return Pointer to store flags of current context
+     * @return Pointer to store flags of current context
      */
     external fun ctxGetFlags(): Int
 
     /**
-     *  Returns the unique Id associated with the context supplied. (cuCtxGetId)
+     * Returns the unique Id associated with the context supplied. (cuCtxGetId)
      *
-     *  @param ctx Context for which to obtain the Id
+     * @param ctx Context for which to obtain the Id
      *
-     *  @return Pointer to store the Id of the context
+     * @return Pointer to store the Id of the context
      */
     external fun ctxGetId(ctx : Long) : Long
 
     /**
-     *  Returns the current shared memory configuration for the current context. (cuCtxGetSharedMemConfig)
+     * Returns the current shared memory configuration for the current context. (cuCtxGetSharedMemConfig)
      */
     private external fun ctxGetSharedMemConfig(dummy: Boolean): Int
     fun ctxGetSharedMemConfig(): SharedConfig {
@@ -140,17 +140,17 @@ class DriverAPI {
     }
 
     /**
-     *  Returns numerical values that correspond to the least and greatest stream priorities. (cuCtxGetStreamPriorityRange)
+     * Returns numerical values that correspond to the least and greatest stream priorities. (cuCtxGetStreamPriorityRange)
      */
     external fun ctxGetStreamPriorityRange(): IntArray
 
     /**
-     *  Pops the current CUDA context from the current CPU thread. (cuCtxPopCurrent)
+     * Pops the current CUDA context from the current CPU thread. (cuCtxPopCurrent)
      */
     external fun ctxPopCurrent(): Long
 
     /**
-     *  Pushes a context on the current CPU thread. (cuCtxPushCurrent)
+     * Pushes a context on the current CPU thread. (cuCtxPushCurrent)
      */
     external fun ctxPushCurrent(ctx: Long): Int
 
@@ -183,7 +183,7 @@ class DriverAPI {
     }
 
     /**
-     *  Sets the shared memory configuration for the current context. (cuCtxSetSharedMemConfig)
+     * Sets the shared memory configuration for the current context. (cuCtxSetSharedMemConfig)
      */
     private external fun ctxSetSharedMemConfig(config: Int): Int
     fun ctxSetSharedMemConfig(config: SharedConfig): Int {
@@ -191,7 +191,7 @@ class DriverAPI {
     }
 
     /**
-     *  Block for a context's tasks to complete. (cuCtxSynchronize)
+     * Block for a context's tasks to complete. (cuCtxSynchronize)
      */
     external fun ctxSynchronize(): Int
 
@@ -199,12 +199,12 @@ class DriverAPI {
 
     //10. Module Management
     /**
-     *  Destroys state for a JIT linker invocation. (cuLinkDestroy)
+     * Destroys state for a JIT linker invocation. (cuLinkDestroy)
      */
     external fun linkDestroy(state: Long): Int
 
     /**
-     *  Query lazy loading mode. (cuModuleGetLoadingMode)
+     * Query lazy loading mode. (cuModuleGetLoadingMode)
      */
     private external fun moduleGetLoadingMode(dummy: Boolean): Int
     fun moduleGetLoadingMode(): ModuleLoadingMode {
@@ -225,16 +225,16 @@ class DriverAPI {
     external fun kernelGetFunction(kernel: Long): Long
 
     /**
-     *  Unloads a library. (cuLibraryUnload)
+     * Unloads a library. (cuLibraryUnload)
      */
     external fun libraryUnload(library: Long): Int
 
     /**
-     *  Returns a module handle. (cuLibraryGetModule)
+     * Returns a module handle. (cuLibraryGetModule)
      *
-     *  @param library Library to retrieve module from
+     * @param library Library to retrieve module from
      *
-     *  @return Returned module handle
+     * @return Returned module handle
      */
     external fun libraryGetModule(library: Long): Long
 
@@ -260,17 +260,17 @@ class DriverAPI {
     external fun memFreeHost(p: Long): Int
 
     /**
-     *  Unregisters a memory range that was registered with cuMemHostRegister. (cuMemHostUnregister)
+     * Unregisters a memory range that was registered with cuMemHostRegister. (cuMemHostUnregister)
      */
     external fun memHostUnregister(p: Long): Int
 
     /**
-     *  Returns a handle to a compute device. (cuDeviceGetByPCIBusId)
+     * Returns a handle to a compute device. (cuDeviceGetByPCIBusId)
      */
     external fun deviceGetByPCIBusId(): String
 
     /**
-     *  Returns a PCI Bus Id string for the device. (cuDeviceGetPCIBusId)
+     * Returns a PCI Bus Id string for the device. (cuDeviceGetPCIBusId)
      */
     external fun deviceGetPCIBusId(len: Int, dev: Int): String
 
@@ -374,12 +374,12 @@ class DriverAPI {
     external fun streamCreate(flags : Int) : Long
 
     /**
-     *  Create a stream with the given priority. (cuStreamCreateWithPriority)
+     * Create a stream with the given priority. (cuStreamCreateWithPriority)
      *
-     *  @param flags Flags for stream creation. See streamCreate for a list of valid flags
-     *  @param priority Stream priority. Lower numbers represent higher priorities. See ctxGetStreamPriorityRange for more information about meaningful stream priorities that can be passed.
+     * @param flags Flags for stream creation. See streamCreate for a list of valid flags
+     * @param priority Stream priority. Lower numbers represent higher priorities. See ctxGetStreamPriorityRange for more information about meaningful stream priorities that can be passed.
      *
-     *  @return Returned newly created stream
+     * @return Returned newly created stream
      */
     external fun streamCreateWithPriority(flags : Int, priority : Int) : Long
 
@@ -402,7 +402,7 @@ class DriverAPI {
     //CUresult cuStreamGetCaptureInfo_v3(CUstream hStream, CUstreamCaptureStatus * captureStatus_out, cuuint64_t * id_out, CUgraph * graph_out, const CUgraphNode * *dependencies_out, const CUgraphEdgeData * *edgeData_out, size_t * numDependencies_out)
 
     /**
-     *  Query the context associated with a stream. (cuStreamGetCtx)
+     * Query the context associated with a stream. (cuStreamGetCtx)
      */
     external fun streamGetCtx(hStream: Long): Long
 
@@ -416,7 +416,7 @@ class DriverAPI {
      *
      * 	@param hStream Handle to the stream to be queried
      *
-     *  @return
+     * @return
      */
     external fun streamGetId(hStream: Long) : Long
 
@@ -448,7 +448,7 @@ class DriverAPI {
     external fun streamWaitEvent(hStream: Long, hEvent: Long, flags: Int): Int
 
     /**
-     *  Update the set of dependencies in a capturing stream (11.3+). (cuThreadExchangeStreamCaptureMode)
+     * Update the set of dependencies in a capturing stream (11.3+). (cuThreadExchangeStreamCaptureMode)
      */
     private external fun threadExchangeStreamCaptureMode(mode: Int): Int
     fun threadExchangeStreamCaptureMode(mode: StreamCaptureMode): Int {
@@ -457,64 +457,64 @@ class DriverAPI {
 
     //19.Event Management
     /**
-     *  Creates an event. (cuEventCreate)
+     * Creates an event. (cuEventCreate)
      *
-     *  @param flags Event creation flags
+     * @param flags Event creation flags
      *
-     *  @return event
+     * @return event
      */
     external fun eventCreate(flags: Int): Long
 
     /**
-     *  Destroys an event. (cuEventDestroy)
+     * Destroys an event. (cuEventDestroy)
      */
     external fun eventDestroy(hEvent: Long): Int
 
     /**
-     *  Computes the elapsed time between two events. (cuEventElapsedTime)
+     * Computes the elapsed time between two events. (cuEventElapsedTime)
      *
-     *  @param hStart Starting event
-     *  @param hEnd Ending event
+     * @param hStart Starting event
+     * @param hEnd Ending event
      *
-     *  @return Time between hStart and hEnd in ms
+     * @return Time between hStart and hEnd in ms
      */
     external fun eventElapsedTime(hStart : Long, hEnd : Long)
 
     /**
-     *  Queries an event's status (cuEventQuery)
+     * Queries an event's status (cuEventQuery)
      */
     external fun eventQuery(hEvent: Long): Int
 
     /**
-     *  Records an event. (cuEventRecord)
+     * Records an event. (cuEventRecord)
      *
-     *  @param hEvent Event to record
-     *  @param hStream Stream to record event for
+     * @param hEvent Event to record
+     * @param hStream Stream to record event for
      */
     external fun eventRecord(hEvent : Long, hStream: Long) : Int
 
     /**
-     *  Records an event. (cuEventRecordWithFlags)
+     * Records an event. (cuEventRecordWithFlags)
      *
-     *  @param hEvent Event to record
-     *  @param hStream Stream to record event for
-     *  @param flags See EventRecordFlags
+     * @param hEvent Event to record
+     * @param hStream Stream to record event for
+     * @param flags See EventRecordFlags
      */
     external fun eventRecordWithFlags(hEvent : Long, hStream: Long, flags : Int) : Int
 
     /**
-     *  Waits for an event to complete. (cuEventSynchronize)
+     * Waits for an event to complete. (cuEventSynchronize)
      */
     external fun eventSynchronize(hEvent: Long): Int
 
     //20. External Resource Interoperability
     /**
-     *  Destroys an external memory object. (cuDestroyExternalMemory)
+     * Destroys an external memory object. (cuDestroyExternalMemory)
      */
     external fun destroyExternalMemory(extMem: Long): Int
 
     /**
-     *  Destroys an external semaphore. (cuDestroyExternalSemaphore)
+     * Destroys an external semaphore. (cuDestroyExternalSemaphore)
      */
     external fun destroyExternalSemaphore(extSem: Long): Int
 
@@ -550,7 +550,7 @@ class DriverAPI {
     //CUresult cuDeviceGetGraphMemAttribute(CUdevice device, CUgraphMem_attribute attr, void* value)
 
     /**
-     *  Free unused memory that was cached on the specified device for use with graphs back to the OS. (cuDeviceGraphMemTrim)
+     * Free unused memory that was cached on the specified device for use with graphs back to the OS. (cuDeviceGraphMemTrim)
      */
     external fun deviceGraphMemTrim(device: Int): Int
     //CUresult cuDeviceSetGraphMemAttribute(CUdevice device, CUgraphMem_attribute attr, void* value)
@@ -578,18 +578,18 @@ class DriverAPI {
     //CUresult cuGraphConditionalHandleCreate(CUgraphConditionalHandle * pHandle_out, CUgraph hGraph, CUcontext ctx, unsigned int  defaultLaunchValue, unsigned int  flags)
 
     /**
-     *  Creates a graph. (cuGraphCreate)
+     * Creates a graph. (cuGraphCreate)
      *
-     *  @param flags Graph creation flags, must be 0
+     * @param flags Graph creation flags, must be 0
      *
-     *  @return Returns newly created graph
+     * @return Returns newly created graph
      */
     external fun graphCreate(flags : Int) : Long
 
     //CUresult cuGraphDebugDotPrint(CUgraph hGraph, const char* path, unsigned int  flags)
 
     /**
-     *  Destroys a graph. (cuGraphDestroy)
+     * Destroys a graph. (cuGraphDestroy)
      */
     external fun graphDestroy(hGraph: Long): Int
 
@@ -601,14 +601,14 @@ class DriverAPI {
     //CUresult cuGraphEventRecordNodeGetEvent(CUgraphNode hNode, CUevent * event_out)
 
     /**
-     *  Sets an event record node's event. (cuGraphEventRecordNodeSetEvent)
+     * Sets an event record node's event. (cuGraphEventRecordNodeSetEvent)
      */
     external fun graphEventRecordNodeSetEvent(hNode: Long, event: Long)
 
     //CUresult cuGraphEventWaitNodeGetEvent(CUgraphNode hNode, CUevent * event_out)
 
     /**
-     *  Sets an event wait node's event. (cuGraphEventWaitNodeSetEvent)
+     * Sets an event wait node's event. (cuGraphEventWaitNodeSetEvent)
      */
     external fun graphEventWaitNodeSetEvent(hNode: Long, event: Long)
 
@@ -645,7 +645,7 @@ class DriverAPI {
     //CUresult cuGraphInstantiateWithParams(CUgraphExec * phGraphExec, CUgraph hGraph, CUDA_GRAPH_INSTANTIATE_PARAMS * instantiateParams)
 
     /**
-     *  Copies attributes from source node to destination node. (cuGraphKernelNodeCopyAttributes)
+     * Copies attributes from source node to destination node. (cuGraphKernelNodeCopyAttributes)
      */
     external fun graphKernelNodeCopyAttributes(dst: Long, src: Long): Int
 
@@ -656,7 +656,7 @@ class DriverAPI {
     //CUresult cuGraphKernelNodeSetParams(CUgraphNode hNode, const CUDA_KERNEL_NODE_PARAMS * nodeParams)
 
     /**
-     *  Launches an executable graph in a stream. (cuGraphLaunch)
+     * Launches an executable graph in a stream. (cuGraphLaunch)
      */
     external fun graphLaunch(hGraphExec: Long, hStream: Long): Int
 
@@ -682,19 +682,19 @@ class DriverAPI {
     //CUresult cuGraphRetainUserObject(CUgraph graph, CUuserObject object, unsigned int  count, unsigned int  flags)
 
     /**
-     *  Uploads an executable graph in a stream. (cuGraphUpload)
+     * Uploads an executable graph in a stream. (cuGraphUpload)
      */
     external fun graphUpload(hGraphExec: Long, hStream: Long): Int
 
     //CUresult cuUserObjectCreate(CUuserObject * object_out, void* ptr, CUhostFn destroy, unsigned int  initialRefcount, unsigned int  flags)
 
     /**
-     *  Release a reference to a user object. (cuUserObjectRelease)
+     * Release a reference to a user object. (cuUserObjectRelease)
      */
     external fun userObjectRelease(cuObject: Long, count: UInt): Int
 
     /**
-     *  Retain a reference to a user object. (cuUserObjectRetain)
+     * Retain a reference to a user object. (cuUserObjectRetain)
      */
     external fun userObjectRetain(cuObject: Long, count: UInt): Int
 
@@ -743,7 +743,7 @@ class DriverAPI {
 
 
     /**
-     *  Enables direct access to memory allocations in a peer context. (cuCtxEnablePeerAccess)
+     * Enables direct access to memory allocations in a peer context. (cuCtxEnablePeerAccess)
      */
     external fun ctxEnablePeerAccess(peerContext: Long, flags: Int): Int
 
@@ -756,7 +756,7 @@ class DriverAPI {
     //CUresult cuGraphicsResourceGetMappedPointer(CUdeviceptr * pDevPtr, size_t * pSize, CUgraphicsResource resource)
 
     /**
-     *  Set usage flags for mapping a graphics resource. (cuGraphicsResourceSetMapFlags)
+     * Set usage flags for mapping a graphics resource. (cuGraphicsResourceSetMapFlags)
      */
     external fun graphicsResourceSetMapFlags(resource: Long, flags: Int): Int
 
