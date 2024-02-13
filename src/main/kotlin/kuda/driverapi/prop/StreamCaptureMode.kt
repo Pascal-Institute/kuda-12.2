@@ -1,7 +1,6 @@
 package kuda.driverapi.prop
 
 /**
- *
  * Possible modes for stream capture thread interactions. For more details see cuStreamBeginCapture and cuThreadExchangeStreamCaptureMode (CUstreamCaptureMode)
  *
  * @property GLOBAL
