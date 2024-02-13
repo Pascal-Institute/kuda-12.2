@@ -22,6 +22,17 @@ class DriverAPI {
 
     external fun deviceGetCount(): Int
 
+    //7. Primary Context Management //
+
+    /**
+     *  Get the state of the primary context. (cuDevicePrimaryCtxGetState)
+     *
+     *  @param dev Device to get primary context flags for
+     *
+     *  @return Int to store context state; 0 = inactive, 1 = active
+     */
+    external fun devicePrimaryCtxGetState(dev : Int): Int
+
     external fun devicePrimaryCtxRelease(dev: Int): Int
 
     external fun devicePrimaryCtxReset(dev: Int): Int
@@ -62,7 +73,7 @@ class DriverAPI {
      */
     external fun ctxGetDevice(): Int
 
-    //8. Context Management//
+    //8. Context Management //
     /**
      *  Create a CUDA context. (cuCtxCreate)
      *
