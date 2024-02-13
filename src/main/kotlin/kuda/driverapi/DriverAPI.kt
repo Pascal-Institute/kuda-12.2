@@ -715,7 +715,16 @@ class DriverAPI {
 
     //CUresult cuGraphLaunch(CUgraphExec hGraphExec, CUstream hStream)
     //CUresult cuGraphMemAllocNodeGetParams(CUgraphNode hNode, CUDA_MEM_ALLOC_NODE_PARAMS * params_out)
-    //CUresult cuGraphMemFreeNodeGetParams(CUgraphNode hNode, CUdeviceptr * dptr_out)
+
+    /**
+     * Returns a memory free node's parameters. (cuGraphMemFreeNodeGetParams)
+     *
+     * @param hNode Node to get the parameters for
+     *
+     * @return Pointer to return the device address
+     */
+    external fun graphMemFreeNodeGetParams(hNode : Long) : Long
+
     //CUresult cuGraphMemcpyNodeGetParams(CUgraphNode hNode, CUDA_MEMCPY3D * nodeParams)
     //CUresult cuGraphMemcpyNodeSetParams(CUgraphNode hNode, const CUDA_MEMCPY3D * nodeParams)
     //CUresult cuGraphMemsetNodeGetParams(CUgraphNode hNode, CUDA_MEMSET_NODE_PARAMS * nodeParams)
