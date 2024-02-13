@@ -349,14 +349,21 @@ class DriverAPI {
     //CUresult cuMemPoolImportPointer(CUdeviceptr* ptr_out, CUmemoryPool pool, CUmemPoolPtrExportData* shareData)
     //CUresult cuMemPoolSetAccess(CUmemoryPool pool, const CUmemAccessDesc* map, size_t count)
     //CUresult cuMemPoolSetAttribute(CUmemoryPool pool, CUmemPool_attribute attr, void* value)
-    //CUresult cuMemPoolTrimTo(CUmemoryPool pool, size_t minBytesToKeep)
+
+    /**
+     * Tries to release memory back to the OS. (cuMemPoolTrimTo)
+     *
+     * @param pool The memory pool to trim
+     * @param minBytesToKeep If the pool has less than minBytesToKeep reserved, the TrimTo operation is a no-op. Otherwise the pool will be guaranteed to have at least minBytesToKeep bytes reserved after the operation.
+     */
+    external fun memPoolTrimTo(pool: Long, minBytesToKeep : Int) : Int
 
     //16. Multicast Object Management
     /**
-     * 	Associate a device to a multicast object. (cuMulticastAddDevice)
+     * Associate a device to a multicast object. (cuMulticastAddDevice)
      *
-     * 	@param mcHandle Handle representing a multicast object.
-     * 	@param dev Device that will be associated to the multicast object.
+     * @param mcHandle Handle representing a multicast object.
+     * @param dev Device that will be associated to the multicast object.
      */
     external fun multicastAddDevice(mcHandle: Long, dev: Int)
 
