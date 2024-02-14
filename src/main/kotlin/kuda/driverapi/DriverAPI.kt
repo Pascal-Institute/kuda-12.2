@@ -647,18 +647,32 @@ class DriverAPI {
     external fun graphDestroy(hGraph: Long): Int
 
     /**
-     * 	Remove a node from the graph. (cuGraphDestroyNode)
+     * Remove a node from the graph. (cuGraphDestroyNode)
      */
     external fun graphDestroyNode(hNode: Long): Int
 
-    //CUresult cuGraphEventRecordNodeGetEvent(CUgraphNode hNode, CUevent * event_out)
+    /**
+     * Returns the event associated with an event record node. (cuGraphEventRecordNodeGetEvent)
+     *
+     * @param hNode Node to get the event for
+     *
+     * @return Pointer to return the event
+     */
+    external fun graphEventRecordNodeGetEvent(hNode : Long) : Long
 
     /**
      * Sets an event record node's event. (cuGraphEventRecordNodeSetEvent)
      */
-    external fun graphEventRecordNodeSetEvent(hNode: Long, event: Long)
+    external fun graphEventRecordNodeSetEvent(hNode: Long, event: Long) : Int
 
-    //CUresult cuGraphEventWaitNodeGetEvent(CUgraphNode hNode, CUevent * event_out)
+    /**
+     * Returns the event associated with an event wait node. (cuGraphEventWaitNodeGetEvent)
+     *
+     * @param hNode Node to get the event for
+     *
+     * @return Pointer to return the event
+     */
+    external fun graphEventWaitNodeGetEvent(hNode : Long) : Long
 
     /**
      * Sets an event wait node's event. (cuGraphEventWaitNodeSetEvent)
