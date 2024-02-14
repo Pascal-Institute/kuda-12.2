@@ -262,6 +262,19 @@ class DriverAPI {
     external fun ipcCloseMemHandle(dptr: Long): Int
 
     /**
+     * Allocates device memory. (cuMemAlloc)
+     *
+     * @param byteSize Requested allocation size in bytes
+     *
+     * @return Returned device pointer
+     */
+    external fun memAlloc(byteSize : Int) : Long
+
+    //CUresult cuMemAllocHost(void** pp, size_t bytesize)
+    //CUresult cuMemAllocManaged(CUdeviceptr * dptr, size_t bytesize, unsigned int  flags)
+    //CUresult cuMemAllocPitch(CUdeviceptr * dptr, size_t * pPitch, size_t WidthInBytes, size_t Height, unsigned int  ElementSizeBytes)
+
+    /**
      * Frees device memory. (cuMemFree)
      */
     external fun memFree(dptr: Long): Int
