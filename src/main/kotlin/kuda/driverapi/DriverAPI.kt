@@ -132,6 +132,18 @@ class DriverAPI {
     external fun ctxGetId(ctx : Long) : Long
 
     /**
+     * Returns resource limits. (cuCtxGetLimit)
+     *
+     * @param limit Limit to query
+     *
+     * @return Returned size of limit
+     */
+    private external fun ctxGetLimit(limit : Int) : Int
+    fun ctxGetLimit(limit : Limit) : Int {
+        return ctxGetLimit(limit.num)
+    }
+
+    /**
      * Returns the current shared memory configuration for the current context. (cuCtxGetSharedMemConfig)
      */
     private external fun ctxGetSharedMemConfig(dummy: Boolean): Int
