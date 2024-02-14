@@ -21,8 +21,4 @@ enum class Limit(val byte : Byte) {
     MAX_L2_FETCH_GRANULARITY(0x05),
     PERSISTING_L2_CACHE_SIZE(0x06)
     //MAX
-
-    companion object{
-        fun fromInt(num : Int) : Limit ? = entries.find { it.num == num }
-    }
 }
