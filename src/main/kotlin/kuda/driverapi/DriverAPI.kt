@@ -271,7 +271,17 @@ class DriverAPI {
     external fun memAlloc(byteSize : Int) : Long
 
     //CUresult cuMemAllocHost(void** pp, size_t bytesize)
-    //CUresult cuMemAllocManaged(CUdeviceptr * dptr, size_t bytesize, unsigned int  flags)
+
+    /**
+     * Allocates memory that will be automatically managed by the Unified Memory system. (cuMemAllocManaged)
+     *
+     * @param byteSize Requested allocation size in bytes
+     * @param flags Must be one of GLOBAL or HOST in MemAttachFlags enum class
+     *
+     * @return Returned device pointer
+     */
+    external fun memAllocManaged(byteSize : Int, flags : Int) : Long
+
     //CUresult cuMemAllocPitch(CUdeviceptr * dptr, size_t * pPitch, size_t WidthInBytes, size_t Height, unsigned int  ElementSizeBytes)
 
     /**
