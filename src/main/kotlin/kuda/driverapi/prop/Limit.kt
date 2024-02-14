@@ -12,7 +12,7 @@ package kuda.driverapi.prop
  * @property MAX_L2_FETCH_GRANULARITY A value between 0 and 128 that indicates the maximum fetch granularity of L2 (in Bytes). This is a hint
  * @property PERSISTING_L2_CACHE_SIZE A size in bytes for L2 persisting lines cache size
  */
-enum class Limit(val byte : Byte) {
+enum class Limit(val num : Int) {
     STACK_SIZE(0x00),
     PRINTF_FIFO_SIZE(0x01),
     MALLOC_HEAP_SIZE(0x02),

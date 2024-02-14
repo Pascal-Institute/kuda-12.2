@@ -132,6 +132,18 @@ class DriverAPI {
     external fun ctxGetId(ctx : Long) : Long
 
     /**
+     * Returns resource limits. (cuCtxGetLimit)
+     *
+     * @param limit Limit to query
+     *
+     * @return Returned size of limit
+     */
+    private external fun ctxGetLimit(limit : Int) : Int
+    fun ctxGetLimit(limit : Limit) : Int {
+        return ctxGetLimit(limit.num)
+    }
+
+    /**
      * Returns the current shared memory configuration for the current context. (cuCtxGetSharedMemConfig)
      */
     private external fun ctxGetSharedMemConfig(dummy: Boolean): Int
@@ -248,6 +260,29 @@ class DriverAPI {
      * Attempts to close memory mapped with cuIpcOpenMemHandle. (cuIpcCloseMemHandle)
      */
     external fun ipcCloseMemHandle(dptr: Long): Int
+
+    /**
+     * Allocates device memory. (cuMemAlloc)
+     *
+     * @param byteSize Requested allocation size in bytes
+     *
+     * @return Returned device pointer
+     */
+    external fun memAlloc(byteSize : Int) : Long
+
+    //CUresult cuMemAllocHost(void** pp, size_t bytesize)
+
+    /**
+     * Allocates memory that will be automatically managed by the Unified Memory system. (cuMemAllocManaged)
+     *
+     * @param byteSize Requested allocation size in bytes
+     * @param flags Must be one of GLOBAL or HOST in MemAttachFlags enum class
+     *
+     * @return Returned device pointer
+     */
+    external fun memAllocManaged(byteSize : Int, flags : Int) : Long
+
+    //CUresult cuMemAllocPitch(CUdeviceptr * dptr, size_t * pPitch, size_t WidthInBytes, size_t Height, unsigned int  ElementSizeBytes)
 
     /**
      * Frees device memory. (cuMemFree)
@@ -647,18 +682,32 @@ class DriverAPI {
     external fun graphDestroy(hGraph: Long): Int
 
     /**
-     * 	Remove a node from the graph. (cuGraphDestroyNode)
+     * Remove a node from the graph. (cuGraphDestroyNode)
      */
     external fun graphDestroyNode(hNode: Long): Int
 
-    //CUresult cuGraphEventRecordNodeGetEvent(CUgraphNode hNode, CUevent * event_out)
+    /**
+     * Returns the event associated with an event record node. (cuGraphEventRecordNodeGetEvent)
+     *
+     * @param hNode Node to get the event for
+     *
+     * @return Pointer to return the event
+     */
+    external fun graphEventRecordNodeGetEvent(hNode : Long) : Long
 
     /**
      * Sets an event record node's event. (cuGraphEventRecordNodeSetEvent)
      */
-    external fun graphEventRecordNodeSetEvent(hNode: Long, event: Long)
+    external fun graphEventRecordNodeSetEvent(hNode: Long, event: Long) : Int
 
-    //CUresult cuGraphEventWaitNodeGetEvent(CUgraphNode hNode, CUevent * event_out)
+    /**
+     * Returns the event associated with an event wait node. (cuGraphEventWaitNodeGetEvent)
+     *
+     * @param hNode Node to get the event for
+     *
+     * @return Pointer to return the event
+     */
+    external fun graphEventWaitNodeGetEvent(hNode : Long) : Long
 
     /**
      * Sets an event wait node's event. (cuGraphEventWaitNodeSetEvent)
