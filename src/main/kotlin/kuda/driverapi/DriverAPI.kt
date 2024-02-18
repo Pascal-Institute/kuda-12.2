@@ -189,9 +189,9 @@ class DriverAPI {
     /**
      * Set resource limits.
      */
-    private external fun ctxSetLimit(limit: Byte, value: Int): Int
+    private external fun ctxSetLimit(limit: Int, value: Int): Int
     fun ctxSetLimit(limit: Limit, value: Int): Int {
-        return ctxSetLimit(limit.byte, value)
+        return ctxSetLimit(limit.num, value)
     }
 
     /**
