@@ -224,6 +224,15 @@ class DriverAPI {
     }
 
     /**
+     * Loads a compute module. (cuModuleLoad)
+     *
+     * @param fname Filename of module to load
+     *
+     * @return Loads a compute module.
+     */
+    external fun moduleLoad(fname: String): Long
+
+    /**
      * Unloads a module. (cuModuleUnload)
      */
     external fun moduleUnload(hmod: Long): Int
