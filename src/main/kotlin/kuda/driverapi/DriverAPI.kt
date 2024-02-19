@@ -189,9 +189,9 @@ class DriverAPI {
     /**
      * Set resource limits.
      */
-    private external fun ctxSetLimit(limit: Byte, value: Int): Int
+    private external fun ctxSetLimit(limit: Int, value: Int): Int
     fun ctxSetLimit(limit: Limit, value: Int): Int {
-        return ctxSetLimit(limit.byte, value)
+        return ctxSetLimit(limit.num, value)
     }
 
     /**
@@ -222,6 +222,15 @@ class DriverAPI {
     fun moduleGetLoadingMode(): ModuleLoadingMode {
         return ModuleLoadingMode.fromInt(moduleGetLoadingMode(false))!!
     }
+
+    /**
+     * Loads a compute module. (cuModuleLoad)
+     *
+     * @param fname Filename of module to load
+     *
+     * @return Loads a compute module.
+     */
+    external fun moduleLoad(fname: String): Long
 
     /**
      * Unloads a module. (cuModuleUnload)
@@ -513,6 +522,18 @@ class DriverAPI {
      */
     external fun streamGetPriority(hStream: Long): Int
 
+    /**
+     * Returns a stream's capture status. (cuStreamIsCapturing)
+     *
+     * @param hStream Stream to query
+     * @param dummy do nothing...
+     *
+     * @return Returns the stream's capture status
+     */
+    private external fun streamIsCapturing(hStream : Long, dummy : Boolean) : Int
+    fun streamIsCapturing(hStream : Long) : StreamCaptureStatus {
+        return StreamCaptureStatus.fromInt(streamIsCapturing(hStream, false))!!
+    }
     //CUresult cuStreamIsCapturing(CUstream hStream, CUstreamCaptureStatus * captureStatus)
 
     /**
@@ -641,6 +662,7 @@ class DriverAPI {
      * Free unused memory that was cached on the specified device for use with graphs back to the OS. (cuDeviceGraphMemTrim)
      */
     external fun deviceGraphMemTrim(device: Int): Int
+
     //CUresult cuDeviceSetGraphMemAttribute(CUdevice device, CUgraphMem_attribute attr, void* value)
     //CUresult cuGraphAddBatchMemOpNode(CUgraphNode * phGraphNode, CUgraph hGraph, const CUgraphNode * dependencies, size_t numDependencies, const CUDA_BATCH_MEM_OP_NODE_PARAMS * nodeParams)
     //CUresult cuGraphAddChildGraphNode(CUgraphNode * phGraphNode, CUgraph hGraph, const CUgraphNode * dependencies, size_t numDependencies, CUgraph childGraph)
@@ -662,7 +684,16 @@ class DriverAPI {
     //CUresult cuGraphBatchMemOpNodeGetParams(CUgraphNode hNode, CUDA_BATCH_MEM_OP_NODE_PARAMS * nodeParams_out)
     //CUresult cuGraphBatchMemOpNodeSetParams(CUgraphNode hNode, const CUDA_BATCH_MEM_OP_NODE_PARAMS * nodeParams)
     //CUresult cuGraphChildGraphNodeGetGraph(CUgraphNode hNode, CUgraph * phGraph)
-    //CUresult cuGraphClone(CUgraph * phGraphClone, CUgraph originalGraph)
+
+    /**
+     * Clones a graph. (cuGraphCreate)
+     *
+     * @param originalGraph Graph to clone
+     *
+     * @return Returns newly created cloned graph
+     */
+    external fun graphClone(originalGraph : Long) : Long
+
     //CUresult cuGraphConditionalHandleCreate(CUgraphConditionalHandle * pHandle_out, CUgraph hGraph, CUcontext ctx, unsigned int  defaultLaunchValue, unsigned int  flags)
 
     /**
