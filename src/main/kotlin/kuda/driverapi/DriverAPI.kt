@@ -189,9 +189,9 @@ class DriverAPI {
     /**
      * Set resource limits.
      */
-    private external fun ctxSetLimit(limit: Byte, value: Int): Int
+    private external fun ctxSetLimit(limit: Int, value: Int): Int
     fun ctxSetLimit(limit: Limit, value: Int): Int {
-        return ctxSetLimit(limit.byte, value)
+        return ctxSetLimit(limit.num, value)
     }
 
     /**
@@ -222,6 +222,15 @@ class DriverAPI {
     fun moduleGetLoadingMode(): ModuleLoadingMode {
         return ModuleLoadingMode.fromInt(moduleGetLoadingMode(false))!!
     }
+
+    /**
+     * Loads a compute module. (cuModuleLoad)
+     *
+     * @param fname Filename of module to load
+     *
+     * @return Loads a compute module.
+     */
+    external fun moduleLoad(fname: String): Long
 
     /**
      * Unloads a module. (cuModuleUnload)
