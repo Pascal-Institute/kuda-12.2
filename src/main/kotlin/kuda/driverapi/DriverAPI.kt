@@ -513,6 +513,18 @@ class DriverAPI {
      */
     external fun streamGetPriority(hStream: Long): Int
 
+    /**
+     * Returns a stream's capture status. (cuStreamIsCapturing)
+     *
+     * @param hStream Stream to query
+     * @param dummy do nothing...
+     *
+     * @return Returns the stream's capture status
+     */
+    private external fun streamIsCapturing(hStream : Long, dummy : Boolean) : Int
+    fun streamIsCapturing(hStream : Long) : StreamCaptureStatus {
+        return StreamCaptureStatus.fromInt(streamIsCapturing(hStream, false))!!
+    }
     //CUresult cuStreamIsCapturing(CUstream hStream, CUstreamCaptureStatus * captureStatus)
 
     /**
