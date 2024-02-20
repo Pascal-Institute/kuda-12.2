@@ -765,11 +765,19 @@ class DriverAPI {
     external fun graphExecChildGraphNodeSetParams(hGraphExec : Long, hNode : Long, childGraph : Long) : Int
 
     /**
-     * 	Destroys an executable graph. (cuGraphExecDestroy)
+     * Destroys an executable graph. (cuGraphExecDestroy)
      */
     external fun graphExecDestroy(hGraphExec: Long): Int
 
-    //CUresult cuGraphExecEventRecordNodeSetEvent(CUgraphExec hGraphExec, CUgraphNode hNode, CUevent event)
+    /**
+     * Sets the event for an event record node in the given graphExec. (cuGraphExecEventRecordNodeSetEvent)
+     *
+     * @param hGraphExec The executable graph in which to set the specified node
+     * @param hNode event record node from the graph from which graphExec was instantiated
+     * @param event Updated event to use
+     */
+    external fun graphExecEventRecordNodeSetEvent(hGraphExec : Long, hNode : Long, event : Long) : Int
+
     //CUresult cuGraphExecEventWaitNodeSetEvent(CUgraphExec hGraphExec, CUgraphNode hNode, CUevent event)
     //CUresult cuGraphExecExternalSemaphoresSignalNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, const CUDA_EXT_SEM_SIGNAL_NODE_PARAMS * nodeParams)
     //CUresult cuGraphExecExternalSemaphoresWaitNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, const CUDA_EXT_SEM_WAIT_NODE_PARAMS * nodeParams)
