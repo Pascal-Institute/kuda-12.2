@@ -163,6 +163,14 @@ class RuntimeAPI {
 
     external fun runtimeGetVersion() : Int
 
+    //6.28 Graph Management
+    /**
+     * Free unused memory that was cached on the specified device for use with graphs back to the OS. (cudaDeviceGraphMemTrim)
+     *
+     * @param device The device for which cached memory should be freed.
+     */
+    external fun deviceGraphMemTrim(device : Int) : Int
+
     //6.13  Peer Device Memory Access
     external fun deviceCanAccessPeer(device : Int, peerDevice : Int) : Int
 
