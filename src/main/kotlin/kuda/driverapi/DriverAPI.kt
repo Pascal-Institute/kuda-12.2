@@ -683,7 +683,15 @@ class DriverAPI {
     //CUresult cuGraphAddNode_v2(CUgraphNode * phGraphNode, CUgraph hGraph, const CUgraphNode * dependencies, const CUgraphEdgeData * dependencyData, size_t numDependencies, CUgraphNodeParams * nodeParams)
     //CUresult cuGraphBatchMemOpNodeGetParams(CUgraphNode hNode, CUDA_BATCH_MEM_OP_NODE_PARAMS * nodeParams_out)
     //CUresult cuGraphBatchMemOpNodeSetParams(CUgraphNode hNode, const CUDA_BATCH_MEM_OP_NODE_PARAMS * nodeParams)
-    //CUresult cuGraphChildGraphNodeGetGraph(CUgraphNode hNode, CUgraph * phGraph)
+
+    /**
+     * Gets a handle to the embedded graph of a child graph node. (cuGraphChildGraphNodeGetGraph)
+     *
+     * @param hNode Node to get the embedded graph for
+     *
+     * @return Location to store a handle to the graph
+     */
+    external fun graphChildGraphNodeGetGraph(hNode : Long) : Long
 
     /**
      * Clones a graph. (cuGraphCreate)
