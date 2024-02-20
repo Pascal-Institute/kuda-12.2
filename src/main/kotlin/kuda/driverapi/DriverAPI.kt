@@ -751,10 +751,18 @@ class DriverAPI {
     /**
      * Sets an event wait node's event. (cuGraphEventWaitNodeSetEvent)
      */
-    external fun graphEventWaitNodeSetEvent(hNode: Long, event: Long)
+    external fun graphEventWaitNodeSetEvent(hNode: Long, event: Long) : Int
 
     //CUresult cuGraphExecBatchMemOpNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, const CUDA_BATCH_MEM_OP_NODE_PARAMS * nodeParams)
-    //CUresult cuGraphExecChildGraphNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, CUgraph childGraph)
+
+    /**
+     * Updates node parameters in the child graph node in the given graphExec. (cuGraphExecChildGraphNodeSetParams)
+     *
+     * @param hGraphExec The executable graph in which to set the specified node
+     * @param hNode Host node from the graph which was used to instantiate graphExec
+     * @param childGraph The graph supplying the updated parameters
+     */
+    external fun graphExecChildGraphNodeSetParams(hGraphExec : Long, hNode : Long, childGraph : Long) : Int
 
     /**
      * 	Destroys an executable graph. (cuGraphExecDestroy)
