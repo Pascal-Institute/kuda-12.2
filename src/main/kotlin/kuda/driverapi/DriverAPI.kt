@@ -778,7 +778,15 @@ class DriverAPI {
      */
     external fun graphExecEventRecordNodeSetEvent(hGraphExec : Long, hNode : Long, event : Long) : Int
 
-    //CUresult cuGraphExecEventWaitNodeSetEvent(CUgraphExec hGraphExec, CUgraphNode hNode, CUevent event)
+    /**
+     * Sets the event for an event wait node in the given graphExec. (cuGraphExecEventWaitNodeSetEvent)
+     *
+     * @param hGraphExec The executable graph in which to set the specified node
+     * @param hNode event wait node from the graph from which graphExec was instantiated
+     * @param event Updated event to use
+     */
+    external fun graphExecEventWaitNodeSetEvent(hGraphExec : Long, hNode : Long, event : Long) : Int
+
     //CUresult cuGraphExecExternalSemaphoresSignalNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, const CUDA_EXT_SEM_SIGNAL_NODE_PARAMS * nodeParams)
     //CUresult cuGraphExecExternalSemaphoresWaitNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, const CUDA_EXT_SEM_WAIT_NODE_PARAMS * nodeParams)
     //CUresult cuGraphExecGetFlags(CUgraphExec hGraphExec, cuuint64_t * flags)
