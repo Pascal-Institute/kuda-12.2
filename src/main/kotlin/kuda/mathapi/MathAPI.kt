@@ -16,6 +16,20 @@ class MathAPI {
         external fun acosh(x : Double) : Double
 
         /**
+         * Calculate the arc sine of the input argument.
+         */
+        @JvmStatic
+        external fun asin(x : Double) : Double
+
+
+        /**
+         * Calculate the inverse hyperbolic sine of the input argument.
+         */
+        @JvmStatic
+        external fun asinh(x : Double) : Double
+
+
+        /**
          * Calculate the base logarithm of the input argument x
          */
         @JvmStatic
