@@ -683,7 +683,15 @@ class DriverAPI {
     //CUresult cuGraphAddNode_v2(CUgraphNode * phGraphNode, CUgraph hGraph, const CUgraphNode * dependencies, const CUgraphEdgeData * dependencyData, size_t numDependencies, CUgraphNodeParams * nodeParams)
     //CUresult cuGraphBatchMemOpNodeGetParams(CUgraphNode hNode, CUDA_BATCH_MEM_OP_NODE_PARAMS * nodeParams_out)
     //CUresult cuGraphBatchMemOpNodeSetParams(CUgraphNode hNode, const CUDA_BATCH_MEM_OP_NODE_PARAMS * nodeParams)
-    //CUresult cuGraphChildGraphNodeGetGraph(CUgraphNode hNode, CUgraph * phGraph)
+
+    /**
+     * Gets a handle to the embedded graph of a child graph node. (cuGraphChildGraphNodeGetGraph)
+     *
+     * @param hNode Node to get the embedded graph for
+     *
+     * @return Location to store a handle to the graph
+     */
+    external fun graphChildGraphNodeGetGraph(hNode : Long) : Long
 
     /**
      * Clones a graph. (cuGraphCreate)
@@ -743,18 +751,42 @@ class DriverAPI {
     /**
      * Sets an event wait node's event. (cuGraphEventWaitNodeSetEvent)
      */
-    external fun graphEventWaitNodeSetEvent(hNode: Long, event: Long)
+    external fun graphEventWaitNodeSetEvent(hNode: Long, event: Long) : Int
 
     //CUresult cuGraphExecBatchMemOpNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, const CUDA_BATCH_MEM_OP_NODE_PARAMS * nodeParams)
-    //CUresult cuGraphExecChildGraphNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, CUgraph childGraph)
 
     /**
-     * 	Destroys an executable graph. (cuGraphExecDestroy)
+     * Updates node parameters in the child graph node in the given graphExec. (cuGraphExecChildGraphNodeSetParams)
+     *
+     * @param hGraphExec The executable graph in which to set the specified node
+     * @param hNode Host node from the graph which was used to instantiate graphExec
+     * @param childGraph The graph supplying the updated parameters
+     */
+    external fun graphExecChildGraphNodeSetParams(hGraphExec : Long, hNode : Long, childGraph : Long) : Int
+
+    /**
+     * Destroys an executable graph. (cuGraphExecDestroy)
      */
     external fun graphExecDestroy(hGraphExec: Long): Int
 
-    //CUresult cuGraphExecEventRecordNodeSetEvent(CUgraphExec hGraphExec, CUgraphNode hNode, CUevent event)
-    //CUresult cuGraphExecEventWaitNodeSetEvent(CUgraphExec hGraphExec, CUgraphNode hNode, CUevent event)
+    /**
+     * Sets the event for an event record node in the given graphExec. (cuGraphExecEventRecordNodeSetEvent)
+     *
+     * @param hGraphExec The executable graph in which to set the specified node
+     * @param hNode event record node from the graph from which graphExec was instantiated
+     * @param event Updated event to use
+     */
+    external fun graphExecEventRecordNodeSetEvent(hGraphExec : Long, hNode : Long, event : Long) : Int
+
+    /**
+     * Sets the event for an event wait node in the given graphExec. (cuGraphExecEventWaitNodeSetEvent)
+     *
+     * @param hGraphExec The executable graph in which to set the specified node
+     * @param hNode event wait node from the graph from which graphExec was instantiated
+     * @param event Updated event to use
+     */
+    external fun graphExecEventWaitNodeSetEvent(hGraphExec : Long, hNode : Long, event : Long) : Int
+
     //CUresult cuGraphExecExternalSemaphoresSignalNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, const CUDA_EXT_SEM_SIGNAL_NODE_PARAMS * nodeParams)
     //CUresult cuGraphExecExternalSemaphoresWaitNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, const CUDA_EXT_SEM_WAIT_NODE_PARAMS * nodeParams)
     //CUresult cuGraphExecGetFlags(CUgraphExec hGraphExec, cuuint64_t * flags)
