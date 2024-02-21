@@ -28,6 +28,17 @@ class MathAPI {
         @JvmStatic
         external fun asinh(x : Double) : Double
 
+        /**
+         * Calculate the arc tangent of the input argument.
+         */
+        @JvmStatic
+        external fun atan(x : Double) : Double
+
+        /**
+         * Calculate the arc tangent of the ratio of first and second input arguments.
+         */
+        @JvmStatic
+        external fun atan2(y : Double, x : Double) : Double
 
         /**
          * Calculate the base logarithm of the input argument x
