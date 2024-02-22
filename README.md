@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-    implementation ("com.github.kudakit:kuda-12.2:1.0.9")
+    implementation ("com.github.kudakit:kuda-12.2:3.1.0")
 }
 
 ```
