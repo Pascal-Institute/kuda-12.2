@@ -3,9 +3,9 @@ package kuda.driverapi.prop
 /**
  * Compute Modes (CUcomputemode)
  *
- * @property
- * @property
- * @property
+ * @property DEFAULT
+ * @property PROHIBITED
+ * @property EXCLUSIVE_PROCESS
  */
 enum class ComputeMode(val num : Int) {
     DEFAULT(0),

@@ -1,8 +1,8 @@
 # kuda
 The gpu library (wrapping cuda) written by Kotlin
 
-[![](https://jitpack.io/v/volta2030/kuda.svg)](https://jitpack.io/#volta2030/kuda)
-[![](https://jitpack.io/v/volta2030/kuda/month.svg)](https://jitpack.io/#volta2030/kuda)
+[![](https://jitpack.io/v/kudakit/kuda-12.2.svg)](https://jitpack.io/#kudakit/kuda-12.2)
+[![](https://jitpack.io/v/kudakit/kuda-12.2/month.svg)](https://jitpack.io/#kudakit/kuda-12.2)
 
 ![kuda_icon.png](src%2Fmain%2Fresources%2Fkuda_icon.png)
 
@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-    implementation ("com.github.kudakit:kuda-12.2:1.0.9")
+    implementation ("com.github.kudakit:kuda-12.2:3.1.0")
 }
 
 ```
