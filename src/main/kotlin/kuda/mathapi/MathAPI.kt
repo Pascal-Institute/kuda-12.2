@@ -179,6 +179,36 @@ class MathAPI {
         external fun fmod(x: Double, y: Double): Double
 
         /**
+         * Calculate the square root of the sum of squares of two arguments.
+         */
+        @JvmStatic
+        external fun hypot(x: Double, y: Double): Double
+
+        /**
+         * Compute the unbiased integer exponent of the argument.
+         */
+        @JvmStatic
+        external fun ilogb(x: Double): Double
+
+        /**
+         * Calculate the value of the Bessel function of the first kind of order 0 for the input argument.
+         */
+        @JvmStatic
+        external fun j0(x : Double) : Double
+
+        /**
+         * Calculate the value of the Bessel function of the first kind of order 1 for the input argument.
+         */
+        @JvmStatic
+        external fun j1(x : Double) : Double
+
+        /**
+         * Calculate the value of the Bessel function of the first kind of order n for the input argument.
+         */
+        @JvmStatic
+        external fun jn(n : Int, x : Double) : Double
+
+        /**
          * Calculate the base logarithm of the input argument x
          */
         @JvmStatic
