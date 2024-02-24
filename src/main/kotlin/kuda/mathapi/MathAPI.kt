@@ -209,6 +209,33 @@ class MathAPI {
         external fun jn(n : Int, x : Double) : Double
 
         /**
+         * Calculate the value of x * 2^(exp)
+         */
+        @JvmStatic
+        external fun ldexp(x : Double,  exp : Int) : Double
+
+
+        /**
+         * Calculate the natural logarithm of the absolute value of the gamma function of the input argument.
+         */
+        @JvmStatic
+        external fun lgamma(x : Double) : Double
+
+
+        /**
+         * Round input to nearest integer value.
+         */
+        @JvmStatic
+        external fun llrint(x : Double) : Long
+
+
+        /**
+         * Round to nearest integer value.
+         */
+        @JvmStatic
+        external fun llround(x : Double) : Long
+
+        /**
          * Calculate the base logarithm of the input argument x
          */
         @JvmStatic
