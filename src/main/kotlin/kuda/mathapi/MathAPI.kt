@@ -241,6 +241,30 @@ class MathAPI {
         @JvmStatic
         external fun log(x : Double) : Double
 
+        /**
+         * Calculate the base 10 logarithm of the input argument.
+         */
+        @JvmStatic
+        external fun log10(x : Double) : Double
+
+        /**
+         * Calculate the value of log_exponential(1 + x).
+         */
+        @JvmStatic
+        external fun log1p(x : Double) : Double
+
+        /**
+         * Calculate the base 2 logarithm of the input argument.
+         */
+        @JvmStatic
+        external fun log2(x : Double) : Double
+
+        /**
+         * Calculate the floating-point representation of the exponent of the input argument.
+         */
+        @JvmStatic
+        external fun logb(x : Double) : Double
+
         private var isLibraryLoaded = false
 
         init {
