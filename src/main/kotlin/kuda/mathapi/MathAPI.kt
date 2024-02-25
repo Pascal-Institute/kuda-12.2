@@ -265,6 +265,24 @@ class MathAPI {
         @JvmStatic
         external fun logb(x : Double) : Double
 
+        /**
+         * Round input to nearest integer value.
+         */
+        @JvmStatic
+        external fun lrint(x : Double) : Long
+
+        /**
+         * Round to nearest integer value.
+         */
+        @JvmStatic
+        external fun lround(x : Double) : Long
+
+        /**
+         * Calculate the maximum value of the input double and float arguments.
+         */
+        @JvmStatic
+        external fun max(a : Double, b : Float) : Double
+
         private var isLibraryLoaded = false
 
         init {
