@@ -281,7 +281,37 @@ class MathAPI {
          * Calculate the maximum value of the input double and float arguments.
          */
         @JvmStatic
-        external fun max(a : Double, b : Float) : Double
+        external fun max1(a : Double, b : Float) : Double
+
+        /**
+         * Calculate the maximum value of the input float and double arguments.
+         */
+        @JvmStatic
+        external fun max2(a : Float, b : Double) : Double
+
+        /**
+         * Calculate the maximum value of the input double arguments.
+         */
+        @JvmStatic
+        external fun max(a : Float, b : Double) : Double
+
+        /**
+         * Calculate the minimum value of the input double and float arguments.
+         */
+        @JvmStatic
+        external fun min1(a : Double, b : Float) : Double
+
+        /**
+         * Calculate the minimum value of the input float and double arguments.
+         */
+        @JvmStatic
+        external fun min2(a : Float, b : Double) : Double
+
+        /**
+         * Calculate the minimum value of the input double arguments.
+         */
+        @JvmStatic
+        external fun min(a : Float, b : Double) : Double
 
         private var isLibraryLoaded = false
 
