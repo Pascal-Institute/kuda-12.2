@@ -179,10 +179,145 @@ class MathAPI {
         external fun fmod(x: Double, y: Double): Double
 
         /**
+         * Calculate the square root of the sum of squares of two arguments.
+         */
+        @JvmStatic
+        external fun hypot(x: Double, y: Double): Double
+
+        /**
+         * Compute the unbiased integer exponent of the argument.
+         */
+        @JvmStatic
+        external fun ilogb(x: Double): Double
+
+        /**
+         * Calculate the value of the Bessel function of the first kind of order 0 for the input argument.
+         */
+        @JvmStatic
+        external fun j0(x : Double) : Double
+
+        /**
+         * Calculate the value of the Bessel function of the first kind of order 1 for the input argument.
+         */
+        @JvmStatic
+        external fun j1(x : Double) : Double
+
+        /**
+         * Calculate the value of the Bessel function of the first kind of order n for the input argument.
+         */
+        @JvmStatic
+        external fun jn(n : Int, x : Double) : Double
+
+        /**
+         * Calculate the value of x * 2^(exp)
+         */
+        @JvmStatic
+        external fun ldexp(x : Double,  exp : Int) : Double
+
+
+        /**
+         * Calculate the natural logarithm of the absolute value of the gamma function of the input argument.
+         */
+        @JvmStatic
+        external fun lgamma(x : Double) : Double
+
+
+        /**
+         * Round input to nearest integer value.
+         */
+        @JvmStatic
+        external fun llrint(x : Double) : Long
+
+
+        /**
+         * Round to nearest integer value.
+         */
+        @JvmStatic
+        external fun llround(x : Double) : Long
+
+        /**
          * Calculate the base logarithm of the input argument x
          */
         @JvmStatic
         external fun log(x : Double) : Double
+
+        /**
+         * Calculate the base 10 logarithm of the input argument.
+         */
+        @JvmStatic
+        external fun log10(x : Double) : Double
+
+        /**
+         * Calculate the value of log_exponential(1 + x).
+         */
+        @JvmStatic
+        external fun log1p(x : Double) : Double
+
+        /**
+         * Calculate the base 2 logarithm of the input argument.
+         */
+        @JvmStatic
+        external fun log2(x : Double) : Double
+
+        /**
+         * Calculate the floating-point representation of the exponent of the input argument.
+         */
+        @JvmStatic
+        external fun logb(x : Double) : Double
+
+        /**
+         * Round input to nearest integer value.
+         */
+        @JvmStatic
+        external fun lrint(x : Double) : Long
+
+        /**
+         * Round to nearest integer value.
+         */
+        @JvmStatic
+        external fun lround(x : Double) : Long
+
+        /**
+         * Calculate the maximum value of the input double and float arguments.
+         */
+        @JvmStatic
+        external fun max1(a : Double, b : Float) : Double
+
+        /**
+         * Calculate the maximum value of the input float and double arguments.
+         */
+        @JvmStatic
+        external fun max2(a : Float, b : Double) : Double
+
+        /**
+         * Calculate the maximum value of the input double arguments.
+         */
+        @JvmStatic
+        external fun max(a : Float, b : Double) : Double
+
+        /**
+         * Calculate the minimum value of the input double and float arguments.
+         */
+        @JvmStatic
+        external fun min1(a : Double, b : Float) : Double
+
+        /**
+         * Calculate the minimum value of the input float and double arguments.
+         */
+        @JvmStatic
+        external fun min2(a : Float, b : Double) : Double
+
+        /**
+         * Calculate the minimum value of the input double arguments.
+         */
+        @JvmStatic
+        external fun min(a : Float, b : Double) : Double
+
+        /**
+         * Round the input argument to the nearest integer.
+         */
+        @JvmStatic
+        external fun nearbyint(x : Double) : Double
 
         private var isLibraryLoaded = false
 
