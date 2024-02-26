@@ -313,6 +313,12 @@ class MathAPI {
         @JvmStatic
         external fun min(a : Float, b : Double) : Double
 
+        /**
+         * Round the input argument to the nearest integer.
+         */
+        @JvmStatic
+        external fun nearbyint(x : Double) : Double
+
         private var isLibraryLoaded = false
 
         init {
