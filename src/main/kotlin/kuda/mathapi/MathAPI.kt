@@ -319,6 +319,24 @@ class MathAPI {
         @JvmStatic
         external fun nearbyint(x : Double) : Double
 
+        /**
+         * Return next representable double-precision floating-point value after argument x in the direction of y.
+         */
+        @JvmStatic
+        external fun nextafter(x : Double, y : Double) : Double
+
+        //double norm(int  dim, const double* p)
+        //double norm3d(double  a, double  b, double  c)
+        //double norm4d(double  a, double  b, double  c, double  d)
+        //double normcdf(double  x)
+        //double normcdfinv(double  x)
+
+        /**
+         * Calculate the value of first argument to the power of second argument.
+         */
+        @JvmStatic
+        external fun pow(x : Double, y : Double) : Double
+
         private var isLibraryLoaded = false
 
         init {
