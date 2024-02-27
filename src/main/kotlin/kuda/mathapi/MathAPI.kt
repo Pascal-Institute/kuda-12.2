@@ -337,6 +337,18 @@ class MathAPI {
         @JvmStatic
         external fun pow(x : Double, y : Double) : Double
 
+        /**
+         * Calculate reciprocal cube root function.
+         */
+        @JvmStatic
+        external fun rcbrt(x : Double) : Double
+
+        /**
+         * Compute double-precision floating-point remainder.
+         */
+        @JvmStatic
+        external fun remainder(x : Double) : Double
+
         private var isLibraryLoaded = false
 
         init {
