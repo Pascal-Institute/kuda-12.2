@@ -349,6 +349,18 @@ class MathAPI {
         @JvmStatic
         external fun remainder(x : Double) : Double
 
+        /**
+         * Round to nearest integer value in floating-point.
+         */
+        @JvmStatic
+        external fun round(x : Double) : Double
+
+        /**
+         * Calculate the reciprocal of the square root of the input argument.
+         */
+        @JvmStatic
+        external fun rsqrt(x : Double) : Double
+
         private var isLibraryLoaded = false
 
         init {
