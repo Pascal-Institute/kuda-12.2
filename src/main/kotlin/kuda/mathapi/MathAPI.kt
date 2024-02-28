@@ -361,6 +361,12 @@ class MathAPI {
         @JvmStatic
         external fun rsqrt(x : Double) : Double
 
+        /**
+         * Scale floating-point input by integer power of two.
+         */
+        @JvmStatic
+        external fun scalbln(x : Double, n : Long) : Double
+
         private var isLibraryLoaded = false
 
         init {
