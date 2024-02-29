@@ -367,6 +367,83 @@ class MathAPI {
         @JvmStatic
         external fun scalbln(x : Double, n : Long) : Double
 
+        /**
+         * Scale floating-point input by integer power of two.
+         */
+        @JvmStatic
+        external fun scalbn(x : Double, n : Int)
+
+        //__RETURN_TYPE 	signbit(double  a)
+
+        /**
+         * Calculate the sine of the input argument.
+         */
+        @JvmStatic
+        external fun sin(x : Double)
+
+        //void sincos(double  x, double* sptr, double* cptr)
+        //void sincospi(double  x, double* sptr, double* cptr)
+
+        /**
+         * Calculate the hyperbolic sine of the input argument.
+         */
+        @JvmStatic
+        external fun sinh(x : Double)
+
+        /**
+         * Calculate the sine of the input argument * pi.
+         */
+        @JvmStatic
+        external fun sinpi(x : Double)
+
+        /**
+         * Calculate the square root of the input argument.
+         */
+        @JvmStatic
+        external fun sqrt(x : Double)
+
+        /**
+         * Calculate the tangent of the input argument.
+         */
+        @JvmStatic
+        external fun tan(x : Double)
+
+        /**
+         * Calculate the hyperbolic tangent of the input argument.
+         */
+        @JvmStatic
+        external fun tanh(x : Double)
+
+        /**
+         * Calculate the gamma function of the input argument.
+         */
+        @JvmStatic
+        external fun tgamma(x : Double)
+
+        /**
+         * Truncate input argument to the integral part.
+         */
+        @JvmStatic
+        external fun trunc(x : Double)
+
+        /**
+         * Calculate the value of the Bessel function of the second kind of order 0 for the input argument.
+         */
+        @JvmStatic
+        external fun y0(x : Double)
+
+        /**
+         * Calculate the value of the Bessel function of the second kind of order 1 for the input argument.
+         */
+        @JvmStatic
+        external fun y1(x : Double)
+
+        /**
+         * Calculate the value of the Bessel function of the second kind of order n for the input argument.
+         */
+        @JvmStatic
+        external fun yn(n : Int, x : Double)
+        
         private var isLibraryLoaded = false
 
         init {
