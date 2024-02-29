@@ -179,11 +179,271 @@ class MathAPI {
         external fun fmod(x: Double, y: Double): Double
 
         /**
+         * Calculate the square root of the sum of squares of two arguments.
+         */
+        @JvmStatic
+        external fun hypot(x: Double, y: Double): Double
+
+        /**
+         * Compute the unbiased integer exponent of the argument.
+         */
+        @JvmStatic
+        external fun ilogb(x: Double): Double
+
+        /**
+         * Calculate the value of the Bessel function of the first kind of order 0 for the input argument.
+         */
+        @JvmStatic
+        external fun j0(x : Double) : Double
+
+        /**
+         * Calculate the value of the Bessel function of the first kind of order 1 for the input argument.
+         */
+        @JvmStatic
+        external fun j1(x : Double) : Double
+
+        /**
+         * Calculate the value of the Bessel function of the first kind of order n for the input argument.
+         */
+        @JvmStatic
+        external fun jn(n : Int, x : Double) : Double
+
+        /**
+         * Calculate the value of x * 2^(exp)
+         */
+        @JvmStatic
+        external fun ldexp(x : Double,  exp : Int) : Double
+
+
+        /**
+         * Calculate the natural logarithm of the absolute value of the gamma function of the input argument.
+         */
+        @JvmStatic
+        external fun lgamma(x : Double) : Double
+
+
+        /**
+         * Round input to nearest integer value.
+         */
+        @JvmStatic
+        external fun llrint(x : Double) : Long
+
+
+        /**
+         * Round to nearest integer value.
+         */
+        @JvmStatic
+        external fun llround(x : Double) : Long
+
+        /**
          * Calculate the base logarithm of the input argument x
          */
         @JvmStatic
         external fun log(x : Double) : Double
 
+        /**
+         * Calculate the base 10 logarithm of the input argument.
+         */
+        @JvmStatic
+        external fun log10(x : Double) : Double
+
+        /**
+         * Calculate the value of log_exponential(1 + x).
+         */
+        @JvmStatic
+        external fun log1p(x : Double) : Double
+
+        /**
+         * Calculate the base 2 logarithm of the input argument.
+         */
+        @JvmStatic
+        external fun log2(x : Double) : Double
+
+        /**
+         * Calculate the floating-point representation of the exponent of the input argument.
+         */
+        @JvmStatic
+        external fun logb(x : Double) : Double
+
+        /**
+         * Round input to nearest integer value.
+         */
+        @JvmStatic
+        external fun lrint(x : Double) : Long
+
+        /**
+         * Round to nearest integer value.
+         */
+        @JvmStatic
+        external fun lround(x : Double) : Long
+
+        /**
+         * Calculate the maximum value of the input double and float arguments.
+         */
+        @JvmStatic
+        external fun max1(a : Double, b : Float) : Double
+
+        /**
+         * Calculate the maximum value of the input float and double arguments.
+         */
+        @JvmStatic
+        external fun max2(a : Float, b : Double) : Double
+
+        /**
+         * Calculate the maximum value of the input double arguments.
+         */
+        @JvmStatic
+        external fun max(a : Float, b : Double) : Double
+
+        /**
+         * Calculate the minimum value of the input double and float arguments.
+         */
+        @JvmStatic
+        external fun min1(a : Double, b : Float) : Double
+
+        /**
+         * Calculate the minimum value of the input float and double arguments.
+         */
+        @JvmStatic
+        external fun min2(a : Float, b : Double) : Double
+
+        /**
+         * Calculate the minimum value of the input double arguments.
+         */
+        @JvmStatic
+        external fun min(a : Float, b : Double) : Double
+
+        /**
+         * Round the input argument to the nearest integer.
+         */
+        @JvmStatic
+        external fun nearbyint(x : Double) : Double
+
+        /**
+         * Return next representable double-precision floating-point value after argument x in the direction of y.
+         */
+        @JvmStatic
+        external fun nextafter(x : Double, y : Double) : Double
+
+        //double norm(int  dim, const double* p)
+        //double norm3d(double  a, double  b, double  c)
+        //double norm4d(double  a, double  b, double  c, double  d)
+        //double normcdf(double  x)
+        //double normcdfinv(double  x)
+
+        /**
+         * Calculate the value of first argument to the power of second argument.
+         */
+        @JvmStatic
+        external fun pow(x : Double, y : Double) : Double
+
+        /**
+         * Calculate reciprocal cube root function.
+         */
+        @JvmStatic
+        external fun rcbrt(x : Double) : Double
+
+        /**
+         * Compute double-precision floating-point remainder.
+         */
+        @JvmStatic
+        external fun remainder(x : Double) : Double
+
+        /**
+         * Round to nearest integer value in floating-point.
+         */
+        @JvmStatic
+        external fun round(x : Double) : Double
+
+        /**
+         * Calculate the reciprocal of the square root of the input argument.
+         */
+        @JvmStatic
+        external fun rsqrt(x : Double) : Double
+
+        /**
+         * Scale floating-point input by integer power of two.
+         */
+        @JvmStatic
+        external fun scalbln(x : Double, n : Long) : Double
+
+        /**
+         * Scale floating-point input by integer power of two.
+         */
+        @JvmStatic
+        external fun scalbn(x : Double, n : Int)
+
+        //__RETURN_TYPE 	signbit(double  a)
+
+        /**
+         * Calculate the sine of the input argument.
+         */
+        @JvmStatic
+        external fun sin(x : Double)
+
+        //void sincos(double  x, double* sptr, double* cptr)
+        //void sincospi(double  x, double* sptr, double* cptr)
+
+        /**
+         * Calculate the hyperbolic sine of the input argument.
+         */
+        @JvmStatic
+        external fun sinh(x : Double)
+
+        /**
+         * Calculate the sine of the input argument * pi.
+         */
+        @JvmStatic
+        external fun sinpi(x : Double)
+
+        /**
+         * Calculate the square root of the input argument.
+         */
+        @JvmStatic
+        external fun sqrt(x : Double)
+
+        /**
+         * Calculate the tangent of the input argument.
+         */
+        @JvmStatic
+        external fun tan(x : Double)
+
+        /**
+         * Calculate the hyperbolic tangent of the input argument.
+         */
+        @JvmStatic
+        external fun tanh(x : Double)
+
+        /**
+         * Calculate the gamma function of the input argument.
+         */
+        @JvmStatic
+        external fun tgamma(x : Double)
+
+        /**
+         * Truncate input argument to the integral part.
+         */
+        @JvmStatic
+        external fun trunc(x : Double)
+
+        /**
+         * Calculate the value of the Bessel function of the second kind of order 0 for the input argument.
+         */
+        @JvmStatic
+        external fun y0(x : Double)
+
+        /**
+         * Calculate the value of the Bessel function of the second kind of order 1 for the input argument.
+         */
+        @JvmStatic
+        external fun y1(x : Double)
+
+        /**
+         * Calculate the value of the Bessel function of the second kind of order n for the input argument.
+         */
+        @JvmStatic
+        external fun yn(n : Int, x : Double)
+        
         private var isLibraryLoaded = false
 
         init {
