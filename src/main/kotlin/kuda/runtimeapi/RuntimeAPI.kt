@@ -107,6 +107,15 @@ class RuntimeAPI {
 
     external fun streamDestroy(stream : Long) : Int
 
+    /**
+     * Ends capture on a stream, returning the captured graph. (cudaStreamEndCapture)
+     *
+     * @param stream Stream to query.
+     *
+     * @return the captured graph.
+     */
+    external fun streamEndCapture(stream : Long) : Long
+
     external fun streamQuery(stream : Long) : Int
 
     //cudaStreamSetAttribute
