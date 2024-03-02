@@ -197,6 +197,15 @@ class RuntimeAPI {
     external fun deviceGraphMemTrim(device : Int) : Int
 
     /**
+     * Clones a graph. (cudaGraphClone)
+     *
+     * @param originalGraph Graph to clone
+     *
+     * @return Returns newly created cloned graph
+     */
+    external fun graphClone(originalGraph : Long) : Long
+
+    /**
      * Destroys a graph. (cudaGraphDestroy)
      *
      * @param graph Graph to destroy
