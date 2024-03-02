@@ -4,10 +4,6 @@ import kuda.runtimeapi.prop.*
 import kuda.runtimeapi.structure.DeviceProp
 
 class RuntimeAPI {
-    private external fun getErrorName(error : Int) : String
-    fun getErrorName(error: kuda.runtimeapi.prop.Error) : String{
-        return getErrorName(error.num)
-    }
 
     //1. Device Management
     external fun chooseDevice(deviceProp : DeviceProp) : Int
@@ -37,6 +33,11 @@ class RuntimeAPI {
     private external fun deviceGetP2PAttribute(attr : Int, scrDevice : Int, dstDevice : Int) : Int
     fun deviceGetP2PAttribute(attr : DeviceP2PAttr, scrDevice : Int, dstDevice : Int) : Int {
         return deviceGetP2PAttribute(attr.num, scrDevice, dstDevice)
+    }
+
+    private external fun deviceGetAttribute(deviceAttr : Int, device : Int) : Int
+    fun deviceGetAttribute(deviceAttr : DeviceAttribute, device: Int) : Int {
+        return deviceGetAttribute(deviceAttr.num, device)
     }
 
     external fun deviceGetPCIBusId(device : Int) : String
@@ -74,6 +75,11 @@ class RuntimeAPI {
     external fun setValidDevices(deviceArr : IntArray, len : Int) : Int
 
     //3. Error Handling
+    private external fun getErrorName(error : Int) : String
+    fun getErrorName(error: kuda.runtimeapi.prop.Error) : String{
+        return getErrorName(error.num)
+    }
+
     private external fun getErrorString(error : Int) : String
     fun getErrorString(error: kuda.runtimeapi.prop.Error) : String{
         return getErrorName(error.num)
