@@ -118,7 +118,16 @@ class RuntimeAPI {
 
     external fun streamQuery(stream : Long) : Int
 
-    //cudaStreamSetAttribute
+    /**
+     * Sets stream attribute. (cudaStreamSetAttribute)
+     *
+     * @param hStream
+     * @param attr LaunchAttributeID
+     */
+    fun streamSetAttribute(hStream : Long, attr : LaunchAttributeID) : Int {
+        return streamSetAttribute(hStream, attr.num)
+    }
+    private external fun streamSetAttribute(hStream : Long, attr : Int) : Int
 
     external fun streamSynchronize(stream : Long) : Int
 
