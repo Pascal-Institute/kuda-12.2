@@ -181,7 +181,14 @@ class RuntimeAPI {
 
     external fun runtimeGetVersion() : Int
 
-    //6.28 Graph Management
+    //6.13  Peer Device Memory Access
+    external fun deviceCanAccessPeer(device : Int, peerDevice : Int) : Int
+
+    external fun deviceDisablePeerAccess(peerDevice : Int): Int
+
+    external fun deviceEnablePeerAccess(peerDevice : Int, flags : Int): Int
+
+    //28. Graph Management
     /**
      * Free unused memory that was cached on the specified device for use with graphs back to the OS. (cudaDeviceGraphMemTrim)
      *
@@ -189,12 +196,20 @@ class RuntimeAPI {
      */
     external fun deviceGraphMemTrim(device : Int) : Int
 
-    //6.13  Peer Device Memory Access
-    external fun deviceCanAccessPeer(device : Int, peerDevice : Int) : Int
+    /**
+     * Destroys a graph. (cudaGraphDestroy)
+     *
+     * @param graph Graph to destroy
+     */
+    external fun graphDestroy(graph : Long) : Int
 
-    external fun deviceDisablePeerAccess(peerDevice : Int): Int
+    /**
+     * Remove a node from the graph. (cudaGraphDestroyNode)
+     *
+     * @param node Node to remove
+     */
+    external fun graphDestroyNode(node : Long) : Int
 
-    external fun deviceEnablePeerAccess(peerDevice : Int, flags : Int): Int
 
     companion object {
         private var isLibraryLoaded = false
