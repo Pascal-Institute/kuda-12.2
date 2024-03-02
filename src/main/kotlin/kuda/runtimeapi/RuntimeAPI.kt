@@ -107,9 +107,27 @@ class RuntimeAPI {
 
     external fun streamDestroy(stream : Long) : Int
 
+    /**
+     * Ends capture on a stream, returning the captured graph. (cudaStreamEndCapture)
+     *
+     * @param stream Stream to query.
+     *
+     * @return the captured graph.
+     */
+    external fun streamEndCapture(stream : Long) : Long
+
     external fun streamQuery(stream : Long) : Int
 
-    //cudaStreamSetAttribute
+    /**
+     * Sets stream attribute. (cudaStreamSetAttribute)
+     *
+     * @param hStream
+     * @param attr LaunchAttributeID
+     */
+    fun streamSetAttribute(hStream : Long, attr : LaunchAttributeID) : Int {
+        return streamSetAttribute(hStream, attr.num)
+    }
+    private external fun streamSetAttribute(hStream : Long, attr : Int) : Int
 
     external fun streamSynchronize(stream : Long) : Int
 
@@ -163,7 +181,14 @@ class RuntimeAPI {
 
     external fun runtimeGetVersion() : Int
 
-    //6.28 Graph Management
+    //6.13  Peer Device Memory Access
+    external fun deviceCanAccessPeer(device : Int, peerDevice : Int) : Int
+
+    external fun deviceDisablePeerAccess(peerDevice : Int): Int
+
+    external fun deviceEnablePeerAccess(peerDevice : Int, flags : Int): Int
+
+    //28. Graph Management
     /**
      * Free unused memory that was cached on the specified device for use with graphs back to the OS. (cudaDeviceGraphMemTrim)
      *
@@ -171,12 +196,38 @@ class RuntimeAPI {
      */
     external fun deviceGraphMemTrim(device : Int) : Int
 
-    //6.13  Peer Device Memory Access
-    external fun deviceCanAccessPeer(device : Int, peerDevice : Int) : Int
+    /**
+     * Clones a graph. (cudaGraphClone)
+     *
+     * @param originalGraph Graph to clone
+     *
+     * @return Returns newly created cloned graph
+     */
+    external fun graphClone(originalGraph : Long) : Long
 
-    external fun deviceDisablePeerAccess(peerDevice : Int): Int
+    /**
+     * Creates a graph. (cudaGraphCreate)
+     *
+     * @param flags Graph creation flags, must be 0
+     *
+     * @return Returns newly created graph
+     */
+    external fun graphCreate(flags: Int) : Long
 
-    external fun deviceEnablePeerAccess(peerDevice : Int, flags : Int): Int
+    /**
+     * Destroys a graph. (cudaGraphDestroy)
+     *
+     * @param graph Graph to destroy
+     */
+    external fun graphDestroy(graph : Long) : Int
+
+    /**
+     * Remove a node from the graph. (cudaGraphDestroyNode)
+     *
+     * @param node Node to remove
+     */
+    external fun graphDestroyNode(node : Long) : Int
+
 
     companion object {
         private var isLibraryLoaded = false
