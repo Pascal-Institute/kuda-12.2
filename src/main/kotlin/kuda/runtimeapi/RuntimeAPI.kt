@@ -206,6 +206,15 @@ class RuntimeAPI {
     external fun graphClone(originalGraph : Long) : Long
 
     /**
+     * Creates a graph. (cudaGraphCreate)
+     *
+     * @param flags Graph creation flags, must be 0
+     *
+     * @return Returns newly created graph
+     */
+    external fun graphCreate(flags: Int) : Long
+
+    /**
      * Destroys a graph. (cudaGraphDestroy)
      *
      * @param graph Graph to destroy
