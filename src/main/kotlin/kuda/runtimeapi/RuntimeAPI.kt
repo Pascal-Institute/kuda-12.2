@@ -78,6 +78,15 @@ class RuntimeAPI {
 
     external fun lpcCloseMemHandle(devicePtr : Long) : Int
 
+    /**
+     * Gets an interprocess handle for a previously allocated event. (cudaIpcGetEventHandle)
+     *
+     * @param event Event allocated with cudaEventInterprocess and cudaEventDisableTiming flags.
+     *
+     * @return Pointer to a user allocated cudaIpcEventHandle in which to return the opaque event handle
+     */
+    external fun lpcGetEventHandle(event : Long) : Long
+
     external fun setDevice(device : Int) : Int
 
     external fun setDeviceFlags(flags : Int) : Int
