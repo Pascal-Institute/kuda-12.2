@@ -48,15 +48,15 @@ class RuntimeAPI {
      * @return Returned cache configuration
      */
     private external fun deviceGetCacheConfig() : Int
-    fun deviceGetCacheConfg() : FunctionCache {
-        return FunctionCache.fromInt(deviceGetCacheConfig())!!
+    fun deviceGetCacheConfg() : FuncCache {
+        return FuncCache.fromInt(deviceGetCacheConfig())!!
     }
 
     external fun deviceGetStreamPriorityRange() : Int
 
     private external fun deviceSetCacheConfig(cacheConfig : Int) : Int
-    fun deviceSetCacheConfig(functionCache: FunctionCache) : Int{
-        return deviceSetCacheConfig(functionCache.num)
+    fun deviceSetCacheConfig(funcCache: FuncCache) : Int{
+        return deviceSetCacheConfig(funcCache.num)
     }
 
     private external fun deviceSetLimit(limit : Byte, size : Int) : Int

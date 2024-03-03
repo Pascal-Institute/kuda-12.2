@@ -2,7 +2,7 @@ import kuda.driverapi.DriverAPI
 import kuda.driverapi.prop.Result
 import kuda.kublas.Kublas
 import kuda.runtimeapi.RuntimeAPI
-import kuda.runtimeapi.prop.FunctionCache
+import kuda.runtimeapi.prop.FuncCache
 import kuda.runtimeapi.prop.Limit
 import org.junit.jupiter.api.Test
 
@@ -44,7 +44,7 @@ class Test {
         println(runtimeAPI.deviceGetPCIBusId(device))
         println(runtimeAPI.deviceGetStreamPriorityRange())
 
-        println(runtimeAPI.deviceSetCacheConfig(FunctionCache.PREFER_NONE))
+        println(runtimeAPI.deviceSetCacheConfig(FuncCache.PREFER_NONE))
         println(runtimeAPI.deviceSynchronize())
         println(runtimeAPI.deviceReset())
 
