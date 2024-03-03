@@ -42,6 +42,16 @@ class RuntimeAPI {
 
     external fun deviceGetPCIBusId(device : Int) : String
 
+    /**
+     * Returns the preferred cache configuration for the current device. (cudaDeviceGetCacheConfig)
+     *
+     * @return Returned cache configuration
+     */
+    private external fun deviceGetCacheConfig() : Int
+    fun deviceGetCacheConfg() : FunctionCache {
+        return FunctionCache.fromInt(deviceGetCacheConfig())!!
+    }
+
     external fun deviceGetStreamPriorityRange() : Int
 
     private external fun deviceSetCacheConfig(cacheConfig : Int) : Int
