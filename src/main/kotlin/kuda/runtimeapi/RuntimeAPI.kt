@@ -15,9 +15,9 @@ class RuntimeAPI {
 
     external fun deviceGetDefaultMemPool(device: Int) : Long
 
-    private external fun deviceGetLimit(byte: Byte) : Int
+    private external fun deviceGetLimit(limit: Int) : Int
     fun deviceGetLimit(limit : Limit) : Int {
-        return deviceGetLimit(limit.byte)
+        return deviceGetLimit(limit.num)
     }
 
     external fun deviceGetMemPool(device : Int) : Long
@@ -59,9 +59,9 @@ class RuntimeAPI {
         return deviceSetCacheConfig(funcCache.num)
     }
 
-    private external fun deviceSetLimit(limit : Byte, size : Int) : Int
+    private external fun deviceSetLimit(limit : Int, size : Int) : Int
     fun deviceSetLimit(limit: Limit, size: Int) : Int{
-        return deviceSetLimit(limit.byte, size)
+        return deviceSetLimit(limit.num, size)
     }
 
     external fun deviceSynchronize() : Int
