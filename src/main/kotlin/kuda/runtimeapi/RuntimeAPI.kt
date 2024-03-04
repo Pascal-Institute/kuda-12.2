@@ -4,10 +4,6 @@ import kuda.runtimeapi.prop.*
 import kuda.runtimeapi.structure.DeviceProp
 
 class RuntimeAPI {
-    private external fun getErrorName(error : Int) : String
-    fun getErrorName(error: kuda.runtimeapi.prop.Error) : String{
-        return getErrorName(error.num)
-    }
 
     //1. Device Management
     external fun chooseDevice(deviceProp : DeviceProp) : Int
@@ -19,9 +15,9 @@ class RuntimeAPI {
 
     external fun deviceGetDefaultMemPool(device: Int) : Long
 
-    private external fun deviceGetLimit(byte: Byte) : Int
+    private external fun deviceGetLimit(limit: Int) : Int
     fun deviceGetLimit(limit : Limit) : Int {
-        return deviceGetLimit(limit.byte)
+        return deviceGetLimit(limit.num)
     }
 
     external fun deviceGetMemPool(device : Int) : Long
@@ -39,18 +35,33 @@ class RuntimeAPI {
         return deviceGetP2PAttribute(attr.num, scrDevice, dstDevice)
     }
 
+    private external fun deviceGetAttribute(deviceAttr : Int, device : Int) : Int
+    fun deviceGetAttribute(deviceAttr : DeviceAttribute, device: Int) : Int {
+        return deviceGetAttribute(deviceAttr.num, device)
+    }
+
     external fun deviceGetPCIBusId(device : Int) : String
+
+    /**
+     * Returns the preferred cache configuration for the current device. (cudaDeviceGetCacheConfig)
+     *
+     * @return Returned cache configuration
+     */
+    private external fun deviceGetCacheConfig() : Int
+    fun deviceGetCacheConfg() : FuncCache {
+        return FuncCache.fromInt(deviceGetCacheConfig())!!
+    }
 
     external fun deviceGetStreamPriorityRange() : Int
 
     private external fun deviceSetCacheConfig(cacheConfig : Int) : Int
-    fun deviceSetCacheConfig(functionCache: FunctionCache) : Int{
-        return deviceSetCacheConfig(functionCache.num)
+    fun deviceSetCacheConfig(funcCache: FuncCache) : Int{
+        return deviceSetCacheConfig(funcCache.num)
     }
 
-    private external fun deviceSetLimit(limit : Byte, size : Int) : Int
+    private external fun deviceSetLimit(limit : Int, size : Int) : Int
     fun deviceSetLimit(limit: Limit, size: Int) : Int{
-        return deviceSetLimit(limit.byte, size)
+        return deviceSetLimit(limit.num, size)
     }
 
     external fun deviceSynchronize() : Int
@@ -65,7 +76,25 @@ class RuntimeAPI {
 
     external fun initDevice(device : Int, flags : Int) : Int
 
-    external fun lpcCloseMemHandle(devicePtr : Long) : Int
+    external fun ipcCloseMemHandle(devicePtr : Long) : Int
+
+    /**
+     * Gets an interprocess handle for a previously allocated event. (cudaIpcGetEventHandle)
+     *
+     * @param event Event allocated with cudaEventInterprocess and cudaEventDisableTiming flags.
+     *
+     * @return Pointer to a user allocated cudaIpcEventHandle in which to return the opaque event handle
+     */
+    external fun ipcGetEventHandle(event : Long) : Long
+
+    /**
+     * Gets an interprocess handle for a previously allocated event. (cudaIpcOpenEventHandle)
+     *
+     * @param handle Interprocess handle to open
+     *
+     * @return Returns the imported event
+     */
+    external fun ipcOpenEventHandle(handle : Long) : Long
 
     external fun setDevice(device : Int) : Int
 
@@ -74,6 +103,11 @@ class RuntimeAPI {
     external fun setValidDevices(deviceArr : IntArray, len : Int) : Int
 
     //3. Error Handling
+    private external fun getErrorName(error : Int) : String
+    fun getErrorName(error: kuda.runtimeapi.prop.Error) : String{
+        return getErrorName(error.num)
+    }
+
     private external fun getErrorString(error : Int) : String
     fun getErrorString(error: kuda.runtimeapi.prop.Error) : String{
         return getErrorName(error.num)
