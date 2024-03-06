@@ -10,5 +10,9 @@ package kuda.runtimeapi.prop
 enum class StreamCaptureMode(val num : Int) {
     GLOBAL(0),
     THREAD_LOCAL(1),
-    RELAXED(2)
+    RELAXED(2);
+
+    companion object{
+        fun fromInt(num : Int) : StreamCaptureMode? = StreamCaptureMode.entries.find { it.num == num }
+    }
 }

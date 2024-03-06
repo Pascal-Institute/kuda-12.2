@@ -178,8 +178,8 @@ class RuntimeAPI {
      * @return Pointer to mode value to swap with the current mode
      */
     private external fun threadExchangeStreamCaptureMode(dummy: Boolean) : Int
-    external fun threadExchangeStreamCaptureMode() : StreamCaptureMode {
-        return StreamCaptureMode.fromInt(threadExchageStreamCaptureMode())!!
+    fun threadExchangeStreamCaptureMode() : StreamCaptureMode {
+        return StreamCaptureMode.fromInt(threadExchangeStreamCaptureMode(false))!!
     }
 
     //5. Event Management
