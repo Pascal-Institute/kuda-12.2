@@ -47,9 +47,9 @@ class RuntimeAPI {
      *
      * @return Returned cache configuration
      */
-    private external fun deviceGetCacheConfig() : Int
+    private external fun deviceGetCacheConfig(dummy: Boolean) : Int
     fun deviceGetCacheConfg() : FuncCache {
-        return FuncCache.fromInt(deviceGetCacheConfig())!!
+        return FuncCache.fromInt(deviceGetCacheConfig(false))!!
     }
 
     external fun deviceGetStreamPriorityRange() : Int
@@ -170,6 +170,17 @@ class RuntimeAPI {
     //cudaStreamUpdateCaptureDependencies_v2
 
     external fun streamWaitEvent(stream : Long, event : Long, flags : Int) : Int
+
+    /**
+     * Sets stream attribute. (cudaStreamSetAttribute)
+     *
+     * @param hStream
+     * @return Pointer to mode value to swap with the current mode
+     */
+    private external fun threadExchangeStreamCaptureMode(dummy: Boolean) : Int
+    external fun threadExchangeStreamCaptureMode() : StreamCaptureMode {
+        return StreamCaptureMode.fromInt(threadExchageStreamCaptureMode())!!
+    }
 
     //5. Event Management
     external fun eventCreate() : Long
