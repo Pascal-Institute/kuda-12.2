@@ -2,6 +2,7 @@ package kuda.runtimeapi
 
 import kuda.runtimeapi.prop.*
 import kuda.runtimeapi.structure.DeviceProp
+import kuda.runtimeapi.structure.IpcMemHandle
 
 class RuntimeAPI {
 
@@ -86,6 +87,15 @@ class RuntimeAPI {
      * @return Pointer to a user allocated cudaIpcEventHandle in which to return the opaque event handle
      */
     external fun ipcGetEventHandle(event : Long) : Long
+
+    /**
+     * Gets an interprocess memory handle for an existing device memory allocation. (cudaIpcGetMemHandle)
+     *
+     * @param devPtr Base pointer to previously allocated device memory
+     *
+     * @return Pointer to user allocated cudaIpcMemHandle to return the handle in.
+     */
+    external fun ipcGetMemHandle(devPtr: Long) : IpcMemHandle
 
     /**
      * Gets an interprocess handle for a previously allocated event. (cudaIpcOpenEventHandle)
@@ -178,8 +188,8 @@ class RuntimeAPI {
      * @return Pointer to mode value to swap with the current mode
      */
     private external fun threadExchangeStreamCaptureMode(dummy: Boolean) : Int
-    external fun threadExchangeStreamCaptureMode() : StreamCaptureMode {
-        return StreamCaptureMode.fromInt(threadExchageStreamCaptureMode())!!
+    fun threadExchangeStreamCaptureMode() : StreamCaptureMode {
+        return StreamCaptureMode.fromInt(threadExchangeStreamCaptureMode(false))!!
     }
 
     //5. Event Management

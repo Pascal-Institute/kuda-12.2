@@ -1,6 +1,5 @@
 import kuda.runtimeapi.RuntimeAPI
 import kuda.runtimeapi.prop.DeviceAttribute
-import kuda.runtimeapi.prop.Limit
 import org.junit.jupiter.api.Test
 
 class RuntimeAPITest {
@@ -13,9 +12,20 @@ class RuntimeAPITest {
     }
 
     @Test
-    fun `test deviceSetLimit`(){
+    fun `test malloc`(){
         var runtimeAPI = RuntimeAPI()
         runtimeAPI.initDevice(0,0)
-        runtimeAPI.deviceSetLimit(Limit.PRINT_FIFO_SIZE, 1)
+        var devPtr = runtimeAPI.malloc(64)
+        println(devPtr)
+
+    }
+
+    @Test
+    fun `test ipcGetMemHandle`(){
+        var runtimeAPI = RuntimeAPI()
+        runtimeAPI.initDevice(0,0)
+        var devPtr = runtimeAPI.malloc(64)
+        var memHandle = runtimeAPI.ipcGetMemHandle(devPtr)
+        println(memHandle.reserved)
     }
 }
