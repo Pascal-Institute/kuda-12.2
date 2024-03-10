@@ -65,6 +65,10 @@ class RuntimeAPI {
         return deviceSetLimit(limit.num, size)
     }
 
+    external fun deviceSetMemPool(device : Int, memPool : Long) : Int
+
+    external fun deviceSetSharedMemConfig(config : Int) : Int
+
     external fun deviceSynchronize() : Int
 
     external fun deviceReset() : Int
@@ -106,6 +110,16 @@ class RuntimeAPI {
      */
     external fun ipcOpenEventHandle(handle : Long) : Long
 
+    /**
+     * Opens an interprocess memory handle exported from another process and returns a device pointer usable in the local process. (cudaIpcOpenMemHandle)
+     *
+     * @param ipcMemHandle IpcMemHandle to open
+     * @param flags Flags for this operation. Must be specified as cudaIpcMemLazyEnablePeerAccess
+     *
+     * @return Returned device pointer
+     */
+    external fun ipcOpenMemHandle(ipcMemHandle: IpcMemHandle, flags: Int) : Long
+
     external fun setDevice(device : Int) : Int
 
     external fun setDeviceFlags(flags : Int) : Int
@@ -131,7 +145,15 @@ class RuntimeAPI {
 
     //cudaStreamAddCallback
 
-    //cudaStreamAttachMemAsync
+    /**
+     * Attach memory to a stream asynchronously. (cudaStreamAttachMemAsync)
+     *
+     * @param stream Stream in which to enqueue the attach operation
+     * @param devPtr Pointer to memory (must be a pointer to managed memory or to a valid host-accessible region of system-allocated memory)
+     * @param length Length of memory (defaults to zero)
+     * @param flags Must be one of cudaMemAttachGlobal, cudaMemAttachHost or cudaMemAttachSingle
+     */
+    external fun streamAttachMemAsync(stream : Long, devPtr : Long, length : Int, flags : Int) : Int
 
     private external fun streamBeginCapture(stream : Long, mode : Int) : Int
 
