@@ -65,6 +65,8 @@ class RuntimeAPI {
         return deviceSetLimit(limit.num, size)
     }
 
+    external fun deviceSetMemPool(device : Int, memPool : Long) : Int
+
     external fun deviceSetSharedMemConfig(config : Int) : Int
 
     external fun deviceSynchronize() : Int
