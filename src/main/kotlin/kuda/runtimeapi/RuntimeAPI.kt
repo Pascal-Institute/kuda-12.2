@@ -110,6 +110,16 @@ class RuntimeAPI {
      */
     external fun ipcOpenEventHandle(handle : Long) : Long
 
+    /**
+     * Opens an interprocess memory handle exported from another process and returns a device pointer usable in the local process. (cudaIpcOpenMemHandle)
+     *
+     * @param ipcMemHandle IpcMemHandle to open
+     * @param flags Flags for this operation. Must be specified as cudaIpcMemLazyEnablePeerAccess
+     *
+     * @return Returned device pointer
+     */
+    external fun ipcOpenMemHandle(ipcMemHandle: IpcMemHandle, flags: Int) : Long
+
     external fun setDevice(device : Int) : Int
 
     external fun setDeviceFlags(flags : Int) : Int
