@@ -225,9 +225,16 @@ class RuntimeAPI {
 
     external fun streamSynchronize(stream : Long) : Int
 
-    //cudaStreamUpdateCaptureDependencies
-
-    //cudaStreamUpdateCaptureDependencies_v2
+    /**
+     * Update the set of dependencies in a capturing stream (11.3+). (cudaStreamUpdateCaptureDependencies)
+     *
+     * @param stream
+     * @param numDependencies
+     * @param flags
+     *
+     * @return Returns cudaErrorIllegalState if the stream is not capturing.
+     */
+    external fun streamUpdateCaptureDependencies(stream : Long, numDependencies : Int, flags : Int) : Long
 
     external fun streamWaitEvent(stream : Long, event : Long, flags : Int) : Int
 
