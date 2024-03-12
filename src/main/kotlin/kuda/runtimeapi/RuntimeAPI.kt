@@ -182,6 +182,34 @@ class RuntimeAPI {
      */
     external fun streamEndCapture(stream : Long) : Long
 
+    /**
+     * 	Query the flags of a stream. (cudaStreamGetFlags)
+     *
+     * @param stream Stream to query.
+     *
+     * @return Pointer to an unsigned integer in which the stream's flags are returned
+     */
+    external fun streamGetFlags(stream : Long) : Int
+
+    /**
+     * Query the Id of a stream. (cudaStreamGetId)
+     *
+     * @param hStream Handle to the stream to be queried
+     *
+     * @return Pointer to an long in which the stream Id is returned
+     */
+    external fun streamGetId(hStream : Long) : Long
+
+
+    /**
+     * Query the priority of a stream. (cudaStreamGetPriority)
+     *
+     * @param hStream Handle to the stream to be queried
+     *
+     * @return  Pointer to a signed integer in which the stream's priority is returned
+     */
+    external fun streamGetPriority(hStream : Long) : Int
+
     external fun streamQuery(stream : Long) : Int
 
     /**
@@ -197,9 +225,16 @@ class RuntimeAPI {
 
     external fun streamSynchronize(stream : Long) : Int
 
-    //cudaStreamUpdateCaptureDependencies
-
-    //cudaStreamUpdateCaptureDependencies_v2
+    /**
+     * Update the set of dependencies in a capturing stream (11.3+). (cudaStreamUpdateCaptureDependencies)
+     *
+     * @param stream
+     * @param numDependencies
+     * @param flags
+     *
+     * @return Returns cudaErrorIllegalState if the stream is not capturing.
+     */
+    external fun streamUpdateCaptureDependencies(stream : Long, numDependencies : Int, flags : Int) : Long
 
     external fun streamWaitEvent(stream : Long, event : Long, flags : Int) : Int
 

@@ -28,4 +28,12 @@ class RuntimeAPITest {
         var memHandle = runtimeAPI.ipcGetMemHandle(devPtr)
         println(memHandle.reserved)
     }
+
+    @Test
+    fun `test streamSynchronize`(){
+        var runtimeAPI = RuntimeAPI()
+        runtimeAPI.initDevice(0,0)
+        var stream = runtimeAPI.streamCreate()
+        assertEquals(0, runtimeAPI.streamSynchronize(stream))
+    }
 }
