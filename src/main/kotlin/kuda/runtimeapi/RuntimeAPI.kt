@@ -182,6 +182,16 @@ class RuntimeAPI {
      */
     external fun streamEndCapture(stream : Long) : Long
 
+    /**
+     * 	Query the flags of a stream. (cudaStreamGetFlags)
+     *
+     * @param stream Stream to query.
+     *
+     * @return Pointer to an unsigned integer in which the stream's flags are returned
+     */
+    external fun streamGetFlags(stream : Long) : Int
+
+
     external fun streamQuery(stream : Long) : Int
 
     /**
