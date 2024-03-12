@@ -191,6 +191,15 @@ class RuntimeAPI {
      */
     external fun streamGetFlags(stream : Long) : Int
 
+    /**
+     * 	Query the Id of a stream. (cudaStreamGetId)
+     *
+     * @param hStream Handle to the stream to be queried
+     *
+     * @return Pointer to an unsigned long long in which the stream Id is returned
+     */
+    external fun streamGetId(hStream : Long) : Long
+
 
     external fun streamQuery(stream : Long) : Int
 
